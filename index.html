@@ -69,7 +69,7 @@ button:focus-visible,input:focus-visible{outline:3px solid #d3a55c;outline-offse
 @media(min-width:800px){.app{margin:20px auto}.cover-screen{min-height:900px}.book{min-height:820px}}
 @media(max-width:390px){.book-inner{padding:26px 17px}.cover-art{margin:4px 0}.book h1{font-size:20px}.leaf{padding-left:29px;padding-right:29px}.prose p{line-height:1.85}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-</style>
+.private-library{min-height:100dvh;background:linear-gradient(150deg,#241710,#59402b);color:#f2dfbd;padding:22px 16px 32px}.private-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.private-top button,.private-toolbar button{border:1px solid #b9935c;background:#342218;color:#f1d8ae;padding:10px 13px;min-height:44px}.private-panel{border:1px solid #b58b51;background:#f5e9d1;color:#3e291c;margin:22px auto;padding:24px 18px;max-width:610px;box-shadow:0 12px 35px #0005}.private-panel h2{margin:0 0 12px;font-size:clamp(23px,6vw,32px)}.private-panel p{line-height:1.9}.private-file{display:block;border:2px dashed #a58252;padding:22px 14px;text-align:center;cursor:pointer;background:#fff9e9;font-weight:700}.private-file input{display:block;width:100%;margin-top:12px;max-width:100%;font-size:14px}.private-status{font-size:13px;line-height:1.8;min-height:26px}.private-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin:14px auto;max-width:610px}.private-toolbar button:disabled{opacity:.4}.private-view{max-width:720px;margin:0 auto;background:#f7ecd7;color:#33251a;min-height:70dvh;overflow:hidden}.private-view iframe{display:block;width:100%;height:78dvh;border:0}.private-view .epub-host{height:74dvh;min-height:460px}.private-view .text-host{padding:25px;font-size:18px;line-height:2;white-space:pre-wrap;overflow-wrap:anywhere;max-height:75dvh;overflow:auto}.private-privacy{font-size:12px;color:#a9855d;line-height:1.9}.private-home{display:block;width:min(100%,300px);margin:12px auto 0;background:transparent;border:1px solid #c39a61;color:#f0d5a6;padding:14px}.private-book-title{text-align:center;font-size:16px;margin:16px 0 0;overflow-wrap:anywhere}</style>
 </head>
 <body>
 <main class="app">
@@ -82,10 +82,18 @@ button:focus-visible,input:focus-visible{outline:3px solid #d3a55c;outline-offse
  <h1>छत्रपती शिवाजी महाराज<br>आणि स्वराज्याचा इतिहास</h1>
  <p class="book-subtitle">इतिहास · साधनचिकित्सा · अभ्यास</p>
  <button id="enter" class="cover-action">ग्रंथ उघडा &nbsp; ❯</button>
+ <button id="open-private" class="private-home" type="button">माझे ग्रंथालय · वैयक्तिक वाचन</button>
  <p class="cover-edition">संदर्भाधारित डिजिटल ग्रंथ · संशोधनाधीन आवृत्ती</p>
  </div></div>
 </section>
-<section id="reader" class="reader" hidden aria-label="ग्रंथ वाचन">
+<section id="private-library" class="private-library" hidden aria-label="वैयक्तिक ग्रंथालय">
+ <div class="private-top"><button id="private-back" type="button">← मुखपृष्ठ</button><strong>माझे ग्रंथालय</strong></div>
+ <div id="private-intro" class="private-panel"><h2>वैयक्तिक वाचन</h2><p>तुमच्या स्वतःच्या पुस्तकाची PDF, EPUB किंवा TXT प्रत निवडा. पुस्तकाची फाइल तुमच्या उपकरणावरच राहते; ती GitHub किंवा आमच्या सर्व्हरवर अपलोड केली जात नाही.</p>
+ <label class="private-file">पुस्तक निवडा<input id="private-input" type="file" accept=".pdf,.epub,.txt,application/pdf,application/epub+zip,text/plain"></label>
+ <p id="private-status" class="private-status" role="status">PDF · EPUB · TXT</p><p class="private-privacy">टीप: प्रत्येक नवीन भेटीत पुस्तक पुन्हा निवडावे लागेल. EPUB वाचनासाठी बाह्य JavaScript लायब्ररी लोड होते; पुस्तकाची प्रत सर्व्हरवर पाठवली जात नाही.</p></div>
+ <div id="private-reading" hidden><h2 id="private-title" class="private-book-title"></h2><div class="private-toolbar"><button id="private-prev" type="button">← मागील</button><span id="private-position" aria-live="polite"></span><button id="private-next" type="button">पुढील →</button><button id="private-close" type="button">पुस्तक बंद करा</button></div><div id="private-view" class="private-view"></div></div>
+ </section>
+ <section id="reader" class="reader" hidden aria-label="ग्रंथ वाचन">
  <header class="reader-header">
  <button id="toc-open" class="icon-button" aria-label="अनुक्रमणिका उघडा">☰</button>
  <strong>शिववेध</strong>
@@ -142,6 +150,25 @@ const bookPages=[
 ],note:"अद्याप पूर्ण ऐतिहासिक प्रकरणे तयार नाहीत. ही पारदर्शक संपादकीय नोंद आहे."}
 ];
 const $=id=>document.getElementById(id);
+let privateUrl=null,privateBook=null,privateRendition=null,privateKind=null,privateKey=null;
+function privateStatus(message){$("private-status").textContent=message}
+function privateShow(){ $("cover").hidden=true;$("reader").hidden=true;$("private-library").hidden=false;window.scrollTo(0,0)}
+function privateCleanup(){if(privateRendition){try{privateRendition.destroy()}catch(e){}privateRendition=null}if(privateBook){try{privateBook.destroy()}catch(e){}privateBook=null}if(privateUrl){URL.revokeObjectURL(privateUrl);privateUrl=null}privateKind=null;$("private-view").replaceChildren();$("private-reading").hidden=true;$("private-intro").hidden=false;$("private-input").value=""}
+function privateScript(){return new Promise((resolve,reject)=>{if(window.ePub)return resolve();const old=document.getElementById("epub-library-script");if(old){old.addEventListener("load",resolve,{once:true});old.addEventListener("error",reject,{once:true});return}const script=document.createElement("script");script.id="epub-library-script";script.src="https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js";script.onload=resolve;script.onerror=()=>reject(new Error("EPUB वाचन लायब्ररी उपलब्ध नाही. इंटरनेट तपासा."));document.head.append(script)})}
+function privateNav(){const isEpub=privateKind==="epub";$("private-prev").disabled=!isEpub;$("private-next").disabled=!isEpub}
+async function privateOpen(file){privateCleanup();privateShow();const ext=file.name.split(".").pop().toLowerCase();if(!["pdf","epub","txt"].includes(ext)){privateStatus("फक्त PDF, EPUB किंवा TXT निवडा.");return}if(file.size>100*1024*1024){privateStatus("१०० MB पेक्षा मोठी फाइल सध्या समर्थित नाही.");return}
+privateKind=ext;privateKey="shivvedh-private-position:"+file.name+":"+file.size+":"+file.lastModified;$("private-title").textContent=file.name;privateStatus("पुस्तक उघडत आहे…");try{
+if(ext==="pdf"){privateUrl=URL.createObjectURL(file);const frame=document.createElement("iframe");frame.title=file.name;frame.src=privateUrl;frame.setAttribute("loading","eager");$("private-view").append(frame);$("private-position").textContent="PDF · पान नियंत्रण PDF viewer मध्ये"; }
+else if(ext==="txt"){const content=await file.text();const text=document.createElement("div");text.className="text-host";text.textContent=content;$("private-view").append(text);$("private-position").textContent="TXT · सलग वाचन";const saved=Number(localStorage.getItem(privateKey)||0);if(saved>0)text.scrollTop=saved;text.addEventListener("scroll",()=>{try{localStorage.setItem(privateKey,String(text.scrollTop))}catch(e){}},{passive:true})}
+else{await privateScript();const bytes=await file.arrayBuffer();privateBook=window.ePub(bytes);const host=document.createElement("div");host.className="epub-host";$("private-view").append(host);privateRendition=privateBook.renderTo(host,{width:"100%",height:"100%",flow:"paginated"});privateRendition.on("relocated",location=>{const p=location.start;$("private-position").textContent=p.displayed?p.displayed.page+" / "+p.displayed.total:"EPUB";try{localStorage.setItem(privateKey,p.cfi)}catch(e){}});let saved=null;try{saved=localStorage.getItem(privateKey)}catch(e){}try{await privateRendition.display(saved||undefined)}catch(e){await privateRendition.display()}}
+$("private-intro").hidden=true;$("private-reading").hidden=false;privateNav();privateStatus("");window.scrollTo(0,0)
+}catch(error){privateCleanup();privateStatus("पुस्तक उघडता आले नाही: "+(error.message||"फाइल तपासा."))}}
+$("open-private").addEventListener("click",privateShow);
+$("private-back").addEventListener("click",()=>{privateCleanup();$("private-library").hidden=true;$("cover").hidden=false;window.scrollTo(0,0)});
+$("private-close").addEventListener("click",()=>{privateCleanup();privateStatus("दुसरे पुस्तक निवडा.")});
+$("private-input").addEventListener("change",event=>{const file=event.target.files&&event.target.files[0];if(file)privateOpen(file)});
+$("private-prev").addEventListener("click",()=>{if(privateRendition)privateRendition.prev()});
+$("private-next").addEventListener("click",()=>{if(privateRendition)privateRendition.next()});
 const KEY="shivvedh-reader-v3";
 let current=0,fontSize=18,bookmark=null,lastFocus=null;
 try{const saved=JSON.parse(localStorage.getItem(KEY)||"{}");if(Number.isInteger(saved.current)&&saved.current>=0&&saved.current<bookPages.length)current=saved.current;if(Number.isInteger(saved.fontSize)&&saved.fontSize>=16&&saved.fontSize<=24)fontSize=saved.fontSize;if(Number.isInteger(saved.bookmark)&&saved.bookmark>=0&&saved.bookmark<bookPages.length)bookmark=saved.bookmark}catch(error){}
