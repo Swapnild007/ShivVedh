@@ -40,7 +40,7 @@ button:focus-visible,input:focus-visible{outline:3px solid #d3a55c;outline-offse
 .leaf:before{content:"";position:absolute;inset:17px;border:1px solid #b89a68;pointer-events:none}
 .leaf:after{content:"";position:absolute;inset:23px;border:1px solid #d8c29c;pointer-events:none}
 .leaf>*{position:relative;z-index:1}
-.folio{text-align:center;color:#96713d;font-size:12px;letter-spacing:.04em;margin:0 0 30px}
+.invocation{text-align:center;color:#7b4825;font-size:clamp(16px,4.2vw,21px);font-weight:700;line-height:1.8;margin:0 0 27px}.folio{text-align:center;color:#96713d;font-size:12px;letter-spacing:.04em;margin:0 0 30px}
 .leaf h2{font-size:clamp(27px,6.5vw,41px);text-align:center;line-height:1.55;color:#603921;margin:0 0 7px}
 .flourish{text-align:center;color:#a7824a;font-size:15px;letter-spacing:.4em;margin:7px 0 28px}
 .prose p{font-size:var(--body-size);line-height:var(--line-height);margin:0 0 1.3em;text-align:left;overflow-wrap:break-word}
@@ -148,14 +148,14 @@ try{const saved=JSON.parse(localStorage.getItem(KEY)||"{}");if(Number.isInteger(
 function persist(){try{localStorage.setItem(KEY,JSON.stringify({current,fontSize,bookmark}))}catch(error){}}
 function render(){
  const page=bookPages[current],leaf=$("leaf");leaf.replaceChildren();
- leaf.classList.toggle("portrait-leaf",Boolean(page.portrait));if(page.portrait){const kicker=document.createElement("p");kicker.className="portrait-title";kicker.textContent="॥ शिववेध · राजचित्र ॥";const img=document.createElement("img");img.className="portrait-image";img.src=page.portrait;img.alt="छत्रपती शिवाजी महाराज यांचे कलात्मक चित्रण";img.loading="eager";img.decoding="async";const caption=document.createElement("h2");caption.className="portrait-caption";caption.textContent=page.title;const note=document.createElement("p");note.className="portrait-note";note.textContent=page.note;leaf.append(kicker,img,caption,note);$("page-indicator").textContent=(current+1)+" / "+bookPages.length;$("previous").disabled=current===0;$("following").disabled=current===bookPages.length-1;$("bookmark").textContent=bookmark===current?"★ खूण ठेवली":"☆ खूण ठेवा";persist();window.scrollTo(0,0);return;}const folio=document.createElement("div");folio.className="folio";folio.textContent="॥ "+page.kind+" · "+String(current+1).padStart(2,"0")+" ॥";
+ leaf.classList.toggle("portrait-leaf",Boolean(page.portrait));if(page.portrait){const kicker=document.createElement("p");kicker.className="portrait-title";kicker.textContent="॥ शिववेध · राजचित्र ॥";const img=document.createElement("img");img.className="portrait-image";img.src=page.portrait;img.alt="छत्रपती शिवाजी महाराज यांचे कलात्मक चित्रण";img.loading="eager";img.decoding="async";const caption=document.createElement("h2");caption.className="portrait-caption";caption.textContent=page.title;const note=document.createElement("p");note.className="portrait-note";note.textContent=page.note;leaf.append(kicker,img,caption,note);$("page-indicator").textContent=(current+1)+" / "+bookPages.length;$("previous").disabled=current===0;$("following").disabled=current===bookPages.length-1;$("bookmark").textContent=bookmark===current?"★ खूण ठेवली":"☆ खूण ठेवा";persist();window.scrollTo(0,0);return;}const invocation=document.createElement("div");invocation.className="invocation";invocation.textContent="॥ श्री गणेशाय नमः ॥";const folio=document.createElement("div");folio.className="folio";folio.textContent="॥ "+page.kind+" · "+String(current+1).padStart(2,"0")+" ॥";
  const heading=document.createElement("h2");heading.textContent=page.title;
  const flourish=document.createElement("div");flourish.className="flourish";flourish.setAttribute("aria-hidden","true");flourish.textContent="◆  ◇  ◆";
  const prose=document.createElement("div");prose.className="prose";
  for(const line of page.paragraphs){const paragraph=document.createElement("p");paragraph.textContent=line;prose.append(paragraph)}
  const note=document.createElement("div");note.className="editorial";note.textContent="संपादकीय नोंद : "+page.note;
  const footer=document.createElement("div");footer.className="leaf-footer";footer.textContent="शिववेध  •  "+String(current+1).padStart(2,"0");
- leaf.append(folio,heading,flourish,prose,note,footer);
+ leaf.append(invocation,folio,heading,flourish,prose,note,footer);
  $("page-indicator").textContent=(current+1)+" / "+bookPages.length;
  $("previous").disabled=current===0;$("following").disabled=current===bookPages.length-1;
  $("bookmark").textContent=bookmark===current?"★ खूण ठेवली":"☆ खूण ठेवा";
