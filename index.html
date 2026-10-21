@@ -42,7 +42,7 @@ button:focus-visible,input:focus-visible{outline:3px solid #d3a55c;outline-offse
 .leaf>*{position:relative;z-index:1}
 .folio{text-align:center;color:#96713d;font-size:12px;letter-spacing:.04em;margin:0 0 30px}
 .leaf h2{font-size:clamp(27px,6.5vw,41px);text-align:center;line-height:1.55;color:#603921;margin:0 0 7px}
-.flourish{text-align:center;color:#a7824a;font-size:24px;margin:7px 0 28px}
+.flourish{text-align:center;color:#a7824a;font-size:15px;letter-spacing:.4em;margin:7px 0 28px}
 .prose p{font-size:var(--body-size);line-height:var(--line-height);margin:0 0 1.3em;text-align:left;overflow-wrap:break-word}
 .prose p:first-child:first-letter{font-size:1.65em;font-weight:800;color:#92522e}
 .editorial{border-top:1px solid #bfa178;padding-top:15px;margin-top:34px;font-size:12px;line-height:1.9;color:#765a40}
@@ -114,9 +114,9 @@ button:focus-visible,input:focus-visible{outline:3px solid #d3a55c;outline-offse
 "use strict";
 const bookPages=[
 {title:"शीर्षकपृष्ठ",kind:"प्रारंभिक पृष्ठ",paragraphs:[
-"शिववेध हा छत्रपती शिवाजी महाराज आणि स्वराज्याच्या इतिहासाचा स्रोतसमीक्षात्मक अभ्यास करण्यासाठी विकसित होत असलेला मराठी डिजिटल ग्रंथ आहे.",
-"खंड प्रथम ही संशोधनाधीन अभ्यास आवृत्ती आहे. ऐतिहासिक घटनांचे निवेदन आणि त्यांच्याबाबत उपलब्ध पुराव्यांचे मूल्यमापन यांची स्पष्ट विभागणी ठेवणे हा या ग्रंथाचा संपादकीय हेतू आहे."
-],note:"ही अभ्यास आवृत्ती आहे. पूर्ण संशोधित ग्रंथ म्हणून प्रस्तुत केलेली नाही."},
+"शिववेध हा छत्रपती शिवाजी महाराज आणि स्वराज्याच्या इतिहासाचा, ऐतिहासिक साधनांच्या चिकित्सक अभ्यासावर आधारित मराठी डिजिटल ग्रंथ आहे.",
+"हा पहिल्या खंडाचा संशोधनाधीन मसुदा आहे. ऐतिहासिक घटनांचे निवेदन आणि त्यांच्याबाबत उपलब्ध पुराव्यांचे मूल्यमापन यांची स्पष्ट विभागणी ठेवणे हा या ग्रंथाचा संपादकीय हेतू आहे."
+],note:"ही संशोधनाधीन आवृत्ती आहे; संपूर्ण संशोधित ग्रंथ अद्याप प्रकाशित झालेला नाही."},
 {title:"मनोगत",kind:"प्रारंभिक पृष्ठ",paragraphs:[
 "इतिहास म्हणजे फक्त तारखा आणि युद्धांची मालिका नव्हे. पत्रव्यवहार, दप्तरातील नोंदी, शिलालेख, नाणी, प्रवासवर्णने आणि बखरी यांतून भूतकाळाचे अनेक आवाज आपल्यापर्यंत पोहोचतात.",
 "त्या आवाजांमधील साम्य, मतभेद आणि मौन तपासल्याशिवाय इतिहासाची चिकित्सक मांडणी होत नाही. शिववेधमध्ये आदर आणि पुराव्यांबद्दलची काटेकोरता एकत्र ठेवण्याचा प्रयत्न केला जाईल.",
@@ -149,7 +149,7 @@ function render(){
  const page=bookPages[current],leaf=$("leaf");leaf.replaceChildren();
  const folio=document.createElement("div");folio.className="folio";folio.textContent="॥ "+page.kind+" · "+String(current+1).padStart(2,"0")+" ॥";
  const heading=document.createElement("h2");heading.textContent=page.title;
- const flourish=document.createElement("div");flourish.className="flourish";flourish.setAttribute("aria-hidden","true");flourish.textContent="❦";
+ const flourish=document.createElement("div");flourish.className="flourish";flourish.setAttribute("aria-hidden","true");flourish.textContent="◆  ◇  ◆";
  const prose=document.createElement("div");prose.className="prose";
  for(const line of page.paragraphs){const paragraph=document.createElement("p");paragraph.textContent=line;prose.append(paragraph)}
  const note=document.createElement("div");note.className="editorial";note.textContent="संपादकीय नोंद : "+page.note;
