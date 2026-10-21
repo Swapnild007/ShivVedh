@@ -1,125 +1,18 @@
 <!doctype html>
-<html lang="mr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#201711">
-<meta name="description" content="शिववेध: छत्रपती शिवाजी महाराजांच्या इतिहासाचा संदर्भाधारित मराठी डिजिटल ग्रंथ.">
-<title>शिववेध | स्वराज्याचा डिजिटल ग्रंथ</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<html lang="mr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#211710"><meta name="description" content="शिववेध: इतिहास आणि वैयक्तिक मराठी ग्रंथालय"><title>शिववेध | राजेशाही डिजिटल ग्रंथालय</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--night:#18120e;--leather:#302016;--bronze:#ab7942;--gold:#dbb879;--paper:#f4e7cd;--ink:#3b291e;--body-size:18px;--line-height:1.95}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--night);color:var(--ink);font-family:"Noto Serif Devanagari",Georgia,serif}
-button,input{font:inherit}
-button{cursor:pointer}
-button:focus-visible,input:focus-visible{outline:3px solid #d3a55c;outline-offset:3px}
-[hidden]{display:none!important}
-.app{width:min(100%,760px);margin:auto;min-height:100dvh;box-shadow:0 0 60px #0007}
-.cover-screen{min-height:100dvh;display:grid;place-items:center;padding:clamp(13px,3vw,30px);background:radial-gradient(ellipse at 50% 42%,#4d3323 0,#221913 55%,#0c0c0b 100%)}
-.book{width:min(100%,530px);min-height:min(850px,calc(100dvh - 26px));padding:12px;background:linear-gradient(90deg,#150f0c,#55361e 2%,#281a12 5%,#271b15 94%,#5a3c24 98%,#160e0b);border:1px solid #956b3b;box-shadow:9px 12px 0 #110c09,14px 20px 28px #0009;display:flex}
-.book-inner{width:100%;border:1px solid #ba8a4e;outline:1px solid #6f4b29;outline-offset:-8px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px clamp(16px,5vw,38px);text-align:center;color:#f0d7ab;background:radial-gradient(ellipse at 50% 48%,#4b3021 0%,#2a1c16 54%,#171210 100%)}
-.corner{position:absolute;width:34px;height:34px;border-color:#ba8a4e;border-style:solid;opacity:.85}
-.corner.tl{top:15px;left:15px;border-width:2px 0 0 2px}.corner.tr{top:15px;right:15px;border-width:2px 2px 0 0}.corner.bl{bottom:15px;left:15px;border-width:0 0 2px 2px}.corner.br{bottom:15px;right:15px;border-width:0 2px 2px 0}
-.cover-kicker{font-size:12px;color:#cba46c;letter-spacing:.09em;margin:0 0 12px}
-.cover-ornament{font-size:22px;letter-spacing:.45em;color:#bb8849;margin:0 0 13px}
-.cover-art{width:100%;max-width:470px;display:block;height:auto;aspect-ratio:16/9;object-fit:cover;border:1px solid #79522d;box-shadow:0 10px 26px #0008}
-.book h1{font-size:clamp(20px,5.3vw,29px);line-height:1.7;font-weight:700;margin:20px 0 10px;color:#f3d9a7}
-.book-subtitle{font-size:12px;color:#c7a77d;margin:0 0 24px;line-height:1.9}
-.cover-action{width:min(100%,300px);min-height:54px;background:linear-gradient(115deg,#a66c36,#edc985 52%,#a06b36);border:1px solid #f3d49d;color:#29180f;font-weight:800;border-radius:2px;box-shadow:inset 0 1px #fce0ad,0 5px 14px #0006}
-.cover-edition{font-size:11px;color:#b99b70;margin:20px 0 0}
-.reader{min-height:100dvh;background:linear-gradient(90deg,#927451 0,#c2ab85 4%,#b8a17c 95%,#876c4d 100%);padding-bottom:32px}
-.reader-header{position:sticky;top:0;z-index:5;background:#2b1d16;color:#f3dbb0;border-bottom:2px solid #a37b49;min-height:65px;display:flex;align-items:center;justify-content:space-between;padding:10px 16px}
-.reader-header strong{font-size:22px}
-.icon-button{min-width:44px;min-height:44px;background:transparent;color:inherit;border:1px solid #9d7748;border-radius:3px;font-size:19px}
-.reading-area{padding:16px clamp(10px,2.5vw,26px) 20px}
-.leaf{position:relative;margin:0 auto;background:linear-gradient(90deg,#dfc89e 0,#f7ecd3 4%,#f8efd9 92%,#dfc89f 100%);min-height:calc(100dvh - 190px);padding:clamp(49px,9vw,80px) clamp(30px,7vw,64px) 48px;box-shadow:inset 10px 0 17px #7e59282a,3px 3px #d7bc8e,6px 6px #bea075,0 13px 22px #2a1c1455}
-.leaf:before{content:"";position:absolute;inset:17px;border:1px solid #b89a68;pointer-events:none}
-.leaf:after{content:"";position:absolute;inset:23px;border:1px solid #d8c29c;pointer-events:none}
-.leaf>*{position:relative;z-index:1}
-.invocation{text-align:center;color:#7b4825;font-size:clamp(16px,4.2vw,21px);font-weight:700;line-height:1.8;margin:0 0 27px}.folio{text-align:center;color:#96713d;font-size:12px;letter-spacing:.04em;margin:0 0 30px}
-.leaf h2{font-size:clamp(27px,6.5vw,41px);text-align:center;line-height:1.55;color:#603921;margin:0 0 7px}
-.flourish{text-align:center;color:#a7824a;font-size:15px;letter-spacing:.4em;margin:7px 0 28px}
-.prose p{font-size:var(--body-size);line-height:var(--line-height);margin:0 0 1.3em;text-align:left;overflow-wrap:break-word}
-.prose p:first-child:first-letter{font-size:1.65em;font-weight:800;color:#92522e}
-.editorial{border-top:1px solid #bfa178;padding-top:15px;margin-top:34px;font-size:12px;line-height:1.9;color:#765a40}
-.portrait-leaf{padding:35px 24px 42px;background:linear-gradient(90deg,#c5aa7e,#f6e9cd 6%,#f5e7c8 94%,#c6a77c)}.portrait-title{text-align:center;font-size:14px;letter-spacing:.07em;color:#805b34;margin:0 0 18px}.portrait-image{display:block;width:100%;max-width:460px;height:auto;max-height:68dvh;object-fit:contain;margin:0 auto;border:4px solid #a87c40;box-shadow:0 0 0 2px #e7d4a9,0 9px 22px #39261955}.portrait-caption{text-align:center;font-size:20px;font-weight:700;color:#59371f;margin:19px 0 5px}.portrait-note{text-align:center;font-size:12px;color:#806345;line-height:1.8;margin:0}.leaf-footer{border-top:1px solid #d4b98e;margin-top:32px;padding-top:14px;text-align:center;color:#9c7b4d;font-size:12px}
-.reader-controls{display:grid;grid-template-columns:1fr auto 1fr;gap:6px;align-items:center;padding:12px 18px 0;color:#3d281b}
-.reader-controls button{background:#352218;color:#f1d8ae;border:1px solid #9e774a;min-height:47px;border-radius:3px;padding:8px 10px;font-size:13px}
-.reader-controls button:disabled{opacity:.35;cursor:default}
-.reader-controls button:last-child{justify-self:end}
-.reader-controls span{font-size:12px;text-align:center}
-.reader-tools{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:16px 0}
-.reader-tools button{min-height:42px;border:1px solid #765a3c;background:#f0e1c3;color:#4b3020;padding:8px 14px;border-radius:3px;font-size:13px}
-.drawer{position:fixed;inset:0;z-index:10;background:#0a0808bb;display:flex;justify-content:center}
-.drawer-panel{width:min(100%,760px);height:100%;overflow:auto;background:linear-gradient(90deg,#d4bb92,#f6e8cb 5%,#f5e7ca 95%,#cfb38a);padding:24px 23px 65px}
-.drawer-header{display:flex;justify-content:space-between;align-items:center}
-.drawer-header h2{font-size:26px;margin:0}
-.drawer-panel input{display:block;width:100%;background:#fff8e9;border:1px solid #a88b62;border-radius:3px;font-size:16px;padding:13px;margin:20px 0 10px}
-.drawer-description{font-size:12px;color:#806044;line-height:1.8}
-.toc-item{width:100%;text-align:left;display:flex;gap:14px;align-items:baseline;background:transparent;border:0;border-bottom:1px solid #d3b992;padding:16px 5px;color:#442e20;font-size:17px}
-.toc-item[aria-current="page"]{background:#e4cfaa;font-weight:800}
-.toc-num{font-size:12px;color:#8b6b45;min-width:30px}
-.toc-title{flex:1}
-.toc-title small{display:block;font-size:11px;color:#8c6b4a;margin-top:5px}
-.empty{text-align:center;padding:30px;color:#755a40}
-@media(min-width:800px){.app{margin:20px auto}.cover-screen{min-height:900px}.book{min-height:820px}}
-@media(max-width:390px){.book-inner{padding:26px 17px}.cover-art{margin:4px 0}.book h1{font-size:20px}.leaf{padding-left:29px;padding-right:29px}.prose p{line-height:1.85}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-.library-choice{width:min(100%,610px);margin:18px auto 0;display:grid;gap:12px}.library-choice-card{display:block;text-decoration:none;color:#f2dfbd;background:linear-gradient(125deg,#3a271b,#201710);border:1px solid #b9935c;padding:19px 17px;box-shadow:0 6px 22px #0004}.library-choice-card strong{display:block;font-size:20px;margin-bottom:7px}.library-choice-card span{font-size:13px;color:#d6ba90;line-height:1.8}.library-choice-card:focus-visible{outline:3px solid #f5d39d;outline-offset:3px}.library-choice-note{font-size:12px;color:#c5a780;line-height:1.8}.private-library{min-height:100dvh;background:linear-gradient(150deg,#241710,#59402b);color:#f2dfbd;padding:22px 16px 32px}.private-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.private-top button,.private-toolbar button{border:1px solid #b9935c;background:#342218;color:#f1d8ae;padding:10px 13px;min-height:44px}.private-panel{border:1px solid #b58b51;background:#f5e9d1;color:#3e291c;margin:22px auto;padding:24px 18px;max-width:610px;box-shadow:0 12px 35px #0005}.private-panel h2{margin:0 0 12px;font-size:clamp(23px,6vw,32px)}.private-panel p{line-height:1.9}.private-file{display:block;border:2px dashed #a58252;padding:22px 14px;text-align:center;cursor:pointer;background:#fff9e9;font-weight:700}.private-file input{display:block;width:100%;margin-top:12px;max-width:100%;font-size:14px}.private-status{font-size:13px;line-height:1.8;min-height:26px}.private-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin:14px auto;max-width:610px}.private-toolbar button:disabled{opacity:.4}.private-view{max-width:720px;margin:0 auto;background:#f7ecd7;color:#33251a;min-height:70dvh;overflow:hidden}.private-view iframe{display:block;width:100%;height:78dvh;border:0}.private-view .epub-host{height:74dvh;min-height:460px}.private-view .text-host{padding:25px;font-size:18px;line-height:2;white-space:pre-wrap;overflow-wrap:anywhere;max-height:75dvh;overflow:auto}.private-privacy{font-size:12px;color:#a9855d;line-height:1.9}.private-home{display:block;width:min(100%,300px);margin:12px auto 0;background:transparent;border:1px solid #c39a61;color:#f0d5a6;padding:14px}.private-book-title{text-align:center;font-size:16px;margin:16px 0 0;overflow-wrap:anywhere}</style>
-</head>
-<body>
-<main class="app">
-<section id="cover" class="cover-screen" aria-label="शिववेध मुखपृष्ठ">
- <div class="book"><div class="book-inner">
- <i class="corner tl" aria-hidden="true"></i><i class="corner tr" aria-hidden="true"></i><i class="corner bl" aria-hidden="true"></i><i class="corner br" aria-hidden="true"></i>
- <p class="cover-ornament" aria-hidden="true">◆ ✦ ◆</p>
- <p class="cover-kicker">॥ श्री ॥ &nbsp; खंड प्रथम &nbsp; ॥ श्री ॥</p>
- <img class="cover-art" src="assets/shivvedh-logo.png.png" alt="शिववेधचे अधिकृत चिन्ह: राजमुद्रा आणि भगवे ध्वज" width="640" height="360">
- <h1>छत्रपती शिवाजी महाराज<br>आणि स्वराज्याचा इतिहास</h1>
- <p class="book-subtitle">इतिहास · साधनचिकित्सा · अभ्यास</p>
- <button id="enter" class="cover-action">ग्रंथ उघडा &nbsp; ❯</button>
- <button id="open-private" class="private-home" type="button">माझे ग्रंथालय · वैयक्तिक वाचन</button>
- <p class="cover-edition">संदर्भाधारित डिजिटल ग्रंथ · संशोधनाधीन आवृत्ती</p>
- </div></div>
-</section>
-<section id="private-library" class="private-library" hidden aria-label="वैयक्तिक ग्रंथालय">
- <div class="private-top"><button id="private-back" type="button">← मुखपृष्ठ</button><strong>माझे ग्रंथालय</strong></div>
- <div class="library-choice" aria-label="ग्रंथ निवडा"><a class="library-choice-card" href="https://www.mehtapublishinghouse.com/book-details/Shrimanyogi/2.aspx" target="_blank" rel="noopener noreferrer"><strong>श्रीमान योगी ↗</strong><span>रणजित देसाई · प्रकाशकाची अधिकृत आवृत्ती पाहा</span></a><button id="library-shivvedh" class="library-choice-card" type="button" style="text-align:left;font:inherit"><strong>शिववेध →</strong><span>छत्रपती शिवाजी महाराजांचा संदर्भाधारित डिजिटल ग्रंथ वाचा</span></button><p class="library-choice-note">श्रीमान योगीचा संपूर्ण मजकूर या संकेतस्थळावर होस्ट केलेला नाही. अधिकृत प्रकाशकाच्या संकेतस्थळावर उपलब्ध पर्याय पाहता येतील.</p></div><div id="private-intro" class="private-panel"><h2>वैयक्तिक वाचन</h2><p>तुमच्या स्वतःच्या पुस्तकाची PDF, EPUB किंवा TXT प्रत निवडा. पुस्तकाची फाइल तुमच्या उपकरणावरच राहते; ती GitHub किंवा आमच्या सर्व्हरवर अपलोड केली जात नाही.</p>
- <label class="private-file">पुस्तक निवडा<input id="private-input" type="file" accept=".pdf,.epub,.txt,application/pdf,application/epub+zip,text/plain"></label>
- <p id="private-status" class="private-status" role="status">PDF · EPUB · TXT</p><p class="private-privacy">टीप: प्रत्येक नवीन भेटीत पुस्तक पुन्हा निवडावे लागेल. EPUB वाचनासाठी बाह्य JavaScript लायब्ररी लोड होते; पुस्तकाची प्रत सर्व्हरवर पाठवली जात नाही.</p></div>
- <div id="private-reading" hidden><h2 id="private-title" class="private-book-title"></h2><div class="private-toolbar"><button id="private-prev" type="button">← मागील</button><span id="private-position" aria-live="polite"></span><button id="private-next" type="button">पुढील →</button><button id="private-close" type="button">पुस्तक बंद करा</button></div><div id="private-view" class="private-view"></div></div>
- </section>
- <section id="reader" class="reader" hidden aria-label="ग्रंथ वाचन">
- <header class="reader-header">
- <button id="toc-open" class="icon-button" aria-label="अनुक्रमणिका उघडा">☰</button>
- <strong>शिववेध</strong>
- <button id="go-cover" class="icon-button" aria-label="मुखपृष्ठावर जा">⌂</button>
- </header>
- <div class="reading-area"><article class="leaf" id="leaf" aria-live="polite"></article></div>
- <nav class="reader-controls" aria-label="पानांची दिशा">
- <button id="previous">← मागील</button><span id="page-indicator"></span><button id="following">पुढील →</button>
- </nav>
- <div class="reader-tools">
- <button id="toc-bottom">☷ अनुक्रमणिका</button>
- <button id="bookmark">☆ खूण ठेवा</button>
- <button id="smaller">अ−</button><button id="larger">अ+</button>
- </div>
-</section>
-</main>
-<aside id="drawer" class="drawer" role="dialog" aria-modal="true" aria-label="ग्रंथ अनुक्रमणिका" hidden>
- <div class="drawer-panel">
- <div class="drawer-header"><h2>अनुक्रमणिका</h2><button id="toc-close" class="icon-button" aria-label="अनुक्रमणिका बंद करा">✕</button></div>
- <p class="drawer-description">खंड प्रथम · उपलब्ध प्रारंभिक पाने. पुढील ऐतिहासिक प्रकरणे स्रोतपडताळणीनंतर प्रकाशित होतील.</p>
- <input id="search" type="search" placeholder="विषय किंवा पान शोधा…" aria-label="अनुक्रमणिकेत शोधा">
- <div id="toc-items"></div>
- </div>
-</aside>
-<script>
-"use strict";
+:root{--ink:#33261d;--gold:#d4a65d;--muted:#bca17e;--paper:#f4e6c8;--night:#1c1511;--size:18px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--night);font-family:"Noto Serif Devanagari",serif;color:var(--paper)}button,input{font:inherit}button,a{touch-action:manipulation}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #f4d08a;outline-offset:3px}[hidden]{display:none!important}.app{max-width:900px;margin:auto;min-height:100dvh}.screen{min-height:100dvh}.hero{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:17px;text-align:center;padding:35px 22px;background:radial-gradient(ellipse at 50% 42%,#573b28 0,#261b15 55%,#100e0c 100%)}.crest{font-size:12px;color:var(--gold);letter-spacing:.14em}.hero-logo{display:block;width:min(100%,560px);height:auto;box-shadow:0 12px 42px #0009;border:1px solid #946f3d}.hero h1{font-size:clamp(27px,7vw,48px);line-height:1.55;margin:0;color:#f2d6a0}.hero p{font-size:14px;color:#c9af8a;line-height:1.9;margin:0}.primary{min-height:53px;border:1px solid #f5d89f;background:linear-gradient(120deg,#9c6b35,#edcc88,#a26e38);color:#2d1c12;padding:10px 30px;font-weight:800}.secondary{min-height:45px;border:1px solid #9e7a4d;background:#2b2019;color:#f0d4a3;padding:9px 16px}.topbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;background:#241a14;border-bottom:1px solid #926d3e}.topbar strong{font-size:19px;color:#f2d8a6}.topbar button{border:1px solid #8e6b42;background:#302218;color:#f1d7a5;min-width:44px;min-height:43px;padding:7px 11px}.library{background:radial-gradient(ellipse at top,#4b3424,#1b1511 65%);padding-bottom:50px}.library-heading{text-align:center;padding:36px 18px 22px}.library-heading h2{font-size:clamp(27px,6vw,40px);color:#f4d9a5;margin:0 0 10px}.library-heading p{font-size:13px;color:#d2b58d;line-height:1.9;margin:0}.shelf{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:20px;padding:14px 20px 25px}.book-card{border:1px solid #977047;background:linear-gradient(135deg,#38261b,#241a14);padding:15px;display:flex;flex-direction:column;gap:13px;box-shadow:0 10px 22px #0004}.book-card img{width:100%;height:230px;object-fit:contain;background:#1b1512}.book-card h3{margin:0;color:#f5ddb1;font-size:22px}.book-card p{margin:0;color:#c9b18e;font-size:12px;line-height:1.9}.book-card .primary,.book-card .secondary{width:100%}.disclosure{font-size:12px;line-height:1.85;color:#cdb28b;margin:0 20px}.reader{background:#aa8c62;min-height:100dvh;padding-bottom:25px}.reader-body{padding:17px 12px}.page{min-height:calc(100dvh - 170px);background:linear-gradient(90deg,#d3b991 0,#f7ecd4 5%,#f8eed8 95%,#d1b58a);color:var(--ink);padding:clamp(34px,7vw,65px) clamp(26px,6vw,65px);position:relative;box-shadow:inset 9px 0 16px #5e432a2e,0 12px 22px #35201450}.page:before{content:"";position:absolute;inset:14px;border:1px solid #c4a577;pointer-events:none}.page>*{position:relative}.invocation{text-align:center;font-size:16px;color:#7c4c2c;font-weight:700;margin:0 0 23px}.page-kicker{text-align:center;color:#94754e;font-size:12px}.page h2{text-align:center;color:#5c3824;font-size:clamp(24px,6vw,38px);line-height:1.5;margin:12px 0 27px}.page p.prose{font-size:var(--size);line-height:2.05;margin:0 0 1.3em}.page .note{font-size:12px;color:#7b5d42;line-height:1.8;border-top:1px solid #c9ad84;padding-top:16px;margin-top:25px}.portrait{display:block;max-width:100%;max-height:65dvh;width:auto;margin:0 auto 20px;border:4px solid #ac824e;box-shadow:0 10px 24px #38251850}.portrait-label{text-align:center;font-size:12px;color:#755737}.reader-nav{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 13px}.reader-nav button,.reader-tools button{background:#322219;color:#f4ddb6;border:1px solid #927046;padding:10px 12px;min-height:44px}.reader-nav button:disabled{opacity:.4}.reader-nav span{font-size:12px;color:#322219}.reader-tools{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:10px}.toc{position:fixed;inset:0;z-index:30;background:#110d0bbb;display:grid;place-items:center}.toc-panel{width:min(100%,650px);height:min(100%,800px);overflow:auto;background:#f3e4c7;color:#3d2b20;padding:20px}.toc-panel button{min-height:43px}.toc-head{display:flex;justify-content:space-between;align-items:center}.toc-list button{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid #d0b58a;background:transparent;padding:15px;color:#3c291e}.toc-list small{display:block;color:#8b6b49}.toc input{width:100%;padding:12px;border:1px solid #b99a70;background:#fff9ed;margin:12px 0}.private{background:#251a13;padding-bottom:25px}.private-main{padding:25px 16px;max-width:700px;margin:auto}.private-main h2{color:#f2d6a3}.private-main p{line-height:1.9;color:#d6bb95;font-size:13px}.file-label{display:block;border:1px dashed #b99460;padding:20px;text-align:center;color:#f1d9ad}.file-label input{display:block;margin:12px auto 0;max-width:100%}.private-display{background:#f8eed9;color:#2e221a;min-height:60dvh;margin-top:20px}.private-display iframe{display:block;width:100%;height:75dvh;border:0}.private-display .epub-area{height:75dvh}.private-display .text-area{padding:20px;white-space:pre-wrap;overflow:auto;max-height:75dvh;line-height:2;font-size:18px}.private-buttons{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px}.private-buttons button{padding:10px;border:1px solid #a78558;background:#3d2b1e;color:#f2dcbb}.private-buttons button:disabled{opacity:.4}.status{min-height:20px}@media(min-width:800px){.hero{min-height:900px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body><main class="app">
+<section id="landing" class="screen hero"><div class="crest">॥ श्री गणेशाय नमः ॥</div><img class="hero-logo" src="assets/shivvedh-logo.png.png" alt="शिववेधचे अधिकृत चिन्ह"><h1>शिववेध</h1><p>स्वराज्याचा इतिहास आणि तुमचे वैयक्तिक मराठी ग्रंथालय</p><button class="primary" id="enter">ग्रंथालयात प्रवेश करा</button><p>इतिहास · साहित्य · वाचन</p></section>
+<section id="library" class="screen library" hidden><header class="topbar"><button id="library-back" aria-label="मुखपृष्ठ">←</button><strong>शिववेध ग्रंथालय</strong><span aria-hidden="true">✦</span></header><div class="library-heading"><h2>माझे ग्रंथालय</h2><p>दोन ग्रंथ, एक राजेशाही वाचनानुभव</p></div><div class="shelf">
+<article class="book-card"><img src="assets/shivaji-maharaj.webp.webp" alt="छत्रपती शिवाजी महाराजांचे कलात्मक चित्रण"><h3>शिववेध</h3><p>छत्रपती शिवाजी महाराजांचा संशोधनाधीन, संदर्भाधारित मराठी डिजिटल ग्रंथ. सध्या प्रारंभिक पाने उपलब्ध आहेत; संशोधित ऐतिहासिक अध्याय अद्याप प्रकाशित नाहीत.</p><button class="primary" id="read-history">ग्रंथ उघडा</button></article>
+<article class="book-card"><div style="height:230px;display:grid;place-items:center;border:1px solid #9c7546;background:radial-gradient(#513421,#211811);text-align:center"><div><div style="font-size:35px;color:#d8b577">श्रीमान योगी</div><div style="font-size:13px;color:#c4a37d">रणजित देसाई</div></div></div><h3>श्रीमान योगी</h3><p>मूळ ऐतिहासिक कादंबरी. अधिकृत प्रकाशकाचे पुस्तकपृष्ठ उघडा किंवा स्वतःची कायदेशीर डिजिटल प्रत वैयक्तिक वाचकात वाचा.</p><a class="secondary" style="display:block;text-align:center;text-decoration:none" href="https://www.mehtapublishinghouse.com/book-details/Shrimanyogi/2.aspx" target="_blank" rel="noopener noreferrer">अधिकृत आवृत्ती ↗</a><button class="secondary" id="open-private">वैयक्तिक वाचक उघडा</button></article>
+</div><p class="disclosure">श्रीमान योगीचा संपूर्ण कॉपीराइट संरक्षित मजकूर या सार्वजनिक संकेतस्थळावर उपलब्ध नाही. शिववेधचे ऐतिहासिक लेखन पडताळणी पूर्ण झाल्यावरच प्रकाशित केले जाईल.</p></section>
+<section id="history" class="screen reader" hidden><header class="topbar"><button id="history-back" aria-label="ग्रंथालयात परत">←</button><strong>शिववेध</strong><button id="toc-open" aria-label="अनुक्रमणिका">☰</button></header><div class="reader-body"><article id="page" class="page" aria-live="polite"></article></div><nav class="reader-nav"><button id="prev">← मागील</button><span id="page-count"></span><button id="next">पुढील →</button></nav><div class="reader-tools"><button id="bookmark">☆ खूण ठेवा</button><button id="font-minus">अ−</button><button id="font-plus">अ+</button></div></section>
+<section id="private" class="screen private" hidden><header class="topbar"><button id="private-back" aria-label="ग्रंथालयात परत">←</button><strong>वैयक्तिक वाचक</strong><span></span></header><div class="private-main"><h2>माझे पुस्तक</h2><p>PDF, EPUB किंवा TXT निवडा. फाइल तुमच्या उपकरणावरच उघडली जाते; GitHub वर अपलोड होत नाही. पुस्तकाची फाइल प्रत्येक भेटीत पुन्हा निवडावी लागते.</p><label class="file-label">पुस्तक निवडा<input id="file" type="file" accept=".pdf,.epub,.txt,application/pdf,application/epub+zip,text/plain"></label><p id="status" class="status" role="status"></p><div class="private-buttons"><button id="private-prev" disabled>← मागील</button><span id="position"></span><button id="private-next" disabled>पुढील →</button><button id="private-clear">बंद करा</button></div><div id="private-display" class="private-display" hidden></div></div></section>
+</main><aside id="toc" class="toc" role="dialog" aria-modal="true" aria-label="अनुक्रमणिका" hidden><div class="toc-panel"><div class="toc-head"><h2>अनुक्रमणिका</h2><button id="toc-close">बंद करा</button></div><input id="toc-search" type="search" placeholder="पान शोधा"><div id="toc-list" class="toc-list"></div></div></aside>
+<script>"use strict";
 const bookPages=[
 {title:"छत्रपती शिवाजी महाराज",kind:"चित्रपृष्ठ",portrait:"assets/shivaji-maharaj.webp.webp",paragraphs:[],note:"हे कलात्मक चित्रण आहे. समकालीन ऐतिहासिक चित्र असल्याचा दावा केलेला नाही."},
 {title:"शीर्षकपृष्ठ",kind:"प्रारंभिक पृष्ठ",paragraphs:[
@@ -149,80 +42,15 @@ const bookPages=[
 "कालरेषा, व्यक्तिचित्रे, किल्ल्यांचा इतिहास आणि संदर्भग्रंथसूची हे विभाग पुरेशी स्रोतपडताळणी झाल्यावरच प्रकाशित केले जातील."
 ],note:"अद्याप पूर्ण ऐतिहासिक प्रकरणे तयार नाहीत. ही पारदर्शक संपादकीय नोंद आहे."}
 ];
-const $=id=>document.getElementById(id);
-let privateUrl=null,privateBook=null,privateRendition=null,privateKind=null,privateKey=null;
-function privateStatus(message){$("private-status").textContent=message}
-function privateShow(){ $("cover").hidden=true;$("reader").hidden=true;$("private-library").hidden=false;window.scrollTo(0,0)}
-function privateCleanup(){if(privateRendition){try{privateRendition.destroy()}catch(e){}privateRendition=null}if(privateBook){try{privateBook.destroy()}catch(e){}privateBook=null}if(privateUrl){URL.revokeObjectURL(privateUrl);privateUrl=null}privateKind=null;$("private-view").replaceChildren();$("private-reading").hidden=true;$("private-intro").hidden=false;$("private-input").value=""}
-function privateScript(){return new Promise((resolve,reject)=>{if(window.ePub)return resolve();const old=document.getElementById("epub-library-script");if(old){old.addEventListener("load",resolve,{once:true});old.addEventListener("error",reject,{once:true});return}const script=document.createElement("script");script.id="epub-library-script";script.src="https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js";script.onload=resolve;script.onerror=()=>reject(new Error("EPUB वाचन लायब्ररी उपलब्ध नाही. इंटरनेट तपासा."));document.head.append(script)})}
-function privateNav(){const isEpub=privateKind==="epub";$("private-prev").disabled=!isEpub;$("private-next").disabled=!isEpub}
-async function privateOpen(file){privateCleanup();privateShow();const ext=file.name.split(".").pop().toLowerCase();if(!["pdf","epub","txt"].includes(ext)){privateStatus("फक्त PDF, EPUB किंवा TXT निवडा.");return}if(file.size>100*1024*1024){privateStatus("१०० MB पेक्षा मोठी फाइल सध्या समर्थित नाही.");return}
-privateKind=ext;privateKey="shivvedh-private-position:"+file.name+":"+file.size+":"+file.lastModified;$("private-title").textContent=file.name;privateStatus("पुस्तक उघडत आहे…");$("private-intro").hidden=true;$("private-reading").hidden=false;try{
-if(ext==="pdf"){privateUrl=URL.createObjectURL(file);const frame=document.createElement("iframe");frame.title=file.name;frame.src=privateUrl;frame.setAttribute("loading","eager");$("private-view").append(frame);$("private-position").textContent="PDF · पान नियंत्रण PDF viewer मध्ये"; }
-else if(ext==="txt"){const content=await file.text();const text=document.createElement("div");text.className="text-host";text.textContent=content;$("private-view").append(text);$("private-position").textContent="TXT · सलग वाचन";const saved=Number(localStorage.getItem(privateKey)||0);if(saved>0)text.scrollTop=saved;text.addEventListener("scroll",()=>{try{localStorage.setItem(privateKey,String(text.scrollTop))}catch(e){}},{passive:true})}
-else{await privateScript();const bytes=await file.arrayBuffer();privateBook=window.ePub(bytes);const host=document.createElement("div");host.className="epub-host";$("private-view").append(host);privateRendition=privateBook.renderTo(host,{width:"100%",height:"100%",flow:"paginated"});privateRendition.on("relocated",location=>{const p=location.start;$("private-position").textContent=p.displayed?p.displayed.page+" / "+p.displayed.total:"EPUB";try{localStorage.setItem(privateKey,p.cfi)}catch(e){}});let saved=null;try{saved=localStorage.getItem(privateKey)}catch(e){}try{await privateRendition.display(saved||undefined)}catch(e){await privateRendition.display()}}
-$("private-intro").hidden=true;$("private-reading").hidden=false;privateNav();privateStatus("");window.scrollTo(0,0)
-}catch(error){privateCleanup();privateStatus("पुस्तक उघडता आले नाही: "+(error.message||"फाइल तपासा."))}}
-$("open-private").addEventListener("click",privateShow);
-$("library-shivvedh").addEventListener("click",()=>{$("private-library").hidden=true;openBook()});
-$("private-back").addEventListener("click",()=>{privateCleanup();$("private-library").hidden=true;$("cover").hidden=false;window.scrollTo(0,0)});
-$("private-close").addEventListener("click",()=>{privateCleanup();privateStatus("दुसरे पुस्तक निवडा.")});
-$("private-input").addEventListener("change",event=>{const file=event.target.files&&event.target.files[0];if(file)privateOpen(file)});
-$("private-prev").addEventListener("click",()=>{if(privateRendition)privateRendition.prev()});
-$("private-next").addEventListener("click",()=>{if(privateRendition)privateRendition.next()});
-const KEY="shivvedh-reader-v3";
-let current=0,fontSize=18,bookmark=null,lastFocus=null;
-try{const saved=JSON.parse(localStorage.getItem(KEY)||"{}");if(Number.isInteger(saved.current)&&saved.current>=0&&saved.current<bookPages.length)current=saved.current;if(Number.isInteger(saved.fontSize)&&saved.fontSize>=16&&saved.fontSize<=24)fontSize=saved.fontSize;if(Number.isInteger(saved.bookmark)&&saved.bookmark>=0&&saved.bookmark<bookPages.length)bookmark=saved.bookmark}catch(error){}
-function persist(){try{localStorage.setItem(KEY,JSON.stringify({current,fontSize,bookmark}))}catch(error){}}
-function render(){
- const page=bookPages[current],leaf=$("leaf");leaf.replaceChildren();
- leaf.classList.toggle("portrait-leaf",Boolean(page.portrait));if(page.portrait){const kicker=document.createElement("p");kicker.className="portrait-title";kicker.textContent="॥ शिववेध · राजचित्र ॥";const img=document.createElement("img");img.className="portrait-image";img.src=page.portrait;img.alt="छत्रपती शिवाजी महाराज यांचे कलात्मक चित्रण";img.loading="eager";img.decoding="async";const caption=document.createElement("h2");caption.className="portrait-caption";caption.textContent=page.title;const note=document.createElement("p");note.className="portrait-note";note.textContent=page.note;leaf.append(kicker,img,caption,note);$("page-indicator").textContent=(current+1)+" / "+bookPages.length;$("previous").disabled=current===0;$("following").disabled=current===bookPages.length-1;$("bookmark").textContent=bookmark===current?"★ खूण ठेवली":"☆ खूण ठेवा";persist();window.scrollTo(0,0);return;}const invocation=document.createElement("div");invocation.className="invocation";invocation.textContent="॥ श्री गणेशाय नमः ॥";const folio=document.createElement("div");folio.className="folio";folio.textContent="॥ "+page.kind+" · "+String(current+1).padStart(2,"0")+" ॥";
- const heading=document.createElement("h2");heading.textContent=page.title;
- const flourish=document.createElement("div");flourish.className="flourish";flourish.setAttribute("aria-hidden","true");flourish.textContent="◆  ◇  ◆";
- const prose=document.createElement("div");prose.className="prose";
- for(const line of page.paragraphs){const paragraph=document.createElement("p");paragraph.textContent=line;prose.append(paragraph)}
- const note=document.createElement("div");note.className="editorial";note.textContent="संपादकीय नोंद : "+page.note;
- const footer=document.createElement("div");footer.className="leaf-footer";footer.textContent="शिववेध  •  "+String(current+1).padStart(2,"0");
- leaf.append(invocation,folio,heading,flourish,prose,note,footer);
- $("page-indicator").textContent=(current+1)+" / "+bookPages.length;
- $("previous").disabled=current===0;$("following").disabled=current===bookPages.length-1;
- $("bookmark").textContent=bookmark===current?"★ खूण ठेवली":"☆ खूण ठेवा";
- document.documentElement.style.setProperty("--body-size",fontSize+"px");
- persist();window.scrollTo(0,0);
-}
-function openBook(){$("cover").hidden=true;$("reader").hidden=false;render()}
-function showCover(){$("reader").hidden=true;$("cover").hidden=false;window.scrollTo(0,0)}
-function renderToc(){
- const q=$("search").value.trim().toLocaleLowerCase("mr");$("toc-items").replaceChildren();let matches=0;
- bookPages.forEach((page,index)=>{
- if(!(page.title+" "+page.kind).toLocaleLowerCase("mr").includes(q))return;matches++;
- const button=document.createElement("button");button.className="toc-item";button.setAttribute("aria-current",index===current?"page":"false");
- const num=document.createElement("span");num.className="toc-num";num.textContent=String(index+1).padStart(2,"0");
- const label=document.createElement("span");label.className="toc-title";label.textContent=page.title;
- const small=document.createElement("small");small.textContent=page.kind+(bookmark===index?" · खूण ठेवलेले":"");label.append(small);
- button.append(num,label);button.addEventListener("click",()=>{current=index;closeToc();openBook()});$("toc-items").append(button);
- });
- if(!matches){const empty=document.createElement("p");empty.className="empty";empty.textContent="या शोधासाठी पान सापडले नाही.";$("toc-items").append(empty)}
-}
-function openToc(){lastFocus=document.activeElement;$("drawer").hidden=false;renderToc();$("toc-close").focus()}
-function closeToc(){$("drawer").hidden=true;if(lastFocus&&lastFocus.focus)lastFocus.focus()}
-$("enter").addEventListener("click",openBook);
-$("go-cover").addEventListener("click",showCover);
-$("toc-open").addEventListener("click",openToc);
-$("toc-bottom").addEventListener("click",openToc);
-$("toc-close").addEventListener("click",closeToc);
-$("drawer").addEventListener("click",event=>{if(event.target===$("drawer"))closeToc()});
-$("search").addEventListener("input",renderToc);
-$("previous").addEventListener("click",()=>{if(current>0){current--;render()}});
-$("following").addEventListener("click",()=>{if(current<bookPages.length-1){current++;render()}});
-$("bookmark").addEventListener("click",()=>{bookmark=bookmark===current?null:current;render()});
-$("smaller").addEventListener("click",()=>{fontSize=Math.max(16,fontSize-1);render()});
-$("larger").addEventListener("click",()=>{fontSize=Math.min(24,fontSize+1);render()});
-document.addEventListener("keydown",event=>{
- if(!$("drawer").hidden){if(event.key==="Escape")closeToc();if(event.key==="Tab"){const focusables=Array.from($("drawer").querySelectorAll("button,input")).filter(el=>!el.disabled);const first=focusables[0],last=focusables[focusables.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}}return}
- if($("reader").hidden)return;
- if(event.key==="ArrowLeft"&&current>0){current--;render()}
- if(event.key==="ArrowRight"&&current<bookPages.length-1){current++;render()}
-});
-</script>
-</body></html>
+const $=id=>document.getElementById(id);const screens=["landing","library","history","private"];function show(id){for(const s of screens)$(s).hidden=s!==id;window.scrollTo(0,0)}$("enter").onclick=()=>show("library");$("library-back").onclick=()=>show("landing");$("history-back").onclick=()=>show("library");$("read-history").onclick=()=>{show("history");render()};$("open-private").onclick=()=>show("private");
+const stateKey="shivvedh-history-v4";let index=0,mark=-1,size=18;try{const v=JSON.parse(localStorage.getItem(stateKey)||"{}");if(Number.isInteger(v.index)&&v.index>=0&&v.index<bookPages.length)index=v.index;if(Number.isInteger(v.mark))mark=v.mark;if(Number.isInteger(v.size)&&v.size>=16&&v.size<=25)size=v.size}catch(e){}function save(){try{localStorage.setItem(stateKey,JSON.stringify({index,mark,size}))}catch(e){}}
+function node(tag,cls,value){const el=document.createElement(tag);if(cls)el.className=cls;if(value!==undefined)el.textContent=value;return el}
+function render(){const page=bookPages[index],root=$("page");root.replaceChildren();if(page.portrait){root.append(node("div","page-kicker","॥ राजचित्र ॥"));const img=node("img","portrait");img.src=page.portrait;img.alt="छत्रपती शिवाजी महाराजांचे कलात्मक चित्रण";root.append(img,node("h2","",page.title),node("p","portrait-label",page.note))}else{root.append(node("div","invocation","॥ श्री गणेशाय नमः ॥"),node("div","page-kicker",page.kind),node("h2","",page.title));for(const paragraph of page.paragraphs)root.append(node("p","prose",paragraph));root.append(node("p","note","संपादकीय नोंद: "+page.note))}root.style.setProperty("--size",size+"px");$("page-count").textContent=(index+1)+" / "+bookPages.length;$("prev").disabled=index===0;$("next").disabled=index===bookPages.length-1;$("bookmark").textContent=mark===index?"★ खूण ठेवली":"☆ खूण ठेवा";save();window.scrollTo(0,0)}
+$("prev").onclick=()=>{if(index>0){index--;render()}};$("next").onclick=()=>{if(index<bookPages.length-1){index++;render()}};$("bookmark").onclick=()=>{mark=mark===index?-1:index;render()};$("font-minus").onclick=()=>{size=Math.max(16,size-1);render()};$("font-plus").onclick=()=>{size=Math.min(25,size+1);render()};
+function tocRender(){const q=$("toc-search").value.trim().toLocaleLowerCase("mr");$("toc-list").replaceChildren();bookPages.forEach((p,i)=>{if(!(p.title+" "+p.kind).toLocaleLowerCase("mr").includes(q))return;const b=node("button","",p.title);b.append(node("small","",p.kind));b.onclick=()=>{index=i;$("toc").hidden=true;render()};$("toc-list").append(b)})}
+$("toc-open").onclick=()=>{$("toc").hidden=false;tocRender();$("toc-close").focus()};$("toc-close").onclick=()=>{$("toc").hidden=true;$("toc-open").focus()};$("toc-search").oninput=tocRender;$("toc").onclick=e=>{if(e.target===$("toc"))$("toc").hidden=true};document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("toc").hidden)$("toc").hidden=true});
+let url=null,book=null,rendition=null,kind=null,key=null;function cleanup(){if(rendition){try{rendition.destroy()}catch(e){}rendition=null}if(book){try{book.destroy()}catch(e){}book=null}if(url){URL.revokeObjectURL(url);url=null}$("private-display").replaceChildren();$("private-display").hidden=true;$("private-prev").disabled=true;$("private-next").disabled=true;$("position").textContent="";kind=null}
+$("private-back").onclick=()=>{cleanup();$("file").value="";show("library")};$("private-clear").onclick=()=>{cleanup();$("file").value="";$("status").textContent="पुस्तक बंद केले."};$("private-prev").onclick=()=>{if(rendition)rendition.prev()};$("private-next").onclick=()=>{if(rendition)rendition.next()};
+function loadEpub(){return new Promise((resolve,reject)=>{if(window.ePub)return resolve();const s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js";s.onload=resolve;s.onerror=()=>reject(Error("EPUB लायब्ररी लोड झाली नाही. इंटरनेट तपासा."));document.head.append(s)})}
+$("file").onchange=async e=>{const file=e.target.files?.[0];if(!file)return;cleanup();const ext=file.name.split(".").pop().toLowerCase();if(!["pdf","epub","txt"].includes(ext)){$("status").textContent="PDF, EPUB किंवा TXT फाइल निवडा.";return}if(file.size>100*1024*1024){$("status").textContent="१०० MB पेक्षा लहान फाइल निवडा.";return}kind=ext;key="shivvedh-local:"+file.name+":"+file.size+":"+file.lastModified;$("status").textContent="उघडत आहे: "+file.name;const display=$("private-display");display.hidden=false;try{if(ext==="pdf"){url=URL.createObjectURL(file);const frame=node("iframe");frame.title=file.name;frame.src=url;display.append(frame);$("position").textContent="PDF · पान नियंत्रण वाचकात"}else if(ext==="txt"){const txt=node("div","text-area",await file.text());display.append(txt);$("position").textContent="सलग वाचन";try{txt.scrollTop=Number(localStorage.getItem(key)||0)}catch(e){}txt.addEventListener("scroll",()=>{try{localStorage.setItem(key,String(txt.scrollTop))}catch(e){}},{passive:true})}else{await loadEpub();book=window.ePub(await file.arrayBuffer());const host=node("div","epub-area");display.append(host);rendition=book.renderTo(host,{width:"100%",height:"100%",flow:"paginated"});rendition.on("relocated",loc=>{const p=loc.start;$("position").textContent=p.displayed?p.displayed.page+" / "+p.displayed.total:"EPUB";try{localStorage.setItem(key,p.cfi)}catch(e){}});let saved=null;try{saved=localStorage.getItem(key)}catch(e){}try{await rendition.display(saved||undefined)}catch(e){await rendition.display()}$("private-prev").disabled=false;$("private-next").disabled=false}$("status").textContent="फाइल उपकरणावर उघडली आहे."}catch(err){cleanup();$("status").textContent="पुस्तक उघडता आले नाही: "+(err.message||"फाइल तपासा.")}};
+</script></body></html>
