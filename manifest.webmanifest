@@ -1,0 +1,19 @@
+{
+  "name": "शिववेध | छत्रपती शिवाजी महाराजांचा डिजिटल ग्रंथ",
+  "short_name": "शिववेध",
+  "description": "इतिहासग्रंथ, पत्रसंग्रह, बखरी आणि स्रोतचिकित्सा",
+  "lang": "mr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#151310",
+  "theme_color": "#251c16",
+  "icons": [
+    {
+      "src": "assets/shivvedh-logo.png.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
