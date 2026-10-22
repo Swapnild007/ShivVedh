@@ -1,7 +1,5 @@
 name: Publish ShivVedh to GitHub Pages
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
@@ -19,6 +17,14 @@ jobs:
     steps:
       - name: Checkout website
         uses: actions/checkout@v4
+      - name: Require approved release
+        env:
+          RELEASE_APPROVED: ${{ vars.SHIVVEDH_RELEASE_APPROVED }}
+        run: |
+          if [ "$RELEASE_APPROVED" != "true" ]; then
+            echo 'Release blocked: set SHIVVEDH_RELEASE_APPROVED=true only after review.'
+            exit 1
+          fi
       - name: Validate website files
         run: |
           test -f index.html
