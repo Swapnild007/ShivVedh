@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "note": "Claim links are editorial cross-references, not assertions that every claim has been verified in the cited primary manuscript.",
+  "claims": [
+    {
+      "id": "SV-C-01",
+      "chapter": "opening",
+      "claim": "शहाजीराजे आणि विजापूर दरबारातील संबंध समजण्यासाठी १६४४ चा आदिलशाही आदेश महत्त्वाचा आहे.",
+      "evidence": [
+        {
+          "collection": "documents",
+          "id": "SV-L-1644-01",
+          "support": "contextual",
+          "status": "edited-translation-only"
+        }
+      ],
+      "review": "मूळ फारसी दस्तऐवज व दिनांक तपासणे बाकी"
+    },
+    {
+      "id": "SV-C-02",
+      "chapter": "pune",
+      "claim": "आरंभीच्या कारभारात गावातील मोकदमी आणि स्थानिक न्यायनिर्णय महत्त्वाचे होते.",
+      "evidence": [
+        {
+          "collection": "documents",
+          "id": "SV-L-1646-01",
+          "support": "contextual",
+          "status": "published-research-no-scan"
+        }
+      ],
+      "review": "मूळ मोडी प्रत व पूर्ण संदर्भ आवश्यक"
+    },
+    {
+      "id": "SV-C-03",
+      "chapter": "coronation",
+      "claim": "राज्याभिषेकाच्या आधीही गावपातळीवरील वतनविषयक प्रश्न प्रशासनासमोर होते.",
+      "evidence": [
+        {
+          "collection": "documents",
+          "id": "SV-L-1674-01",
+          "support": "contextual",
+          "status": "published-research-no-scan"
+        }
+      ],
+      "review": "पाल कौलनाम्याची प्रतिमा व अचूक लिप्यंतर बाकी"
+    },
+    {
+      "id": "SV-C-04",
+      "chapter": "afzal",
+      "claim": "प्रतापगडाच्या प्रसंगाची माहिती वेगवेगळ्या बखरींशी तुलना करून तपासावी.",
+      "evidence": [
+        {
+          "collection": "bakhars",
+          "id": "SV-B-01",
+          "support": "source-tradition",
+          "status": "published-editions-known; manuscript-collation-pending"
+        },
+        {
+          "collection": "bakhars",
+          "id": "SV-B-02",
+          "support": "later-tradition",
+          "status": "bibliographic-lead; edition-and-manuscript-check-pending"
+        }
+      ],
+      "review": "घटनानिहाय पृष्ठसंदर्भ व फारसी/युरोपीय पुरावे जोडायचे"
+    },
+    {
+      "id": "SV-C-05",
+      "chapter": "agra",
+      "claim": "आग्रा प्रसंगातील लोकप्रिय सुटकेचे तपशील आवृत्तीनुसार तपासणे आवश्यक आहे.",
+      "evidence": [
+        {
+          "collection": "bakhars",
+          "id": "SV-B-01",
+          "support": "source-tradition",
+          "status": "published-editions-known; manuscript-collation-pending"
+        },
+        {
+          "collection": "bakhars",
+          "id": "SV-B-02",
+          "support": "later-tradition",
+          "status": "bibliographic-lead; edition-and-manuscript-check-pending"
+        }
+      ],
+      "review": "समकालीन दरबारी पत्रे व जयपूर अभिलेख तुलना बाकी"
+    }
+  ]
+}
