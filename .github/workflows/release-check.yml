@@ -13,4 +13,6 @@ jobs:
         with:
           python-version: '3.12'
       - name: Verify book, archives, source links and offline shell
-        run: python scripts/check_release.py
+        run: |
+          python scripts/check_release.py
+          python scripts/check_architecture.py
