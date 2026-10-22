@@ -25,4 +25,17 @@ const records=[
 ];
 const q=document.getElementById("query"),kind=document.getElementById("kind"),results=document.getElementById("results"),count=document.getElementById("count");
 function render(){const needle=q.value.trim().toLocaleLowerCase("mr"),type=kind.value;const matched=records.filter(r=>(type==="all"||r[0]===type)&&r.join(" ").toLocaleLowerCase("mr").includes(needle));results.replaceChildren();count.textContent=matched.length+" नोंदी सापडल्या";for(const [category,title,desc,url,status] of matched){const el=document.createElement("article");el.className="card";const h=document.createElement("h2"),a=document.createElement("a");a.href=url;a.textContent=title;h.append(a);const p=document.createElement("p");p.textContent=desc;const m=document.createElement("div");m.className="meta";m.textContent=({chapter:"ग्रंथ",letter:"पत्रसंग्रह",bakhar:"बखरदालन",research:"संशोधन"})[category];const b=document.createElement("span");b.className="status";b.textContent=status;el.append(m,h,p,b);results.append(el)}}q.addEventListener("input",render);kind.addEventListener("change",render);render();
+async function addManuscriptSearch(){
+  try {
+    const response = await fetch("./index.html");
+    if (!response.ok) return;
+    const page = new DOMParser().parseFromString(await response.text(), "text/html");
+    for (const chapter of page.querySelectorAll("section.narrative[id]")) {
+      const title = chapter.querySelector("h2")?.textContent?.trim() || chapter.id;
+      records.push(["chapter", title + " · पूर्ण अध्याय", chapter.textContent.trim(), "index.html#" + chapter.id, "संपादकीय मसुदा; स्रोतपडताळणी आवश्यक"]);
+    }
+    render();
+  } catch (error) { console.warn("Full-text index unavailable", error); }
+}
+addManuscriptSearch();
 </script><script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))}</script></body></html>
