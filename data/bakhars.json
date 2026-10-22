@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "editorialStatus": "initial bibliographic registry; not verified manuscript transcription",
+  "records": [
+    {
+      "id": "SV-B-01",
+      "name": "सभासद बखर",
+      "attribution": "कृष्णाजी अनंत सभासद",
+      "period": "सुमारे १६९७ (सामान्यतः मान्य रचनाकाल)",
+      "genre": "दरबारी चरित्रपर बखर",
+      "sourceStatus": "published-editions-known; manuscript-collation-pending",
+      "context": "राजाराम महाराजांच्या काळाशी संबंधित चरित्रपर परंपरा. शिवाजी महाराजांच्या निधनानंतर तुलनेने जवळच्या काळातील साधन म्हणून अभ्यासले जाते. कथनाची राजकीय पार्श्वभूमी, आवृत्तीतील पाठभेद आणि इतर समकालीन पुरावे तपासणे आवश्यक.",
+      "relatedChapters": [
+        "afzal",
+        "agra",
+        "coronation"
+      ],
+      "sourceUrl": "https://en.wikisource.org/wiki/Shivaji_and_His_Times"
+    },
+    {
+      "id": "SV-B-02",
+      "name": "चिटणीस बखर",
+      "attribution": "मल्हार रामराव चिटणीस",
+      "period": "एकोणिसाव्या शतकाच्या पूर्वार्धाशी संबंधित उत्तरकालीन ग्रंथपरंपरा",
+      "genre": "उत्तरकालीन चरित्रपर बखर",
+      "sourceStatus": "bibliographic-lead; edition-and-manuscript-check-pending",
+      "context": "शिवचरित्राच्या नंतर विकसित झालेल्या परंपरेतील साधन. लोकप्रिय संवाद किंवा प्रसंगांना स्वतंत्र पुष्टीशिवाय समकालीन इतिहास समजू नये.",
+      "relatedChapters": [
+        "birth",
+        "afzal",
+        "agra"
+      ],
+      "sourceUrl": "https://en.wikisource.org/wiki/Shivaji_and_His_Times"
+    },
+    {
+      "id": "SV-B-03",
+      "name": "९१ कलमी बखर",
+      "attribution": "लेखकत्व व पाठपरंपरेचा स्वतंत्र अभ्यास आवश्यक",
+      "period": "विविध पाठपरंपरा; निश्चित एकमेव रचनाकाल येथे गृहीत नाही",
+      "genre": "कलमवार शिवचरित्र कथन",
+      "sourceStatus": "bibliographic-lead; recension-comparison-pending",
+      "context": "अनेक आवृत्त्यांच्या पाठभेदांचा प्रश्न असलेली बखरपरंपरा. विशिष्ट कलमाचा ऐतिहासिक वापर करण्यापूर्वी आवृत्ती, हस्तलिखित आणि स्वतंत्र पुष्टी नोंदवावी.",
+      "relatedChapters": [
+        "torna",
+        "afzal",
+        "coronation"
+      ],
+      "sourceUrl": "https://en.wikisource.org/wiki/Shivaji_and_His_Times"
+    }
+  ]
+}
