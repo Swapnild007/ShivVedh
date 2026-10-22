@@ -38,4 +38,27 @@ async function addManuscriptSearch(){
   } catch (error) { console.warn("Full-text index unavailable", error); }
 }
 addManuscriptSearch();
+async function addArchiveSearch(){
+  const sources = [
+    ["documents.json", "documents", "letter", "documents.html"],
+    ["bakhars.json", "records", "bakhar", "bakhar.html"],
+    ["claims.json", "claims", "research", "evidence.html"],
+    ["bakhar-passages.json", "comparisons", "research", "bakhar-passages.html"]
+  ];
+  for (const [file, collection, category, destination] of sources) {
+    try {
+      const response = await fetch("./data/" + file);
+      if (!response.ok) continue;
+      const data = await response.json();
+      for (const item of data[collection] || []) {
+        const title = item.title || item.name || item.claim || item.id;
+        const details = Object.values(item).filter(value => typeof value === "string").join(" ");
+        const status = item.status || item.review || "ऐतिहासिक पडताळणी प्रलंबित";
+        records.push([category, title, details, destination, status]);
+      }
+    } catch (error) { console.warn("Archive unavailable", file, error); }
+  }
+  render();
+}
+addArchiveSearch();
 </script><script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))}</script></body></html>
