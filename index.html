@@ -88,6 +88,15 @@ function home(){reader.hidden=true;drawer.hidden=true;cover.hidden=false;window.
 function change(n){const next=Math.max(0,Math.min(pages.length-1,index+n));if(next!==index){index=next;render()}}
 function font(){document.documentElement.style.setProperty("--size",size+"px");localStorage.setItem("shivvedh-font",String(size))}
 font();
+function followChapterLink(){
+ const chapter=decodeURIComponent(location.hash.slice(1));
+ if(Object.prototype.hasOwnProperty.call(targets,chapter)){
+  index=targets[chapter];
+  open();
+ }
+}
+window.addEventListener("hashchange",followChapterLink);
+followChapterLink();
 $("open").addEventListener("click",open);$("home").addEventListener("click",home);
 $("previous").addEventListener("click",()=>change(-1));$("next").addEventListener("click",()=>change(1));
 $("larger").addEventListener("click",()=>{size=Math.min(26,size+1);font()});
