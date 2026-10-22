@@ -1,0 +1,170 @@
+{
+  "version": 1,
+  "volumes": [
+    {
+      "id": "SV-V-00",
+      "title": "प्रारंभ आणि संदर्भ",
+      "order": 0
+    },
+    {
+      "id": "SV-V-01",
+      "title": "प्रथम खंड · स्वराज्याची पहाट",
+      "order": 1
+    },
+    {
+      "id": "SV-V-02",
+      "title": "द्वितीय खंड · स्वराज्याची पायाभरणी",
+      "order": 2
+    },
+    {
+      "id": "SV-V-03",
+      "title": "तृतीय खंड · संघर्ष आणि सामर्थ्य",
+      "order": 3
+    },
+    {
+      "id": "SV-V-04",
+      "title": "चतुर्थ खंड · संकटातून पुनरुत्थान",
+      "order": 4
+    },
+    {
+      "id": "SV-V-05",
+      "title": "पंचम खंड · सार्वभौम स्वराज्य",
+      "order": 5
+    },
+    {
+      "id": "SV-V-06",
+      "title": "षष्ठ खंड · दिग्विजय आणि वारसा",
+      "order": 6
+    }
+  ],
+  "chapters": [
+    {
+      "id": "mudra",
+      "title": "शिवराजमुद्रा",
+      "volumeId": "SV-V-00",
+      "order": 0,
+      "editorialStatus": "editorial-narrative",
+      "citationStatus": "review-pending"
+    },
+    {
+      "id": "portrait",
+      "title": "छत्रपती शिवाजी महाराज",
+      "volumeId": "SV-V-00",
+      "order": 1,
+      "editorialStatus": "editorial-narrative",
+      "citationStatus": "review-pending"
+    },
+    {
+      "id": "preface",
+      "title": "वाचकांशी दोन शब्द",
+      "volumeId": "SV-V-00",
+      "order": 2,
+      "editorialStatus": "editorial-narrative",
+      "citationStatus": "review-pending"
+    },
+    {
+      "id": "opening",
+      "title": "सह्याद्रीच्या पायथ्याशी",
+      "volumeId": "SV-V-01",
+      "order": 3,
+      "editorialStatus": "editorial-narrative",
+      "citationStatus": "review-pending"
+    },
+    {
+      "id": "birth",
+      "title": "शिवनेरीच्या कुशीत",
+      "volumeId": "SV-V-01",
+      "order": 4,
+      "editorialStatus": "editorial-narrative",
+      "citationStatus": "review-pending"
+    },
+    {
+      "id": "pune",
+      "title": "पुण्याची माती, मावळचे डोंगर",
+      "volumeId": "SV-V-01",
+      "order": 5,
+      "editorialStatus": "editorial-narrative",
+      "citationStatus": "review-pending"
+    },
+    {
+      "id": "torna",
+      "title": "गडांच्या साक्षीने",
+      "volumeId": "SV-V-02",
+      "order": 6,
+      "editorialStatus": "editorial-narrative",
+      "citationStatus": "review-pending"
+    },
+    {
+      "id": "javli",
+      "title": "जावळीचा कठीण प्रदेश",
+      "volumeId": "SV-V-02",
+      "order": 7,
+      "editorialStatus": "editorial-narrative",
+      "citationStatus": "review-pending"
+    },
+    {
+      "id": "afzal",
+      "title": "प्रतापगडाखालील निर्णायक भेट",
+      "volumeId": "SV-V-03",
+      "order": 8,
+      "editorialStatus": "editorial-narrative",
+      "citationStatus": "review-pending"
+    },
+    {
+      "id": "panhala",
+      "title": "पन्हाळ्यापासून विशाळगडापर्यंत",
+      "volumeId": "SV-V-03",
+      "order": 9,
+      "editorialStatus": "editorial-narrative",
+      "citationStatus": "review-pending"
+    },
+    {
+      "id": "shaista",
+      "title": "लालमहालाचा धक्का आणि समुद्राकडे नजर",
+      "volumeId": "SV-V-03",
+      "order": 10,
+      "editorialStatus": "editorial-narrative",
+      "citationStatus": "review-pending"
+    },
+    {
+      "id": "agra",
+      "title": "पुरंदर ते आग्रा",
+      "volumeId": "SV-V-04",
+      "order": 11,
+      "editorialStatus": "editorial-narrative",
+      "citationStatus": "review-pending"
+    },
+    {
+      "id": "renewal",
+      "title": "पुन्हा उभारी",
+      "volumeId": "SV-V-04",
+      "order": 12,
+      "editorialStatus": "editorial-narrative",
+      "citationStatus": "review-pending"
+    },
+    {
+      "id": "coronation",
+      "title": "रायगडावरचे सार्वभौमत्व",
+      "volumeId": "SV-V-05",
+      "order": 13,
+      "editorialStatus": "editorial-narrative",
+      "citationStatus": "review-pending"
+    },
+    {
+      "id": "south",
+      "title": "दक्षिणेकडील मोहीम आणि अखेरची वर्षे",
+      "volumeId": "SV-V-06",
+      "order": 14,
+      "editorialStatus": "editorial-narrative",
+      "citationStatus": "review-pending"
+    },
+    {
+      "id": "references",
+      "title": "संदर्भ आणि इतिहासलेखन",
+      "volumeId": "SV-V-00",
+      "order": 15,
+      "editorialStatus": "editorial-narrative",
+      "citationStatus": "review-pending"
+    }
+  ]
+}

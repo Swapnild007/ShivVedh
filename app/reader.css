@@ -1,0 +1,300 @@
+/* Quiet paper, generous type and measured pages; no dependence on remote fonts. */
+body {
+  background: #e9e0d0;
+}
+.reader {
+  height: 100dvh;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: #ede6d9;
+}
+.toolbar {
+  position: relative;
+  flex: none;
+  background: #faf6ed;
+  color: #4c3021;
+  border-color: #dac8ae;
+  padding: 8px max(12px, env(safe-area-inset-left));
+}
+.toolbar button {
+  border-color: #c8b49a;
+  border-radius: 9px;
+}
+.progress {
+  position: relative;
+  top: auto;
+  flex: none;
+  background: #ddccb3;
+}
+.manuscript {
+  width: min(100%, 920px);
+  padding: 14px 22px max(10px, env(safe-area-inset-bottom));
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.book-context {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 13px;
+  flex: none;
+}
+.book-context p {
+  margin: 0;
+}
+.book-context button {
+  font: inherit;
+  background: #fff8eb;
+  border: 1px solid #bca788;
+  border-radius: 8px;
+  padding: 8px;
+  min-height: 44px;
+  color: #4c3021;
+}
+.page-frame {
+  flex: 1;
+  min-height: 0;
+  padding: clamp(16px, 3vw, 32px);
+  background: #fffaf0;
+  border: 1px solid #d4c2a6;
+  box-shadow: 0 12px 40px #6c4c2020;
+  border-radius: 4px;
+}
+.page-viewport {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.leaf {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-shadow: none;
+  background: none;
+  column-gap: 48px;
+  column-fill: auto;
+  position: relative;
+  will-change: transform;
+}
+.leaf:before {
+  display: none;
+}
+.leaf > * {
+  position: static;
+}
+.section {
+  padding: 0;
+  border: 0;
+}
+.section h2 {
+  font-size: calc(var(--size) * 1.4);
+  line-height: 1.6;
+  margin: 10px 0 22px;
+  break-after: avoid;
+}
+.section p {
+  font-size: var(--size);
+  line-height: 1.9;
+  text-align: start;
+  overflow-wrap: anywhere;
+  orphans: 2;
+  widows: 2;
+}
+.section-label,
+.chapter-number {
+  font-size: 13px;
+  text-align: center;
+  color: #735235;
+}
+.portrait {
+  max-width: 100%;
+  max-height: 50dvh;
+  object-fit: contain;
+}
+.seal {
+  width: 230px;
+  max-width: 100%;
+  margin: 10px auto;
+  break-inside: avoid;
+}
+.page-turn {
+  margin: 0;
+  flex: none;
+  gap: 8px;
+  align-items: center;
+}
+.page-turn button {
+  min-height: 44px;
+  padding: 8px 12px;
+  color: #4c3021;
+  background: #faf6ec;
+  border: 1px solid #bca788;
+  border-radius: 8px;
+}
+.page-turn span {
+  font-size: 12px;
+  text-align: center;
+}
+.footer {
+  display: none;
+}
+.drawer {
+  width: min(90vw, 420px);
+  overflow: auto;
+  padding-bottom: max(20px, env(safe-area-inset-bottom));
+  background: #fff8eb;
+  color: #4c3021;
+  z-index: 30;
+}
+.drawer button,
+.drawer a {
+  color: #4c3021;
+  min-height: 44px;
+}
+.drawer [aria-current] {
+  background: #e9d8bc;
+  font-weight: bold;
+}
+.drawer .volume-heading {
+  color: #754c25;
+}
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 12px;
+  z-index: 100;
+  background: white;
+  color: #392717;
+  padding: 12px;
+}
+.skip-link:focus {
+  top: 5px;
+}
+dialog {
+  width: min(92vw, 760px);
+  max-height: 85dvh;
+  overflow: auto;
+  border: 1px solid #b79c74;
+  border-radius: 12px;
+  background: #fff8eb;
+  color: #382c22;
+  padding: 24px;
+  font-size: 17px;
+  line-height: 1.9;
+}
+dialog::backdrop {
+  background: #20170eb3;
+}
+dialog button {
+  min-height: 44px;
+  padding: 8px 16px;
+  font: inherit;
+}
+dialog a {
+  color: #764216;
+}
+#reader-status {
+  margin: 0;
+  font-size: 12px;
+}
+progress {
+  width: 64px;
+  accent-color: #854b27;
+}
+.cover {
+  background: #e9e0d0;
+}
+.binding {
+  border-radius: 6px;
+}
+.cover-note {
+  font-size: 13px;
+}
+@media (max-width: 480px) {
+  .manuscript {
+    padding: 10px 10px max(8px, env(safe-area-inset-bottom));
+  }
+  .toolbar strong {
+    font-size: 17px;
+  }
+  .toolbar {
+    gap: 3px;
+  }
+  .toolbar button {
+    padding: 5px;
+    min-width: 44px;
+  }
+  .page-frame {
+    padding: 18px 16px;
+  }
+  .book-context {
+    font-size: 12px;
+  }
+  .book-context p {
+    max-width: 60%;
+  }
+  .page-turn button {
+    font-size: 14px;
+  }
+  .page-turn span {
+    max-width: 45%;
+  }
+}
+@media (max-height: 450px) {
+  .toolbar {
+    padding: 3px 8px;
+  }
+  .book-context {
+    display: none;
+  }
+  .manuscript {
+    padding-top: 5px;
+    gap: 3px;
+  }
+  .page-frame {
+    padding: 10px 16px;
+  }
+  .section h2 {
+    margin: 0 0 12px;
+  }
+  .toolbar button {
+    min-height: 40px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #9a431a;
+  outline-offset: 3px;
+}
+
+.seal {
+  width: min(230px, var(--page-height));
+  height: min(230px, var(--page-height));
+  padding: 24px;
+  font-size: 14px;
+}
+.seal span {
+  font-size: 14px;
+}
+.portrait {
+  max-height: min(50dvh, var(--page-height));
+}
+/* Override prototype viewport minimums: only measured column height may size a leaf. */
+.leaf {
+  min-height: 0;
+}
