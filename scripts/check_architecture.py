@@ -21,7 +21,7 @@ def load(path, key):
 docs = load("data/documents.json", "documents")
 bakhars = load("data/bakhars.json", "records")
 claims = load("data/claims.json", "claims")
-passages = load("data/bakhar-passages.json", "passages")
+passages = load("data/bakhar-passages.json", "comparisons")
 index = (ROOT / "index.html").read_text(encoding="utf-8")
 chapters = set(re.findall(r'<section\s+class="section narrative"\s+id="([^"]+)"', index))
 registry = {}
