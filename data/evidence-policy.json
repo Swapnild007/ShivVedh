@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "categories": {
+    "verified-fact": "स्वतंत्र पुराव्याने पडताळलेले तथ्य",
+    "disputed-account": "मतभेद असलेले कथन",
+    "later-tradition": "उत्तरकालीन किंवा धार्मिक कथनपरंपरा",
+    "editorial-narrative": "संपादकीय मांडणी; स्वतंत्र ऐतिहासिक पुरावा नाही"
+  },
+  "defaultCategory": "editorial-narrative",
+  "verificationRule": "A citation or a verified edition page is not independent verification of the event. verified-fact requires a reviewed evidence locator and corroboration note.",
+  "claims": {
+    "SV-C-01": "editorial-narrative",
+    "SV-C-02": "editorial-narrative",
+    "SV-C-03": "editorial-narrative",
+    "SV-C-04": "disputed-account",
+    "SV-C-05": "disputed-account"
+  },
+  "passages": {
+    "SV-P-001": "disputed-account",
+    "SV-P-002": "later-tradition",
+    "SV-P-003": "disputed-account",
+    "SV-P-004": "later-tradition",
+    "SV-P-005": "later-tradition"
+  },
+  "note": "Conservative presentation categories only. No archival record, manuscript transcription or new historical verification is introduced by this software release. Original source statuses remain unchanged."
+}

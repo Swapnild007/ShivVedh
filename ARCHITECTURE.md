@@ -69,3 +69,13 @@ Existing document and claim IDs are retained; migration must preserve legacy URL
 5. Add media, maps and translations only after provenance and rights models are populated.
 
 **Architecture completion definition:** components, interfaces, identifiers, data ownership, integrity rules, security, deployment, offline, accessibility, ADRs, and migration are documented and mechanically checked where possible. Feature delivery is tracked separately.
+
+## Integrated reader implementation (review candidate)
+
+The manuscript HTML remains canonical during migration. `scripts/build_catalog.py` generates `data/catalog.json` and `data/search-index.json`; CI checks freshness. `app/reader.js` renders one preserved chapter at a time with measured CSS columns and stores `{chapter, offset}` under `shivvedh-position-v2`. The text offset is independent of a device's page count. Browser font bounds and viewport changes participate in pagination.
+
+`data/evidence-policy.json` defines presentation categories without changing existing historical source statuses. The chapter evidence panel exposes unresolved references explicitly. A verified edition page is not verification of the narrated event.
+
+The worker atomically precaches all required reader/archive/search/font resources and reports completeness to `app/offline.js`. It waits for old clients to close before an update activates. Bump the worker VERSION for every published content/software release. No public deployment is authorized by this implementation.
+
+Verification, preservation boundaries and remaining editorial/device gates are documented in `docs/ENGINEERING_RELEASE_REPORT.md`.
