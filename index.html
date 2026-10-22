@@ -35,6 +35,22 @@ body{background:#151311}.hero{padding:0;background:#151311}.bookbinding{width:mi
 #landing .bookbinding .cover-footer{font-size:clamp(9px,2.1vw,12px);line-height:1.6}
 #landing .bookbinding .engraved-frame{inset:0;pointer-events:none}
 @media(max-width:430px){#landing.hero{padding:10px 8px 18px}#landing .bookbinding .cover-interior{inset:11% 17% 11%}#landing .bookbinding .cover-seal{height:clamp(75px,20vw,110px)}}
+/* Mobile reader polish */
+#landing.hero{min-height:unset;justify-content:flex-start;padding:8px 8px 18px}
+#landing .bookbinding{width:min(100%,560px);height:auto;aspect-ratio:600/850}
+#history.reader{padding-bottom:max(16px,env(safe-area-inset-bottom))}
+#history .reader-body{padding:12px 12px 4px}
+#history .page{min-height:0;padding:36px clamp(28px,6vw,65px);box-shadow:0 5px 20px #3a291f30}
+#history .page.portrait-page{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:0;padding:34px clamp(28px,6vw,65px) 32px}
+#history .portrait-page .page-kicker{margin:0 0 15px;font-size:12px}
+#history .portrait-page .portrait{width:auto;max-width:100%;max-height:min(53dvh,620px);height:auto;object-fit:contain;margin:0 auto 16px;border:0;box-shadow:0 6px 18px #3a291f2e}
+#history .portrait-page h2{font-size:clamp(22px,5vw,32px);margin:8px 0 14px;text-align:center;line-height:1.55}
+#history .portrait-page .portrait-label{font-size:11px;line-height:1.75;margin:0;text-align:center;max-width:38ch}
+#history .reader-nav{position:relative;display:flex;gap:8px;padding:10px 12px 4px;align-items:center}
+#history .reader-nav button{flex:0 0 auto;min-height:46px}
+#history .reader-nav span{font-size:12px;white-space:nowrap}
+#history .reader-tools{padding:8px 12px 15px}
+@media(max-width:480px){#history .page.portrait-page{padding:28px 27px 28px}#history .portrait-page .portrait{max-height:49dvh}#history .portrait-page h2{font-size:23px}#history .reader-nav{padding:10px 12px}#history .reader-nav button{font-size:13px;padding:9px 10px}}
 </style></head><body><main class="app">
 <section id="landing" class="screen hero" aria-label="शिववेध मुखपृष्ठ"><div class="royal-cover bookbinding">
 <svg class="royal-ornament engraved-frame" viewBox="0 0 600 850" preserveAspectRatio="none" aria-hidden="true"><defs>
@@ -92,7 +108,7 @@ const bookPages=[
 const $=id=>document.getElementById(id);const screens=["landing","history"];function show(id){for(const s of screens)$(s).hidden=s!==id;window.scrollTo(0,0)}$("enter").onclick=()=>{index=0;show("history");render()};$("history-back").onclick=()=>show("landing");
 const stateKey="shivvedh-history-v4";let index=0,mark=-1,size=18;try{const v=JSON.parse(localStorage.getItem(stateKey)||"{}");if(Number.isInteger(v.index)&&v.index>=0&&v.index<bookPages.length)index=v.index;if(Number.isInteger(v.mark))mark=v.mark;if(Number.isInteger(v.size)&&v.size>=16&&v.size<=25)size=v.size}catch(e){}function save(){try{localStorage.setItem(stateKey,JSON.stringify({index,mark,size}))}catch(e){}}
 function node(tag,cls,value){const el=document.createElement(tag);if(cls)el.className=cls;if(value!==undefined)el.textContent=value;return el}
-function render(){const page=bookPages[index],root=$("page");root.replaceChildren();if(page.portrait){root.append(node("div","page-kicker","॥ राजचित्र ॥"));const img=node("img","portrait");img.src=page.portrait;img.alt="छत्रपती शिवाजी महाराजांचे कलात्मक चित्रण";root.append(img,node("h2","",page.title),node("p","portrait-label",page.note))}else{root.append(node("div","invocation","॥ श्री गणेशाय नमः ॥"),node("div","page-kicker",page.kind),node("h2","",page.title));for(const paragraph of page.paragraphs)root.append(node("p","prose",paragraph));root.append(node("p","note","संपादकीय नोंद: "+page.note))}root.style.setProperty("--size",size+"px");$("page-count").textContent=(index+1)+" / "+bookPages.length;$("prev").disabled=index===0;$("next").disabled=index===bookPages.length-1;$("bookmark").textContent=mark===index?"★ खूण ठेवली":"☆ खूण ठेवा";save();window.scrollTo(0,0)}
+function render(){const page=bookPages[index],root=$("page");root.replaceChildren();root.classList.toggle("portrait-page",Boolean(page.portrait));if(page.portrait){root.append(node("div","page-kicker","॥ राजचित्र ॥"));const img=node("img","portrait");img.src=page.portrait;img.alt="छत्रपती शिवाजी महाराजांचे कलात्मक चित्रण";root.append(img,node("h2","",page.title),node("p","portrait-label",page.note))}else{root.append(node("div","invocation","॥ श्री गणेशाय नमः ॥"),node("div","page-kicker",page.kind),node("h2","",page.title));for(const paragraph of page.paragraphs)root.append(node("p","prose",paragraph));root.append(node("p","note","संपादकीय नोंद: "+page.note))}root.style.setProperty("--size",size+"px");$("page-count").textContent=(index+1)+" / "+bookPages.length;$("prev").disabled=index===0;$("next").disabled=index===bookPages.length-1;$("bookmark").textContent=mark===index?"★ खूण ठेवली":"☆ खूण ठेवा";save();window.scrollTo(0,0)}
 $("prev").onclick=()=>{if(index>0){index--;render()}};$("next").onclick=()=>{if(index<bookPages.length-1){index++;render()}};$("bookmark").onclick=()=>{mark=mark===index?-1:index;render()};$("font-minus").onclick=()=>{size=Math.max(16,size-1);render()};$("font-plus").onclick=()=>{size=Math.min(25,size+1);render()};
 function tocRender(){const q=$("toc-search").value.trim().toLocaleLowerCase("mr");$("toc-list").replaceChildren();bookPages.forEach((p,i)=>{if(!(p.title+" "+p.kind).toLocaleLowerCase("mr").includes(q))return;const b=node("button","",p.title);b.append(node("small","",p.kind));b.onclick=()=>{index=i;$("toc").hidden=true;render()};$("toc-list").append(b)})}
 $("toc-open").onclick=()=>{$("toc").hidden=false;tocRender();$("toc-close").focus()};$("toc-close").onclick=()=>{$("toc").hidden=true;$("toc-open").focus()};$("toc-search").oninput=tocRender;$("toc").onclick=e=>{if(e.target===$("toc"))$("toc").hidden=true};document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("toc").hidden)$("toc").hidden=true});
