@@ -1,0 +1,9 @@
+/* ShivVedh offline shell v1: same-origin only, no external archives or personal data. */
+const VERSION="shivvedh-shell-2026-10-22-v1";
+const ROOT=new URL("./",self.registration.scope);
+const PATHS=["./","index.html","letters.html","bakhar.html","documents.html","search.html","evidence.html","bakhar-passages.html","data/documents.json","data/bakhars.json","data/claims.json","data/bakhar-passages.json","assets/shivvedh-logo.png.png","assets/shivaji-maharaj.webp.webp"];
+const URLS=PATHS.map(p=>new URL(p,ROOT).href);
+self.addEventListener("install",event=>{event.waitUntil((async()=>{const cache=await caches.open(VERSION);await Promise.allSettled(URLS.map(async url=>{const response=await fetch(url,{cache:"reload"});if(response.ok)await cache.put(url,response)}));await self.skipWaiting()})())});
+self.addEventListener("activate",event=>{event.waitUntil((async()=>{for(const key of await caches.keys())if(key.startsWith("shivvedh-shell-")&&key!==VERSION)await caches.delete(key);await self.clients.claim()})())});
+self.addEventListener("fetch",event=>{const req=event.request;if(req.method!=="GET")return;const url=new URL(req.url);if(url.origin!==self.location.origin||!url.pathname.startsWith(ROOT.pathname))return;event.respondWith((async()=>{const cache=await caches.open(VERSION);if(req.mode==="navigate"){try{const response=await fetch(req);if(response.ok)await cache.put(req,response.clone());return response}catch{const hit=await cache.match(req,{ignoreSearch:true});return hit||await cache.match(new URL("index.html",ROOT).href)||Response.error()}}const hit=await cache.match(req,{ignoreSearch:true});if(hit)return hit;try{const response=await fetch(req);if(response.ok)await cache.put(req,response.clone());return response}catch{return Response.error()}})())});
+self.addEventListener("message",event=>{if(event.data?.type==="SKIP_WAITING")self.skipWaiting()});
