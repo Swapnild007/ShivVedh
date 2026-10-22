@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "edition": {
+    "title": "Śiva Chhatrapati: Being a Translation of Sabhāsad Bakhar with Extracts from Chitnis and Śivadigvijaya, with Notes",
+    "editor": "Surendranath Sen",
+    "publisher": "University of Calcutta",
+    "year": 1920,
+    "printPages": 272,
+    "url": "https://www.rarebooksocietyofindia.org/book_archive/196174216674_10151472639731675.pdf",
+    "note": "Printed-page numbers, not PDF image page numbers. Marathi manuscript folio numbers have not been collated."
+  },
+  "comparisons": [
+    {
+      "id": "SV-P-001",
+      "chapter": "afzal",
+      "title": "अफझलखानाच्या मोहिमेची बातमी आणि निर्णय",
+      "editionPage": "11",
+      "sourceSection": "Life of Siva Chhatrapati (Sabhasad translation)",
+      "attestedSummary": "सभासद बखरीच्या सेन-अनुवादात अफझलखान बारा हजार घोडेस्वारांसह निघाल्याची बातमी, जावळीतील प्रतिकाराचा विचार आणि युद्धाऐवजी तह करण्याचा सल्ला दिल्याचे कथन आहे.",
+      "criticalNote": "संख्या व कथनातील प्रत्यक्ष संवाद यांची स्वतंत्र पुष्टी बाकी. सेन यांनी त्याच भागातील संभाजीराजांच्या मृत्यूविषयीची बखरीतील समजूत चुकीची असल्याची टीप दिली आहे.",
+      "status": "edition-page-verified; original-marathi-manuscript-not-collated"
+    },
+    {
+      "id": "SV-P-002",
+      "chapter": "afzal",
+      "title": "भवानी देवीच्या स्वप्नाचा बखरीतील उल्लेख",
+      "editionPage": "11",
+      "sourceSection": "Life of Siva Chhatrapati (Sabhasad translation)",
+      "attestedSummary": "बखरीत देवी स्वप्नात प्रकट झाल्याचे धार्मिक कथन येते; हे बखरलेखकाने मांडलेले निवेदन आहे.",
+      "criticalNote": "स्वप्नदर्शन हा ऐतिहासिकदृष्ट्या स्वतंत्रपणे सिद्ध करता येणारा प्रत्यक्ष प्रसंग नाही. धार्मिक कथन आणि दस्तऐवजी घटना यांमध्ये भेद आवश्यक.",
+      "status": "edition-page-verified; tradition-not-independent-fact"
+    },
+    {
+      "id": "SV-P-003",
+      "chapter": "afzal",
+      "title": "प्रतापगडानंतरच्या विस्ताराचे बखरीतील वर्णन",
+      "editionPage": "28",
+      "sourceSection": "Life of Siva Chhatrapati (Sabhasad translation)",
+      "attestedSummary": "अफझलखानाच्या मृत्यूनंतर तळकोकणातील गड आणि प्रदेश ताब्यात घेतल्याचे तसेच नेताजी पालकर यांच्या हालचालींचे कथन आहे.",
+      "criticalNote": "गडांची संख्या, सैन्याची संख्या आणि कालक्रम स्वतंत्र समकालीन साधनांशी तपासण्याची गरज आहे. या पानावरील संपादकीय तळटीप इतर मोहिमांबाबत वेगळे कालसंदर्भ देते.",
+      "status": "edition-page-verified; numerical-details-unverified"
+    },
+    {
+      "id": "SV-P-004",
+      "chapter": "torna",
+      "title": "तोरणा जिंकण्याची उत्तरकालीन कथनपरंपरा",
+      "editionPage": "162",
+      "sourceSection": "Extracts from Sivadigvijaya and Chitnis Bakhar (contents entry)",
+      "attestedSummary": "सेन यांच्या ग्रंथाच्या अनुक्रमणिकेत 'Capture of Torna' या विषयाची नोंद मुद्रित पृष्ठ १६२ वर आहे.",
+      "criticalNote": "हा पृष्ठसंदर्भ अनुक्रमणिकेवरून पडताळला आहे; त्या पानावरील संपूर्ण मजकूर अजून प्रत्यक्ष तपासलेला नाही. हा सभासद बखरीचा भाग नसून उत्तरकालीन उताऱ्यांचा विभाग आहे.",
+      "status": "contents-page-reference-only"
+    },
+    {
+      "id": "SV-P-005",
+      "chapter": "javli",
+      "title": "चंद्रराव मोरे यांच्याविषयी उत्तरकालीन उतारे",
+      "editionPage": "167",
+      "sourceSection": "Extracts from Sivadigvijaya and Chitnis Bakhar (contents entry)",
+      "attestedSummary": "सेन यांच्या ग्रंथाच्या अनुक्रमणिकेत 'Chandra Rav More' हा विषय मुद्रित पृष्ठ १६७ वर निर्देशित आहे.",
+      "criticalNote": "मूळ उतारा, त्याचा कोणत्या बखरीशी संबंध आणि ऐतिहासिक दाव्यांची स्वतंत्र पुष्टी तपासायची आहे.",
+      "status": "contents-page-reference-only"
+    }
+  ]
+}
