@@ -21,6 +21,7 @@ const fs = require('node:fs');
     }
     browser = await chromium.launch({
       headless: true,
+      args: JSON.parse(process.env.CHROMIUM_ARGS || '[]'),
       ...(process.env.CHROMIUM_PATH
         ? { executablePath: process.env.CHROMIUM_PATH }
         : {}),
