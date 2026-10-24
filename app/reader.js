@@ -42,6 +42,11 @@
     pages = 1,
     stride = 0,
     layingOut = false;
+  let marks = storage.get('shivvedh-bookmarks-v1', []);
+  if (!Array.isArray(marks)) marks = [];
+  marks = marks.filter(m => m && chapters.some(c => c.id === m.chapter) && Number.isFinite(m.offset));
+  let theme = storage.get('shivvedh-theme', 'parchment');
+  document.body.dataset.theme = theme === 'night' ? 'night' : 'parchment';
   let catalog, claims, documents, bakhars, passages, policy;
   function rangeAt(offset) {
     for (const n of textNodes()) {
@@ -63,7 +68,6 @@
           Math.floor(
             (r.getBoundingClientRect().left -
               leaf.getBoundingClientRect().left +
-              page * stride +
               1) /
               stride,
           ),
@@ -93,7 +97,7 @@
   function paint(save = true) {
     leaf.style.transform = `translateX(${-page * stride}px)`;
     $('page-number').textContent =
-      `अध्याय ${chapter + 1} / ${chapters.length} · पृष्ठ ${page + 1} / ${pages}`;
+      `विभाग ${chapter + 1} / ${chapters.length} · पृष्ठ ${page + 1} / ${pages}`;
     $('previous').disabled = chapter === 0 && page === 0;
     $('next').disabled = chapter === chapters.length - 1 && page === pages - 1;
     const total = chapters.reduce((n, c) => n + c.textContent.length, 0),
@@ -111,6 +115,9 @@
     $('chapter-title').textContent =
       chapters[chapter].querySelector('h2')?.textContent || '';
     if (save) persist();
+    const marked = marks.some(m => m.chapter === chapters[chapter].id && pageOf(m.offset) === page);
+    $('bookmark').setAttribute('aria-pressed', String(marked));
+    $('bookmark').textContent = marked ? 'खूण काढा' : 'खूण ठेवा';
     drawer.querySelectorAll('[data-target]').forEach((b) => {
       if (b.dataset.target === chapters[chapter].id)
         b.setAttribute('aria-current', 'page');
@@ -155,6 +162,7 @@
       paint();
     } else if (chapter + delta >= 0 && chapter + delta < chapters.length) {
       show(chapter + delta);
+      history.pushState(null, '', '#' + chapters[chapter].id);
       if (delta < 0) {
         page = pages - 1;
         paint();
@@ -175,6 +183,7 @@
       return;
     }
     const i = chapters.findIndex((c) => c.id === slug);
+    if (!slug && !initial) { reader.hidden = true; cover.hidden = false; return; }
     if (i >= 0) {
       chapter = i;
       cover.hidden = true;
@@ -247,13 +256,76 @@
       add('p', 'जतन केलेली पडताळणी नोंद: ' + p.status);
     }
   }
-  $('open').onclick = open;
+  $('open').onclick = () => { open(); history.pushState(null, '', '#' + chapters[chapter].id); };
   $('home').onclick = () => {
     reader.hidden = true;
     cover.hidden = false;
-    history.replaceState(null, '', location.pathname + location.search);
+    history.pushState(null, '', location.pathname + location.search);
     $('open').focus();
   };
+  $('preferences').onclick = () => $('settings-dialog').showModal();
+  document.querySelectorAll('[data-theme]').forEach(b => b.onclick = () => {
+    document.body.dataset.theme = b.dataset.theme;
+    storage.set('shivvedh-theme', b.dataset.theme);
+    document.querySelectorAll('[data-theme]').forEach(t => t.setAttribute('aria-pressed', String(t === b)));
+  });
+  $('focus-mode').onclick = () => {
+    const active = document.body.classList.toggle('quiet');
+    $('focus-mode').setAttribute('aria-pressed', String(active));
+    $('focus-mode').textContent = active ? 'नियंत्रणे दाखवा' : 'निवांत वाचन';
+  };
+  $('bookmark').onclick = () => {
+    const matching = m => m.chapter === chapters[chapter].id && pageOf(m.offset) === page;
+    if (marks.some(matching)) marks = marks.filter(m => !matching(m));
+    else marks.push({chapter: chapters[chapter].id, offset: firstOffset(), title: $('chapter-title').textContent});
+    storage.set('shivvedh-bookmarks-v1', marks); paint(false);
+  };
+  $('bookmarks').onclick = () => {
+    const list = $('bookmark-list'); list.replaceChildren();
+    if (!marks.length) list.textContent = 'अद्याप वाचनखुणा नाहीत. वाचताना “खूण ठेवा” निवडा.';
+    for (const m of marks) {
+      const b = document.createElement('button'); b.className = 'result'; b.textContent = m.title || m.chapter;
+      b.onclick = () => { $('bookmarks-dialog').close(); show(chapters.findIndex(c => c.id === m.chapter), m.offset); history.pushState(null, '', '#' + m.chapter); };
+      list.append(b);
+    }
+    $('bookmarks-dialog').showModal();
+  };
+  let searchRecords;
+  const normalize = text => text.normalize('NFC').toLocaleLowerCase().replace(/[\u200c\u200d]/g, '');
+  function search() {
+    const q = normalize($('granth-query').value.trim());
+    const results = $('granth-results'); results.replaceChildren();
+    if (!searchRecords) return;
+    const matches = q ? searchRecords.filter(r => normalize(r.title + ' ' + r.text).includes(q)) : [];
+    $('search-status').textContent = q ? `${matches.length} नोंदी` : 'शोधण्यासाठी मराठी शब्द लिहा.';
+    for (const r of matches) {
+      const a = document.createElement('a'); a.className = 'result'; a.href = r.url;
+      const title = document.createElement('strong'); title.textContent = r.title;
+      const kind = document.createElement('small'); kind.textContent = (r.kind === 'chapter' ? 'ग्रंथातील कथन' : 'संदर्भ सामग्री') + ' · ' + (r.status || 'पडताळणी स्थिती स्रोत नोंदीत पहा');
+      const excerpt = document.createElement('p'); const at = normalize(r.text).indexOf(q); excerpt.textContent = r.text.slice(Math.max(0, at - 45), Math.max(0, at - 45) + 180) + '…';
+      a.append(kind, title, excerpt);
+      if (r.kind === 'chapter') a.onclick = e => { e.preventDefault(); $('search-dialog').close(); const i = chapters.findIndex(c => c.id === r.id); if (i >= 0) { show(i); history.pushState(null, '', '#' + r.id); } };
+      results.append(a);
+    }
+  }
+  $('granth-query').oninput = search;
+  $('reader-search').onclick = async () => {
+    $('search-dialog').showModal(); $('granth-query').focus();
+    if (!searchRecords) {
+      $('search-status').textContent = 'शोध नोंदी लोड होत आहेत…';
+      try { const r = await fetch('data/search-index.json'); if (!r.ok) throw Error(); searchRecords = (await r.json()).records; }
+      catch { $('search-status').textContent = 'शोध उपलब्ध नाही. इंटरनेट किंवा ऑफलाइन जतन तपासा.'; return; }
+    }
+    search();
+  };
+  const splash = $('splash');
+  let seen = false; try { seen = sessionStorage.getItem('shivvedh-welcome'); } catch {}
+  if (!location.hash && !seen) {
+    splash.showModal();
+    const dismiss = () => { splash.close(); try { sessionStorage.setItem('shivvedh-welcome', '1'); } catch {} };
+    $('skip-splash').onclick = dismiss;
+    setTimeout(dismiss, matchMedia('(prefers-reduced-motion: reduce)').matches ? 400 : 1600);
+  }
   $('previous').onclick = () => change(-1);
   $('next').onclick = () => change(1);
   function font(delta) {
@@ -281,7 +353,7 @@
           if (i < 0) return;
           closeDrawer();
           show(i);
-          history.replaceState(null, '', '#' + chapters[i].id);
+          history.pushState(null, '', '#' + chapters[i].id);
         }),
     );
   }
@@ -309,7 +381,7 @@
     }
     if (
       reader.hidden ||
-      $('evidence-dialog').open ||
+      document.querySelector('dialog[open]') ||
       e.altKey ||
       e.ctrlKey ||
       e.metaKey ||

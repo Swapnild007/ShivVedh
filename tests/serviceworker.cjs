@@ -53,7 +53,7 @@ const vm = require('node:vm'),
   handlers.install({ waitUntil: (p) => (pending = p) });
   await assert.rejects(pending, /quota/);
   assert(
-    deleted.some((k) => k.endsWith('-v2')),
+    deleted.some((k) => k.endsWith('-v3')),
     'failed installation must discard partial release',
   );
   await handlers.activate({ waitUntil: (p) => (pending = p) });
