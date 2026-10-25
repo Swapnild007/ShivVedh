@@ -1,5 +1,5 @@
 /* Atomic release shell: failed precache cannot replace a working version. */
-const VERSION = 'shivvedh-shell-2026-10-22-v2';
+const VERSION = 'shivvedh-shell-2026-10-25-v3';
 const ROOT = new URL('./', self.registration.scope);
 const PATHS = [
   './',
