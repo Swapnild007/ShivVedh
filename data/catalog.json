@@ -79,10 +79,26 @@
       "citationStatus": "review-pending"
     },
     {
+      "id": "two-courts",
+      "title": "दोन दरबारांच्या सावलीत",
+      "volumeId": "SV-V-01",
+      "order": 5,
+      "editorialStatus": "editorial-narrative",
+      "citationStatus": "review-pending"
+    },
+    {
       "id": "pune",
       "title": "पुण्याची माती, मावळचे डोंगर",
       "volumeId": "SV-V-01",
-      "order": 5,
+      "order": 6,
+      "editorialStatus": "editorial-narrative",
+      "citationStatus": "review-pending"
+    },
+    {
+      "id": "raireshwar",
+      "title": "स्वराज्याचा संकल्प : रायरेश्वर आणि रोहिडखोरे",
+      "volumeId": "SV-V-01",
+      "order": 7,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
     },
@@ -90,7 +106,7 @@
       "id": "torna",
       "title": "गडांच्या साक्षीने",
       "volumeId": "SV-V-02",
-      "order": 6,
+      "order": 8,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
     },
@@ -98,7 +114,15 @@
       "id": "javli",
       "title": "जावळीचा कठीण प्रदेश",
       "volumeId": "SV-V-02",
-      "order": 7,
+      "order": 9,
+      "editorialStatus": "editorial-narrative",
+      "citationStatus": "review-pending"
+    },
+    {
+      "id": "pratapgad",
+      "title": "प्रतापगडाच्या सावलीत",
+      "volumeId": "SV-V-03",
+      "order": 10,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
     },
@@ -106,7 +130,7 @@
       "id": "afzal",
       "title": "प्रतापगडाखालील निर्णायक भेट",
       "volumeId": "SV-V-03",
-      "order": 8,
+      "order": 11,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
     },
@@ -114,7 +138,7 @@
       "id": "panhala",
       "title": "पन्हाळ्यापासून विशाळगडापर्यंत",
       "volumeId": "SV-V-03",
-      "order": 9,
+      "order": 12,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
     },
@@ -122,7 +146,7 @@
       "id": "shaista",
       "title": "लालमहालाचा धक्का आणि समुद्राकडे नजर",
       "volumeId": "SV-V-03",
-      "order": 10,
+      "order": 13,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
     },
@@ -130,7 +154,7 @@
       "id": "agra",
       "title": "पुरंदर ते आग्रा",
       "volumeId": "SV-V-04",
-      "order": 11,
+      "order": 14,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
     },
@@ -138,7 +162,7 @@
       "id": "renewal",
       "title": "पुन्हा उभारी",
       "volumeId": "SV-V-04",
-      "order": 12,
+      "order": 15,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
     },
@@ -146,7 +170,7 @@
       "id": "coronation",
       "title": "रायगडावरचे सार्वभौमत्व",
       "volumeId": "SV-V-05",
-      "order": 13,
+      "order": 16,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
     },
@@ -154,7 +178,7 @@
       "id": "south",
       "title": "दक्षिणेकडील मोहीम आणि अखेरची वर्षे",
       "volumeId": "SV-V-06",
-      "order": 14,
+      "order": 17,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
     },
@@ -162,7 +186,7 @@
       "id": "references",
       "title": "संदर्भ आणि इतिहासलेखन",
       "volumeId": "SV-V-00",
-      "order": 15,
+      "order": 18,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
     }
