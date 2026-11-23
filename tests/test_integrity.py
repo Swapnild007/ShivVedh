@@ -5,14 +5,27 @@ ROOT=Path(__file__).resolve().parents[1]
 def load(path):return json.loads((ROOT/path).read_text())
 class Integrity(unittest.TestCase):
  def test_manuscript_preserved_from_baseline(self):
+  # New chapters may be inserted, but every originally approved section must remain byte-for-byte intact.
   baseline=subprocess.check_output(['git','show','f869bbed8a30579f63020de17841b56db8d10ccb:index.html'],cwd=ROOT,text=True)
+  current=(ROOT/'index.html').read_text(encoding='utf-8')
   extract=lambda s: re.search(r'<article class="leaf" id="content">(.*?)</article>',s,re.S)[1]
-  self.assertEqual(extract(baseline),extract((ROOT/'index.html').read_text()))
+  pattern=r'<section class="section[^"]*" id="([^"]+)">(.*?)</section>'
+  original=dict(re.findall(pattern,extract(baseline),re.S))
+  sections=dict(re.findall(pattern,extract(current),re.S))
+  self.assertTrue(original)
+  self.assertTrue(all(k in sections for k in original),'Approved section missing')
+  self.assertEqual([k for k in sections if k in original],list(original),'Approved reading order changed')
+  for section_id,html in original.items():
+   self.assertEqual(sections[section_id],html,'Approved content modified: '+section_id)
+  additions=[k for k in sections if k not in original]
+  self.assertEqual(set(additions),{'two-courts','raireshwar','pratapgad'})
+  for section_id in additions:
+   self.assertGreater(len(sections[section_id]),1500,'New chapter lacks substantial prose: '+section_id)
  def test_all_sections_indexed_without_keyword_substitutes(self):
   index=load('data/search-index.json')['records']; catalog=load('data/catalog.json')
   for c in catalog['chapters']:
    r=next(r for r in index if r['id']==c['id']);self.assertIn(c['title'],r['text']);self.assertEqual(r['url'],'index.html#'+c['id'])
-  self.assertEqual(len(catalog['chapters']),16)
+  self.assertEqual(len(catalog['chapters']),19)
  def test_every_claim_and_passage_has_explicit_category(self):
   policy=load('data/evidence-policy.json');categories=policy['categories']
   for filename,key,mapping in [('claims','claims','claims'),('bakhar-passages','comparisons','passages')]:
