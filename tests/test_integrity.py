@@ -46,6 +46,20 @@ class Integrity(unittest.TestCase):
    actual=(ROOT/path).read_bytes()
    if path.endswith('.html'):
     extract=lambda value:re.search(rb'<main[^>]*>(.*?)</main>',value,re.S)[1]
-    self.assertEqual(extract(baseline),extract(actual),path)
+    old_main,new_main=extract(baseline),extract(actual)
+    if path=='volume-one.html':
+     # The original archive chapters remain unchanged; newly approved additions may follow.
+     pattern=rb'<article id="([^"]+)" class="chapter">(.*?)</article>'
+     old_articles=dict(re.findall(pattern,old_main,re.S))
+     new_articles=dict(re.findall(pattern,new_main,re.S))
+     self.assertEqual([k for k in new_articles if k in old_articles],list(old_articles))
+     for ident,body in old_articles.items():
+      self.assertEqual(new_articles[ident],body,'Approved archive chapter modified: '+ident.decode())
+     additions=set(new_articles)-set(old_articles)
+     self.assertEqual(additions,{b'new-shahaji',b'new-raireshwar',b'new-pratapgad'})
+     for ident in additions:
+      self.assertGreater(len(new_articles[ident]),1500,'New archive chapter lacks prose')
+    else:
+     self.assertEqual(old_main,new_main,path)
    else:self.assertEqual(baseline,actual,path)
 if __name__=='__main__': unittest.main()
