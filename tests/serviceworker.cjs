@@ -37,7 +37,10 @@ const vm = require('node:vm'),
       ];
     },
   };
-  vm.runInNewContext(fs.readFileSync('sw.js', 'utf8'), {
+  const workerSource = fs.readFileSync('sw.js', 'utf8');
+  const currentVersion = workerSource.match(/const VERSION\s*=\s*'([^']+)'/)?.[1];
+  assert(currentVersion, 'service worker must declare a cache version');
+  vm.runInNewContext(workerSource, {
     self,
     caches,
     URL,
@@ -53,7 +56,7 @@ const vm = require('node:vm'),
   handlers.install({ waitUntil: (p) => (pending = p) });
   await assert.rejects(pending, /quota/);
   assert(
-    deleted.some((k) => k.endsWith('-v2')),
+    deleted.includes(currentVersion),
     'failed installation must discard partial release',
   );
   await handlers.activate({ waitUntil: (p) => (pending = p) });
