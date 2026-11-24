@@ -22,43 +22,126 @@
       "type": "encyclopedia",
       "access": "Search excerpt consulted. Full article and attribution pending.",
       "url": "https://vishwakosh.marathi.gov.in/25783/"
+    },
+    "SABHASAD-SEN-1920": {
+      "author": "कृष्णाजी अनंत सभासद",
+      "translator": "Surendranath Sen",
+      "title": "Siva Chhatrapati: Being a Translation of Sabhasad Bakhar with Extracts from Chitnis and Sivadigvijaya, with Notes",
+      "edition": "University of Calcutta, 1920",
+      "type": "published-translation-of-later-narrative",
+      "access": "Consulted images of printed pp. 72–75, PDF pages 81–84, accession 24940. The original Marathi manuscript was not consulted.",
+      "url": "https://ir.nbu.ac.in/handle/123456789/2361",
+      "scan": "https://ir.nbu.ac.in/bitstreams/de3adac6-9411-4bcd-abfc-0de40343f727/download"
     }
   },
   "claims": [
     {
       "id": "SV-E-501",
       "claim": "कोंढाणा पुरंदरच्या तहानंतर मुघलांच्या ताब्यात गेला.",
-      "locators": [{"source": "SARKAR-1920", "section": "Chapter VII §3, p. 188"}, {"source": "VISHWAKOSH-SINHAGAD", "section": "प्रारंभीचा ऐतिहासिक परिच्छेद, शोधउतारा"}],
+      "locators": [
+        {
+          "source": "SARKAR-1920",
+          "section": "Chapter VII §3, p. 188"
+        },
+        {
+          "source": "VISHWAKOSH-SINHAGAD",
+          "section": "प्रारंभीचा ऐतिहासिक परिच्छेद, शोधउतारा"
+        }
+      ],
       "status": "secondary-text-consulted",
       "conflict": "तहाच्या किल्लेयादीची मूळ आवृत्ती आणि प्रत्यक्ष ताबाबदलाची स्वतंत्र दिनांकनोंद तपासावी."
     },
     {
       "id": "SV-E-502",
       "claim": "दख्खनमधील सरदारांनी सेवा सोडल्याची बातमी डिसेंबर १६६९ मध्ये दरबारात आली. जानेवारी १६७० मध्ये दख्खनकडे अधिकाऱ्यांना हलवण्याचे आदेश नोंदले आहेत.",
-      "locators": [{"source": "SARKAR-1920", "section": "Chapter VII §3, p. 187; cites Akhbarat, year 12"}],
+      "locators": [
+        {
+          "source": "SARKAR-1920",
+          "section": "Chapter VII §3, p. 187; cites Akhbarat, year 12"
+        }
+      ],
       "status": "secondary-text-consulted",
       "conflict": "शत्रुत्व पुन्हा सुरू झाल्याचा नेमका क्षण लेखकानेही कालमर्यादेत मांडला आहे. मूळ आखबार प्रत पाहिलेली नाही."
     },
     {
       "id": "SV-E-503",
       "claim": "तानाजी मालुसरे गड घेताना मारले गेले. सरकार यांच्या वर्णनात उदयभान आणि सूर्याजी यांच्या भूमिका येतात.",
-      "locators": [{"source": "SARKAR-1920", "section": "Chapter VII §3, pp. 188–189; account of Kondana"}],
-      "status": "secondary-text-consulted",
-      "conflict": "नेमका दिनांक, प्रवेशमार्ग, लढाईची क्रमवारी आणि जीवितहानी यांचा स्वतंत्र स्रोतताळा बाकी. सभासद बखर आणि जेधे शकावली प्रत्यक्ष तपासाव्यात."
+      "locators": [
+        {
+          "source": "SARKAR-1920",
+          "section": "Chapter VII §3, pp. 188–189; account of Kondana"
+        },
+        {
+          "source": "SABHASAD-SEN-1920",
+          "section": "Main translation, pp. 72–75"
+        }
+      ],
+      "status": "published-translation-and-secondary-text-consulted",
+      "conflict": "मूळ मराठी सभासद प्रत आणि जेधे शकावली पाहणे बाकी. नेमका दिनांक, प्रवेशमार्ग आणि फौजेच्या संख्यांचा स्वतंत्र ताळा आवश्यक."
     },
     {
       "id": "SV-E-504",
       "claim": "सरकार लढाईनंतरचे नामकरण सांगतात. विश्वकोश उताऱ्यात गडाच्या कागदोपत्री नावांचे अनेक रूपे येतात.",
-      "locators": [{"source": "SARKAR-1920", "section": "Chapter VII §3, p. 189"}, {"source": "VISHWAKOSH-SINHAGAD", "section": "नामोल्लेख, शोधउतारा"}],
+      "locators": [
+        {
+          "source": "SARKAR-1920",
+          "section": "Chapter VII §3, p. 189"
+        },
+        {
+          "source": "VISHWAKOSH-SINHAGAD",
+          "section": "नामोल्लेख, शोधउतारा"
+        },
+        {
+          "source": "SABHASAD-SEN-1920",
+          "section": "Main translation and translator’s note 99, p. 74"
+        }
+      ],
       "status": "disputed-unresolved",
       "conflict": "१६७० पूर्वी सिंहगड नाव वापरल्याचे समकालीन दिनांकित दस्तऐवज शोधावेत. अनेक नावांचा उल्लेख एकट्याने नामकरणाचा काल ठरवत नाही."
     },
     {
       "id": "SV-E-505",
       "claim": "मार्चच्या सुरुवातीला पुरंदर मिळाल्याचे आणि माहुलीवरील पहिला प्रयत्न अयशस्वी झाल्याचे सरकार लिहितात.",
-      "locators": [{"source": "SARKAR-1920", "section": "Chapter VII §3, p. 189; cites M. A. 99, Dil. 65 and Surat correspondence"}],
+      "locators": [
+        {
+          "source": "SARKAR-1920",
+          "section": "Chapter VII §3, p. 189; cites M. A. 99, Dil. 65 and Surat correspondence"
+        }
+      ],
       "status": "secondary-text-consulted",
       "conflict": "फारसी ग्रंथांच्या आवृत्त्या आणि सुरतेच्या पत्रव्यवहारातील लेखकाचा संदर्भ स्वतंत्र पाहणे बाकी. पहिला माहुली प्रयत्न आणि अंतिम ताबा यांचा कालक्रम वेगळा ठेवावा."
+    },
+    {
+      "id": "SV-E-506",
+      "claim": "सभासदाच्या निवेदनात राजगडावरचे पुनरागमन आणि दुर्गांच्या मोहिमेची तयारी सलग येतात. सेन यांची तळटीप मधल्या वेळेकडे निर्देश करते.",
+      "locators": [
+        {
+          "source": "SABHASAD-SEN-1920",
+          "section": "Main translation p. 72; translator’s note 100, p. 75"
+        },
+        {
+          "source": "SARKAR-1920",
+          "section": "Chapter VII §3, p. 187"
+        }
+      ],
+      "status": "published-translation-and-secondary-text-consulted",
+      "conflict": "कथनातील सलगता मोहिमेचा नेमका दिनांक सिद्ध करत नाही."
+    },
+    {
+      "id": "SV-E-507",
+      "claim": "कोंढाण्यानंतर चार महिन्यांत २६ किल्ले घेतल्याचा सभासदाचा दावा आहे. सरकार यांनी एकूण २७ गडांच्या वेगवान पुनर्प्राप्तीच्या मांडणीवर आक्षेप घेतला.",
+      "locators": [
+        {
+          "source": "SABHASAD-SEN-1920",
+          "section": "Main translation and note 100, p. 75"
+        },
+        {
+          "source": "SARKAR-1920",
+          "section": "Chapter VII §3, p. 187, note 1"
+        }
+      ],
+      "status": "disputed-unresolved",
+      "conflict": "दिनांकित ताबाबदल, नवीन किल्ले आणि तहात दिलेले पुन्हा घेतलेले गड यांची स्वतंत्र यादी तयार करावी."
     }
   ]
 }

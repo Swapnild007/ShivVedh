@@ -443,7 +443,11 @@
     const q = normalize($('granth-query').value.trim());
     const results = $('granth-results'); results.replaceChildren();
     if (!searchRecords) return;
-    const matches = q ? searchRecords.filter(r => normalize(r.title + ' ' + r.text).includes(q)) : [];
+    const chapterOnly = $('granth-scope').value === 'chapter';
+    const matches = q ? searchRecords.filter(record => (
+      (!chapterOnly || record.id === chapters[chapter].id) &&
+      normalize(record.title + ' ' + record.text).includes(q)
+    )) : [];
     $('search-status').textContent = q ? `${matches.length} नोंदी` : 'शोधण्यासाठी मराठी शब्द लिहा.';
     for (const r of matches) {
       const a = document.createElement('a'); a.className = 'result'; a.href = r.url;
@@ -465,6 +469,7 @@
     }
   }
   $('granth-query').oninput = search;
+  $('granth-scope').onchange = search;
   $('reader-search').onclick = async () => {
     $('search-dialog').showModal(); $('granth-query').focus();
     if (!searchRecords) {

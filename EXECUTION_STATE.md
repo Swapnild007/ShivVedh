@@ -31,16 +31,17 @@ Job logs for all nine runs show the catalog generator rejecting stale `data/cata
 - Local regression run after reconciliation passed static and architecture validation, the index freshness check, ten Python tests and the service-worker lifecycle suite. Device browser validation remains open.
 
 - Run #64 exposed missing dock controls during initialization. Restored the controls and checked the exact uploaded tree. Run #66 passed the release suite and captured 12 screenshots at 393×852, 820×1180 and 1440×1000. The splash, cover, light chapter and night reader images were inspected at each size. See [run #66 and reader-validation artifact](https://github.com/Swapnild007/ShivVedh/actions/runs/45465972402).
-- Chapter 30 has an original first draft and five claim records. The register distinguishes the consulted 1920 secondary-source text from encyclopedia excerpts and outstanding primary-source checks.
+- Chapter 30 has an original Marathi draft and seven linked claim records. The register distinguishes the inspected scan of printed pp. 72–75 of Sen’s 1920 published Sabhasad translation, the consulted text of Sarkar’s 1920 study, an encyclopedia excerpt and unresolved primary-source checks.
 - The cover links to a nine-volume, 54-entry contents page. Existing reader links are identified as related sections from the current reading edition. The contents page is in the v6 precache and has automated coverage for rendering offline, expanding each volume and opening a legacy reader anchor.
 
 - The opening now uses a locally cached 97 KiB WebP derivative of Sopan Patil’s 2017 photo from the Torna–Rajgad route. Attribution is in the contents and asset register. The sequence skips on deep links, after dismissal in the same tab, and when reduced motion is requested. Cache v7 includes the photograph.
 
 - Runs #68 and #69 passed the contents page and cover changes, including offline expansion of all nine volumes.
-- Reader preferences now include four themes plus persisted line spacing and width controls. Passage selection supports local highlights and personal notes. New browser assertions cover creating, restoring, reopening and removing an annotation.
+- Reader preferences now include four themes plus persisted line spacing and width controls. Passage selection supports local highlights and personal notes. Run #72 passed the expanded browser suite, including reduced motion and creating, restoring, reopening and removing an annotation. Fifteen screenshots (opening, cover, light chapter, night reader and contents at three viewport sizes) were downloaded and inspected. [Run #72](https://github.com/Swapnild007/ShivVedh/actions/runs/45467688243).
+- Cache v10 adds a chapter filter to Marathi search with a browser regression assertion. Local checks include 11 Python tests.
 
 ## Next action
 
-Verify the latest Actions run for the v9 opening, reader controls and annotations. Inspect the new screenshots and resolve failures before continuing with chapter-level navigation, publication polish and the knowledge centre. Continue chapter writing and evidence verification from the chapter map, beginning with gaps left by the original drafts and the research leads for chapters 30–36.
+Verify the latest Actions run for the v10 chapter-search scope. Next, design the shared entity and event records for the knowledge centre and anchor them to the existing reader and archive IDs. Continue the first draft of Chapter 31 and resolve Chapter 30’s date and name questions from a dated primary edition before certifying those details.
 
 Still open: new publication design, complete manuscript and claim-level source review, full reader and knowledge centre features, physical Android and Edge validation, deployment verification and owner release approval. Current verdict: public release blocked.
