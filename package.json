@@ -4,7 +4,7 @@
   "version": "0.2.0",
   "description": "Marathi source-critical reading platform",
   "scripts": {
-    "test": "python3 scripts/check_release.py && python3 scripts/check_architecture.py && python3 scripts/build_catalog.py --check && python3 -m unittest discover -s tests -p 'test_*.py' && node tests/serviceworker.cjs && node tests/browser.cjs",
+    "test": "python3 scripts/check_release.py && python3 scripts/check_architecture.py && python3 scripts/build_catalog.py --check && python3 -m unittest discover -s tests -p 'test_*.py' && node tests/serviceworker.cjs && node tests/browser.cjs && node tests/royal.cjs",
     "test:browser": "node tests/browser.cjs"
   },
   "devDependencies": {
