@@ -304,7 +304,16 @@
       const kind = document.createElement('small'); kind.textContent = (r.kind === 'chapter' ? 'ग्रंथातील कथन' : 'संदर्भ सामग्री') + ' · ' + (r.status || 'पडताळणी स्थिती स्रोत नोंदीत पहा');
       const excerpt = document.createElement('p'); const at = normalize(r.text).indexOf(q); excerpt.textContent = r.text.slice(Math.max(0, at - 45), Math.max(0, at - 45) + 180) + '…';
       a.append(kind, title, excerpt);
-      if (r.kind === 'chapter') a.onclick = e => { e.preventDefault(); $('search-dialog').close(); const i = chapters.findIndex(c => c.id === r.id); if (i >= 0) { show(i); history.pushState(null, '', '#' + r.id); } };
+      const chapterIndex = chapters.findIndex(c => c.id === r.id);
+      if (r.kind === 'chapter' && chapterIndex >= 0) {
+        a.onclick = event => {
+          if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+          event.preventDefault();
+          $('search-dialog').close();
+          show(chapterIndex);
+          history.pushState(null, '', '#' + r.id);
+        };
+      }
       results.append(a);
     }
   }
