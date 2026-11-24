@@ -23,10 +23,18 @@ const fs=require('node:fs');
  await p.click('#show-citations');await p.locator('#citations h2').waitFor();await p.click('#close-citations');
  await p.click('#next');await p.screenshot({animations:'disabled',path:`test-results/royal/${name}-reader.png`});
  await p.click('#focus-mode');assert(await p.locator('.toolbar').isHidden());await p.click('#focus-mode');
- await p.click('#home');assert(await p.locator('#cover').isVisible());await p.goBack();assert(await p.locator('#reader').isVisible());
+ await p.click('#home');assert(await p.locator('#cover').isVisible());assert(await p.locator('#resume-reading').isVisible());await p.goBack();assert(await p.locator('#reader').isVisible());
+ await p.goto(base+'library.html');await p.locator('.volume summary').first().click();
+ await p.screenshot({animations:'disabled',path:`test-results/royal/${name}-contents.png`});
  assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
  assert.deepEqual(errors,[]);await context.close();
  }
+ const quiet = await browser.newContext({reducedMotion:'reduce'});
+ const reduced = await quiet.newPage();
+ await reduced.goto(base);
+ assert(await reduced.locator('#cover').isVisible());
+ assert(await reduced.locator('#splash').isHidden());
+ await quiet.close();
  console.log('ROYAL PASS: splash, cover, bookmarks/reload, night/reload, search, evidence, focus, history, mobile/tablet/desktop screenshots');
  }finally{await browser?.close();server.kill()}
 })().catch(e=>{console.error(e);process.exitCode=1});

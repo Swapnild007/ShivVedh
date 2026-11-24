@@ -48,3 +48,5 @@ details[open] > summary::after { content: '−'; }
   summary { grid-template-columns: 3.9rem 1fr auto; gap: .65rem; }
   .chapters { margin-left: .6rem; }
 }
+
+.image-credit { margin-top: 2rem; color: #614b37; font-size: .84rem; }

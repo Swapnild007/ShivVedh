@@ -31,3 +31,30 @@ body[data-theme=night] .reader{background:#161d1b;color:#ddd4be}body[data-theme=
   text-underline-offset: .22em;
   text-decoration: underline;
 }
+
+/* A contemporary photograph of the Sahyadri ridge sets the opening. */
+#splash {
+  isolation: isolate;
+  overflow: hidden;
+  background: #161c19;
+}
+#splash::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background: url("../assets/sahyadri-torna-rajgad.webp") center 55% / cover no-repeat;
+  animation: sahyadri-dawn 2.6s ease-out both;
+}
+#splash::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(180deg, #10191155, #101911b5 48%, #101911ec);
+}
+#splash h1 { text-shadow: 0 .1em .55em #0c120c; }
+@keyframes sahyadri-dawn {
+  from { transform: scale(1.04); filter: brightness(.55); }
+  to { transform: scale(1); filter: brightness(1); }
+}

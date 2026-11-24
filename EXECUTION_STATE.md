@@ -34,6 +34,8 @@ Job logs for all nine runs show the catalog generator rejecting stale `data/cata
 - Chapter 30 has an original first draft and five claim records. The register distinguishes the consulted 1920 secondary-source text from encyclopedia excerpts and outstanding primary-source checks.
 - The cover links to a nine-volume, 54-entry contents page. Existing reader links are identified as related sections from the current reading edition. The contents page is in the v6 precache and has automated coverage for rendering offline, expanding each volume and opening a legacy reader anchor.
 
+- The opening now uses a locally cached 97 KiB WebP derivative of Sopan Patil’s 2017 photo from the Torna–Rajgad route. Attribution is in the contents and asset register. The sequence skips on deep links, after dismissal in the same tab, and when reduced motion is requested. Cache v7 includes the photograph.
+
 ## Next action
 
 Verify the Actions run for the v6 contents page and cover changes. Inspect the new screenshots and resolve failures before continuing with the cinematic opening, reader controls and reference pages. Continue chapter writing and evidence verification from the chapter map, beginning with gaps left by the original drafts and the research leads for chapters 30–36.

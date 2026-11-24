@@ -342,12 +342,16 @@
     search();
   };
   const splash = $('splash');
-  let seen = false; try { seen = sessionStorage.getItem('shivvedh-welcome'); } catch {}
-  if (!location.hash && !seen) {
+  let seen = false;
+  try { seen = sessionStorage.getItem('shivvedh-welcome'); } catch {}
+  if (!location.hash && !seen && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     splash.showModal();
-    const dismiss = () => { splash.close(); try { sessionStorage.setItem('shivvedh-welcome', '1'); } catch {} };
-    $('skip-splash').onclick = dismiss;
-    setTimeout(dismiss, matchMedia('(prefers-reduced-motion: reduce)').matches ? 400 : 1600);
+    const timer = setTimeout(() => splash.close(), 2600);
+    splash.addEventListener('close', () => {
+      clearTimeout(timer);
+      try { sessionStorage.setItem('shivvedh-welcome', '1'); } catch {}
+    }, { once: true });
+    $('skip-splash').onclick = () => splash.close();
   }
   $('previous').onclick = () => change(-1);
   $('next').onclick = () => change(1);
