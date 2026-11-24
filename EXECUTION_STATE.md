@@ -45,8 +45,10 @@ Job logs for all nine runs show the catalog generator rejecting stale `data/cata
 
 - [Integration QA and deployment instructions](docs/INTEGRATION_QA.md) records test evidence and editorial gaps. Pages now stages a checked public artifact after the full release suite and retains the manual owner-approval gate.
 
+- Actions #74 passed the timeline browser and offline document-link checks. Reviewed 18 screenshots, including the timeline at mobile, tablet and desktop sizes. Actions #75 also passed the full suite and Pages artifact packaging. Deployment remains gated and was not run.
+
 ## Next action
 
-Verify the latest Actions run for the v11 timeline and its offline document links. Next, extend the knowledge centre with audited fort and person records using stable identifiers and dated evidence. Continue the first draft of Chapter 31 and resolve Chapter 30’s date and name questions from a dated primary edition before certifying those details.
+Extend the knowledge centre with audited fort and person records using stable identifiers and dated evidence. Continue the first draft of Chapter 31 and resolve Chapter 30’s date and name questions from a dated primary edition before certifying those details.
 
 Still open: new publication design, complete manuscript and claim-level source review, full reader and knowledge centre features, physical Android and Edge validation, deployment verification and owner release approval. Current verdict: public release blocked.
