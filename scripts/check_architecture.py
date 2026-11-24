@@ -1,8 +1,9 @@
 """Validate ShivVedh architecture relationships and document invariants."""
 import json
-import re
 import sys
 from pathlib import Path
+
+from build_catalog import reader_sections
 
 ROOT = Path(__file__).resolve().parents[1]
 errors = []
@@ -23,7 +24,10 @@ bakhars = load("data/bakhars.json", "records")
 claims = load("data/claims.json", "claims")
 passages = load("data/bakhar-passages.json", "comparisons")
 index = (ROOT / "index.html").read_text(encoding="utf-8")
-chapters = set(re.findall(r'<section\s+class="section narrative"\s+id="([^"]+)"', index))
+section_ids = [section_id for section_id, _ in reader_sections(index)]
+chapters = set(section_ids)
+if len(section_ids) != len(chapters):
+    errors.append("Duplicate chapter ID in reader")
 registry = {}
 for collection, records in [("documents", docs), ("bakhars", bakhars), ("claims", claims), ("passages", passages)]:
     for record in records:

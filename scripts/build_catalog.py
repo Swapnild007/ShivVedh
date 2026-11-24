@@ -4,10 +4,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 def text(s):
     return re.sub(r'\s+', ' ', html.unescape(re.sub('<[^>]+>', ' ', s))).strip()
+def reader_sections(source):
+    """Return the same section IDs and bodies used by the navigation catalog."""
+    return re.findall(r'<section class="section[^"]*" id="([^"]+)">(.*?)</section>', source, re.S)
+
+
 def build():
     source = (ROOT/'index.html').read_text()
     chapters=[]; volumes=[]; records=[]
-    for slug, body in re.findall(r'<section class="section[^\"]*" id="([^\"]+)">(.*?)</section>', source, re.S):
+    for slug, body in reader_sections(source):
         title = text(re.search(r'<h2[^>]*>(.*?)</h2>',body,re.S)[1])
         label = re.search(r'<div class="section-label">(.*?)</div>',body,re.S)
         volume = text(label[1]) if label and 'खंड' in label[1] else 'प्रारंभ आणि संदर्भ'

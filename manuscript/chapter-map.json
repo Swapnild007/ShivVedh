@@ -1,0 +1,497 @@
+{
+  "version": 1,
+  "plan": "GRANTHA_MASTER_PLAN.md",
+  "volumes": [
+    {
+      "id": "SV-GV-01",
+      "title": "शिवपूर्वकालीन महाराष्ट्र आणि दख्खन",
+      "chapters": [
+        {
+          "id": "SV-GC-01",
+          "number": 1,
+          "title": "सह्याद्री, पठार आणि समुद्र — भूमीचा इतिहास",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-01/chapter-01-deccan.md",
+            "volume-01/chapter-01-scene-ghatwat.md"
+          ]
+        },
+        {
+          "id": "SV-GC-02",
+          "number": 2,
+          "title": "बहमनी सत्तेचा वारसा आणि दख्खनी सल्तनती",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-01/chapter-01-deccan.md"
+          ]
+        },
+        {
+          "id": "SV-GC-03",
+          "number": 3,
+          "title": "निजामशाही, आदिलशाही आणि मुघल दबाव",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-01/chapter-01-deccan.md"
+          ]
+        },
+        {
+          "id": "SV-GC-04",
+          "number": 4,
+          "title": "भोसले, जाधव आणि देशमुखांची सामाजिक व्यवस्था",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-01/chapter-01-deccan.md"
+          ]
+        },
+        {
+          "id": "SV-GC-05",
+          "number": 5,
+          "title": "शहाजीराजांची राजकीय जडणघडण",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-01/chapter-01-deccan.md",
+            "volume-01/chapter-02a-two-courts.md"
+          ]
+        },
+        {
+          "id": "SV-GC-06",
+          "number": 6,
+          "title": "उद्ध्वस्त प्रदेश, गावव्यवस्था आणि जगण्याची धडपड",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-01/chapter-01-deccan.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SV-GV-02",
+      "title": "शिवजन्म, बालपण आणि जडणघडण",
+      "chapters": [
+        {
+          "id": "SV-GC-07",
+          "number": 7,
+          "title": "शिवनेरीच्या कुशीत — जन्मकाळ",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-01/chapter-02-shivneri.md"
+          ]
+        },
+        {
+          "id": "SV-GC-08",
+          "number": 8,
+          "title": "जिजाऊंचे व्यक्तिमत्त्व आणि घराण्यांचा इतिहास",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-01/chapter-02-shivneri.md"
+          ]
+        },
+        {
+          "id": "SV-GC-09",
+          "number": 9,
+          "title": "शहाजीराजे आणि दोन दरबारांचे राजकारण",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-01/chapter-02a-two-courts.md"
+          ]
+        },
+        {
+          "id": "SV-GC-10",
+          "number": 10,
+          "title": "पुण्याची जहागीर आणि बदलणारी वस्ती",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-01/chapter-03-pune-maval.md"
+          ]
+        },
+        {
+          "id": "SV-GC-11",
+          "number": 11,
+          "title": "मावळ, स्थानिक नेतृत्व आणि बालशिवाजी",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-01/chapter-03-pune-maval.md"
+          ]
+        },
+        {
+          "id": "SV-GC-12",
+          "number": 12,
+          "title": "तरुण शिवाजी : उपलब्ध साधने आणि स्मृती",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-01/chapter-03-pune-maval.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SV-GV-03",
+      "title": "स्वराज्याचा संकल्प आणि पायाभरणी",
+      "chapters": [
+        {
+          "id": "SV-GC-13",
+          "number": 13,
+          "title": "रायरेश्वर आणि रोहिडखोरे — संकल्प व स्रोतविवाद",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-01/chapter-03a-swarajya-raireshwar-rohida.md"
+          ]
+        },
+        {
+          "id": "SV-GC-14",
+          "number": 14,
+          "title": "तोरणा आणि आरंभीचे दुर्गाधिकार",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-02/chapter-04-torna.md"
+          ]
+        },
+        {
+          "id": "SV-GC-15",
+          "number": 15,
+          "title": "राजगड : उभारणीचे केंद्र",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-02/chapter-04-torna.md"
+          ]
+        },
+        {
+          "id": "SV-GC-16",
+          "number": 16,
+          "title": "पुरंदरचे प्रारंभीचे राजकारण",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-02/chapter-05-purandar.md"
+          ]
+        },
+        {
+          "id": "SV-GC-17",
+          "number": 17,
+          "title": "शहाजीराजांची कैद आणि दख्खनी वाटाघाटी",
+          "status": "draft-required",
+          "drafts": []
+        },
+        {
+          "id": "SV-GC-18",
+          "number": 18,
+          "title": "जावळी, मोरे घराणे आणि प्रतापगड",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-02/chapter-06-javali.md",
+            "volume-02/chapter-07-pratapgad.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SV-GV-04",
+      "title": "संघर्ष, पराक्रम आणि स्वराज्याचा विस्तार",
+      "chapters": [
+        {
+          "id": "SV-GC-19",
+          "number": 19,
+          "title": "अफजलखानाची मोहीम आणि प्रतापगड",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-03/chapter-08-afzal-khan.md"
+          ]
+        },
+        {
+          "id": "SV-GC-20",
+          "number": 20,
+          "title": "विजयाचे राजकीय परिणाम",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-03/chapter-08-afzal-khan.md"
+          ]
+        },
+        {
+          "id": "SV-GC-21",
+          "number": 21,
+          "title": "पन्हाळा आणि वेढ्याचा काळ",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-03/chapter-09-panhala-vishalgad.md"
+          ]
+        },
+        {
+          "id": "SV-GC-22",
+          "number": 22,
+          "title": "विशाळगड, बाजीप्रभू आणि स्मृती",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-03/chapter-09-panhala-vishalgad.md"
+          ]
+        },
+        {
+          "id": "SV-GC-23",
+          "number": 23,
+          "title": "शाइस्तेखान, पुणे आणि लालमहाल",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-03/chapter-10-shaista-khan-pune.md"
+          ]
+        },
+        {
+          "id": "SV-GC-24",
+          "number": 24,
+          "title": "सुरतेची पहिली मोहीम",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-04/chapter-11-surat-1664.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SV-GV-05",
+      "title": "पुरंदरचा तह, आग्रा आणि पुनरुत्थान",
+      "chapters": [
+        {
+          "id": "SV-GC-25",
+          "number": 25,
+          "title": "जयसिंह आणि पुरंदरचा वेढा",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-04/chapter-12-purandar-1665.md"
+          ]
+        },
+        {
+          "id": "SV-GC-26",
+          "number": 26,
+          "title": "पुरंदरचा तह : अटी व परिणाम",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-04/chapter-12-purandar-1665.md"
+          ]
+        },
+        {
+          "id": "SV-GC-27",
+          "number": 27,
+          "title": "आग्र्याची भेट आणि दरबारी प्रतिष्ठा",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-04/chapter-13-agra-1666.md"
+          ]
+        },
+        {
+          "id": "SV-GC-28",
+          "number": 28,
+          "title": "नजरकैद, सुटका आणि पुनरागमन",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-04/chapter-13-agra-1666.md"
+          ]
+        },
+        {
+          "id": "SV-GC-29",
+          "number": 29,
+          "title": "शांततेतली पुनर्बांधणी : १६६६–१६६९",
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-04/chapter-14-rebuilding-1666-1669.md"
+          ]
+        },
+        {
+          "id": "SV-GC-30",
+          "number": 30,
+          "title": "१६७० : कोंढाणा, गडांची पुनर्प्राप्ती आणि संघर्षाचा नवा टप्पा",
+          "status": "draft-required",
+          "drafts": []
+        }
+      ]
+    },
+    {
+      "id": "SV-GV-06",
+      "title": "आरमार, दुर्ग आणि लष्करी व्यवस्था",
+      "chapters": [
+        {
+          "id": "SV-GC-31",
+          "number": 31,
+          "title": "कोकण : बंदरे, जहाजे आणि सागरी अर्थव्यवस्था",
+          "status": "draft-required",
+          "drafts": []
+        },
+        {
+          "id": "SV-GC-32",
+          "number": 32,
+          "title": "आरमाराची उभारणी आणि तिचे साधनपुरावे",
+          "status": "draft-required",
+          "drafts": []
+        },
+        {
+          "id": "SV-GC-33",
+          "number": 33,
+          "title": "सिंधुदुर्ग आणि किनारी संरक्षण",
+          "status": "draft-required",
+          "drafts": []
+        },
+        {
+          "id": "SV-GC-34",
+          "number": 34,
+          "title": "जंजिरा, सिद्दी आणि बदलते करार",
+          "status": "draft-required",
+          "drafts": []
+        },
+        {
+          "id": "SV-GC-35",
+          "number": 35,
+          "title": "दुर्गव्यवस्था, अधिकारी आणि पुरवठा",
+          "status": "draft-required",
+          "drafts": []
+        },
+        {
+          "id": "SV-GC-36",
+          "number": 36,
+          "title": "सैनिकी संघटना, गुप्तवार्ता आणि स्थानिक ज्ञान",
+          "status": "draft-required",
+          "drafts": []
+        }
+      ]
+    },
+    {
+      "id": "SV-GV-07",
+      "title": "राज्याभिषेक आणि सार्वभौम स्वराज्य",
+      "chapters": [
+        {
+          "id": "SV-GC-37",
+          "number": 37,
+          "title": "१६७०–१६७३ : विस्तार, व्यापार आणि राजकीय दबाव",
+          "status": "draft-required",
+          "drafts": []
+        },
+        {
+          "id": "SV-GC-38",
+          "number": 38,
+          "title": "रायगडाची राजधानी",
+          "status": "draft-required",
+          "drafts": []
+        },
+        {
+          "id": "SV-GC-39",
+          "number": 39,
+          "title": "सार्वभौमत्वाचा विचार आणि राज्याभिषेकाची तयारी",
+          "status": "draft-required",
+          "drafts": []
+        },
+        {
+          "id": "SV-GC-40",
+          "number": 40,
+          "title": "१६७४ : राज्याभिषेकाचा दिवस",
+          "status": "draft-required",
+          "drafts": []
+        },
+        {
+          "id": "SV-GC-41",
+          "number": 41,
+          "title": "राजमुद्रा, पदव्या, भाषा आणि राज्यव्यवहार",
+          "status": "draft-required",
+          "drafts": []
+        },
+        {
+          "id": "SV-GC-42",
+          "number": 42,
+          "title": "जिजाऊंची अखेरची वर्षे आणि राज्याभिषेकानंतरची स्थिती",
+          "status": "draft-required",
+          "drafts": []
+        }
+      ]
+    },
+    {
+      "id": "SV-GV-08",
+      "title": "दक्षिण दिग्विजय आणि राज्यकारभार",
+      "chapters": [
+        {
+          "id": "SV-GC-43",
+          "number": 43,
+          "title": "दक्षिणेचे राजकीय क्षितिज : १६७६–१६७८",
+          "status": "draft-required",
+          "drafts": []
+        },
+        {
+          "id": "SV-GC-44",
+          "number": 44,
+          "title": "गोलकोंड्याशी संबंध आणि कर्नाटक मोहीम",
+          "status": "draft-required",
+          "drafts": []
+        },
+        {
+          "id": "SV-GC-45",
+          "number": 45,
+          "title": "जिंजी, वेलूर आणि दक्षिणेतील नवी सत्ता",
+          "status": "draft-required",
+          "drafts": []
+        },
+        {
+          "id": "SV-GC-46",
+          "number": 46,
+          "title": "व्यंकोजी, कौटुंबिक संबंध आणि राजकीय मतभेद",
+          "status": "draft-required",
+          "drafts": []
+        },
+        {
+          "id": "SV-GC-47",
+          "number": 47,
+          "title": "महसूल, शेती, न्याय आणि रयत",
+          "status": "draft-required",
+          "drafts": []
+        },
+        {
+          "id": "SV-GC-48",
+          "number": 48,
+          "title": "अष्टप्रधान, प्रशासन, धर्मनीती आणि व्यापार",
+          "status": "draft-required",
+          "drafts": []
+        }
+      ]
+    },
+    {
+      "id": "SV-GV-09",
+      "title": "अखेरची वर्षे, शिवविचार आणि वारसा",
+      "chapters": [
+        {
+          "id": "SV-GC-49",
+          "number": 49,
+          "title": "१६७८–१६७९ : दख्खन आणि किनाऱ्यावरील आव्हाने",
+          "status": "draft-required",
+          "drafts": []
+        },
+        {
+          "id": "SV-GC-50",
+          "number": 50,
+          "title": "संभाजीराजे, राजघराणे आणि उत्तराधिकाराचा प्रश्न",
+          "status": "draft-required",
+          "drafts": []
+        },
+        {
+          "id": "SV-GC-51",
+          "number": 51,
+          "title": "अखेरच्या मोहिमा आणि राज्याची स्थिती",
+          "status": "draft-required",
+          "drafts": []
+        },
+        {
+          "id": "SV-GC-52",
+          "number": 52,
+          "title": "१६८० : महाराजांचे निधन",
+          "status": "draft-required",
+          "drafts": []
+        },
+        {
+          "id": "SV-GC-53",
+          "number": 53,
+          "title": "उभे राहिलेले राज्य आणि पुढील पिढी",
+          "status": "draft-required",
+          "drafts": []
+        },
+        {
+          "id": "SV-GC-54",
+          "number": 54,
+          "title": "शिवचरित्र : समकालीन स्रोत, लोकस्मृती आणि इतिहासलेखन",
+          "status": "draft-required",
+          "drafts": []
+        }
+      ]
+    }
+  ]
+}

@@ -41,6 +41,27 @@ class EditorialDraftTests(unittest.TestCase):
                     self.assertIn(claim["status"], ("lead", "unverified", "disputed-unresolved"))
                     self.assertGreater(len(claim["next"]), 12)
 
+    def test_grantha_map_matches_master_plan_and_preserves_all_drafts(self):
+        manuscript = ROOT / "manuscript"
+        chapter_map = json.loads((manuscript / "chapter-map.json").read_text(encoding="utf-8"))
+        plan = (manuscript / chapter_map["plan"]).read_text(encoding="utf-8")
+        plan = plan.split("### विद्यमान हस्तलिखिताचे समाकलन", 1)[0]
+        volumes = chapter_map["volumes"]
+        self.assertEqual([volume["title"] for volume in volumes],
+                         re.findall(r"^### खंड [१-९] : (.+)$", plan, re.M))
+        self.assertEqual([len(volume["chapters"]) for volume in volumes], [6] * 9)
+        chapters = [chapter for volume in volumes for chapter in volume["chapters"]]
+        self.assertEqual([(str(chapter["number"]), chapter["title"]) for chapter in chapters],
+                         re.findall(r"^(\d+)\. (.+)$", plan, re.M))
+        self.assertEqual(len({chapter["id"] for chapter in chapters}), 54)
+        drafts = set()
+        for chapter in chapters:
+            self.assertEqual(chapter["status"],
+                             "source-draft-available" if chapter["drafts"] else "draft-required")
+            drafts.update(chapter["drafts"])
+        self.assertEqual(drafts, {path.relative_to(manuscript).as_posix()
+                                  for path in manuscript.glob("volume-*/*.md")})
+
     def test_volume_one_remains_present(self):
         for name in ("chapter-01-deccan.md", "chapter-02-shivneri.md",
                      "chapter-03-pune-maval.md"):
