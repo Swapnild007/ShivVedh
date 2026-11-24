@@ -43,6 +43,8 @@ Job logs for all nine runs show the catalog generator rejecting stale `data/cata
 - The public GitHub Pages URL returned HTTP 200 and its homepage bytes match the `edd16aa` main baseline. The integration branch has no Pages deployment.
 - Cache v11 adds an initial reference gallery and six dated timeline records. The timeline indexes published secondary study references and existing document summaries with distinct evidence status, and links events back to the current reader.
 
+- [Integration QA and deployment instructions](docs/INTEGRATION_QA.md) records test evidence and editorial gaps. Pages now stages a checked public artifact after the full release suite and retains the manual owner-approval gate.
+
 ## Next action
 
 Verify the latest Actions run for the v11 timeline and its offline document links. Next, extend the knowledge centre with audited fort and person records using stable identifiers and dated evidence. Continue the first draft of Chapter 31 and resolve Chapter 30’s date and name questions from a dated primary edition before certifying those details.

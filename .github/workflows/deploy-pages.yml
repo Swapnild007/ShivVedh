@@ -13,10 +13,12 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout website
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Require approved release
         env:
           RELEASE_APPROVED: ${{ vars.SHIVVEDH_RELEASE_APPROVED }}
@@ -25,18 +27,24 @@ jobs:
             echo 'Release blocked: set SHIVVEDH_RELEASE_APPROVED=true only after review.'
             exit 1
           fi
-      - name: Validate website files
-        run: |
-          test -f index.html
-          test -f offline.html
-          test -f sw.js
-          python3 scripts/check_release.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm test
+      - name: Stage the public website
+        run: python3 scripts/package_pages.py "$RUNNER_TEMP/shivvedh-pages"
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: ${{ runner.temp }}/shivvedh-pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
