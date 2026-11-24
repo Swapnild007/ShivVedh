@@ -3,7 +3,7 @@
 from pathlib import Path
 import json,re,sys
 root=Path(__file__).resolve().parents[1]
-pages=["index.html","library.html","letters.html","bakhar.html","documents.html","search.html","evidence.html","bakhar-passages.html","offline.html"]
+pages=["index.html","library.html","knowledge.html","letters.html","bakhar.html","documents.html","search.html","evidence.html","bakhar-passages.html","offline.html"]
 errors=[]
 for p in pages:
  f=root/p

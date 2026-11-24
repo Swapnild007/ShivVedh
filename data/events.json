@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "sources": {
+    "sarkar-1920": {
+      "title": "Shivaji and His Times",
+      "author": "Jadunath Sarkar",
+      "edition": "दुसरी आवृत्ती, १९२०",
+      "category": "दुय्यम अभ्यास"
+    },
+    "shivvedh-documents": {
+      "title": "शिववेध दस्तऐवज निर्देशांक",
+      "author": "शिववेध संपादकीय नोंद",
+      "edition": "डिजिटल आवृत्ती",
+      "category": "मूळ दस्तऐवजाची सारांश नोंद"
+    }
+  },
+  "events": [
+    {
+      "id": "SV-EVT-1644-JEDHE",
+      "year": 1644,
+      "period": "१६४४",
+      "title": "कान्होजी जेधे यांना आदिलशाही आदेश",
+      "summary": "कान्होजी जेधे आणि शहाजीराजे यांच्या राजकीय संबंधांचा अभ्यास करण्यासाठी निर्देशांकातील आदेश पाहा.",
+      "chapter": "opening",
+      "evidence": [
+        {"source": "shivvedh-documents", "locator": "SV-L-1644-01", "url": "documents.html#SV-L-1644-01", "status": "सारांश नोंद उपलब्ध"}
+      ]
+    },
+    {
+      "id": "SV-EVT-1646-RANJE",
+      "year": 1646,
+      "period": "१६४६",
+      "title": "रांजे गावच्या मोकदमीसंबंधी आदेश",
+      "summary": "आरंभीच्या कारभारातील स्थानिक न्याय आणि गावातील अधिकार यांवरील दस्तऐवज नोंद.",
+      "chapter": "pune",
+      "evidence": [
+        {"source": "shivvedh-documents", "locator": "SV-L-1646-01", "url": "documents.html#SV-L-1646-01", "status": "सारांश नोंद उपलब्ध"}
+      ]
+    },
+    {
+      "id": "SV-EVT-1665-PURANDAR",
+      "year": 1665,
+      "period": "१६६५",
+      "title": "पुरंदरचा तह",
+      "summary": "जयसिंहाच्या मोहिमेनंतर ठरलेल्या अटींमध्ये पुरंदर आणि कोंढाण्यासह गडांचा ताबा मुघलांकडे देण्याची तरतूद होती.",
+      "chapter": "agra",
+      "evidence": [
+        {"source": "sarkar-1920", "locator": "अध्याय ५, मुद्रित पृ. १३९ व १४३", "url": "https://en.wikisource.org/wiki/Page:Shivaji_and_His_Times.djvu/163", "status": "प्रकाशित अभ्यास पाहिला"}
+      ]
+    },
+    {
+      "id": "SV-EVT-1670-KONDANA",
+      "year": 1670,
+      "period": "१६७० चा आरंभ",
+      "title": "कोंढाण्याची पुनर्प्राप्ती",
+      "summary": "तानाजी मालुसरे यांच्या नेतृत्वाखालील मोहिमेनंतर गडाचा ताबा बदलला. घटनेच्या नेमक्या तारखेचा आणि काही तपशिलांचा स्रोतताळा बाकी आहे.",
+      "chapter": "renewal",
+      "evidence": [
+        {"source": "sarkar-1920", "locator": "अध्याय ७, मुद्रित पृ. १८८–१८९", "url": "https://en.wikisource.org/wiki/Page:Shivaji_and_His_Times.djvu/208", "status": "प्रकाशित अभ्यास पाहिला; नेमका दिनांक खुला"}
+      ]
+    },
+    {
+      "id": "SV-EVT-1670-PURANDAR",
+      "year": 1670,
+      "period": "१६७०, मार्चच्या सुरुवातीस",
+      "title": "पुरंदर पुन्हा स्वराज्यात",
+      "summary": "सरकार यांच्या कालक्रमात कोंढाण्यानंतर पुरंदरच्या पुनर्प्राप्तीची नोंद येते.",
+      "chapter": "renewal",
+      "evidence": [
+        {"source": "sarkar-1920", "locator": "अध्याय ७, मुद्रित पृ. १८९", "url": "https://en.wikisource.org/wiki/Page:Shivaji_and_His_Times.djvu/209", "status": "प्रकाशित अभ्यास पाहिला"}
+      ]
+    },
+    {
+      "id": "SV-EVT-1674-CORONATION",
+      "year": 1674,
+      "period": "६ जून १६७४",
+      "title": "रायगडावरील राज्याभिषेक",
+      "summary": "रायगडावर छत्रपती शिवाजी महाराजांचा राज्याभिषेक झाला.",
+      "chapter": "coronation",
+      "evidence": [
+        {"source": "sarkar-1920", "locator": "अध्याय ९, मुद्रित पृ. २४६", "url": "https://en.wikisource.org/wiki/Page:Shivaji_and_His_Times.djvu/266", "status": "प्रकाशित अभ्यास पाहिला"}
+      ]
+    }
+  ]
+}

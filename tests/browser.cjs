@@ -136,6 +136,7 @@ const fs = require('node:fs');
     for (const path of [
       'index.html#birth',
       'library.html',
+      'knowledge.html',
       'search.html',
       'letters.html',
       'documents.html',
@@ -156,6 +157,14 @@ const fs = require('node:fs');
     }
     await p.locator('a[href="index.html#birth"]').click();
     await p.waitForSelector('#content #birth');
+    await p.goto(base + 'knowledge.html#SV-EVT-1646-RANJE');
+    const event = p.locator('#SV-EVT-1646-RANJE');
+    await event.waitFor();
+    assert.equal(await p.locator('#events > li').count(), 6);
+    await event.getByText('पुरावे आणि संदर्भ').click();
+    await event.locator('a[href="documents.html#SV-L-1646-01"]').click();
+    await p.waitForSelector('#SV-L-1646-01');
+
     await p.goto(base + 'search.html');
     await p.waitForSelector('#results .card');
     await p.fill('#query', 'प्रतापगड');

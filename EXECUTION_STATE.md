@@ -40,8 +40,11 @@ Job logs for all nine runs show the catalog generator rejecting stale `data/cata
 - Reader preferences now include four themes plus persisted line spacing and width controls. Passage selection supports local highlights and personal notes. Run #72 passed the expanded browser suite, including reduced motion and creating, restoring, reopening and removing an annotation. Fifteen screenshots (opening, cover, light chapter, night reader and contents at three viewport sizes) were downloaded and inspected. [Run #72](https://github.com/Swapnild007/ShivVedh/actions/runs/45467688243).
 - Cache v10 adds a chapter filter to Marathi search with a browser regression assertion. Local checks include 11 Python tests.
 
+- The public GitHub Pages URL returned HTTP 200 and its homepage bytes match the `edd16aa` main baseline. The integration branch has no Pages deployment.
+- Cache v11 adds an initial reference gallery and six dated timeline records. The timeline indexes published secondary study references and existing document summaries with distinct evidence status, and links events back to the current reader.
+
 ## Next action
 
-Verify the latest Actions run for the v10 chapter-search scope. Next, design the shared entity and event records for the knowledge centre and anchor them to the existing reader and archive IDs. Continue the first draft of Chapter 31 and resolve Chapter 30’s date and name questions from a dated primary edition before certifying those details.
+Verify the latest Actions run for the v11 timeline and its offline document links. Next, extend the knowledge centre with audited fort and person records using stable identifiers and dated evidence. Continue the first draft of Chapter 31 and resolve Chapter 30’s date and name questions from a dated primary edition before certifying those details.
 
 Still open: new publication design, complete manuscript and claim-level source review, full reader and knowledge centre features, physical Android and Edge validation, deployment verification and owner release approval. Current verdict: public release blocked.

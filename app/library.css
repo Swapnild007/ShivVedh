@@ -50,3 +50,23 @@ details[open] > summary::after { content: '−'; }
 }
 
 .image-credit { margin-top: 2rem; color: #614b37; font-size: .84rem; }
+
+.archive-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .2rem 1.5rem;
+  margin: 1rem 0 2rem;
+  padding: .5rem 0;
+  border-block: 1px solid #c9b595;
+}
+.archive-links a { display: inline-flex; min-height: 44px; align-items: center; }
+.timeline { list-style: none; padding: 0; }
+.timeline li { display: grid; grid-template-columns: minmax(7rem, 21%) 1fr; gap: 1rem; border-top: 1px solid #c9b595; padding: 1.1rem 0; }
+.timeline li:target { border-top-color: #864d29; }
+.timeline time { color: #77401e; font-weight: 700; }
+.timeline h3, .timeline p { margin: 0 0 .5rem; }
+.timeline summary { grid-template-columns: 1fr auto; width: max-content; min-height: 44px; padding: .25rem 0; }
+.timeline details { margin-top: .4rem; }
+@media (max-width: 500px) {
+  .timeline li { grid-template-columns: 1fr; gap: .2rem; }
+}

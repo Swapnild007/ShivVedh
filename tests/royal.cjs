@@ -67,6 +67,8 @@ const fs=require('node:fs');
  await p.click('#home');assert(await p.locator('#cover').isVisible());assert(await p.locator('#resume-reading').isVisible());await p.goBack();assert(await p.locator('#reader').isVisible());
  await p.goto(base+'library.html');await p.locator('.volume summary').first().click();
  await p.screenshot({animations:'disabled',path:`test-results/royal/${name}-contents.png`});
+ await p.goto(base+'knowledge.html');await p.locator('#events > li').first().waitFor();
+ await p.screenshot({animations:'disabled',path:`test-results/royal/${name}-timeline.png`});
  assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
  assert.deepEqual(errors,[]);await context.close();
  }

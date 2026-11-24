@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="mr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6efdf">
+  <title>संदर्भदालन · शिववेध</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="app/fonts.css">
+  <link rel="stylesheet" href="app/library.css">
+  <script defer src="app/knowledge.js"></script>
+</head>
+<body>
+  <a class="skip" href="#timeline">कालपटाकडे जा</a>
+  <header class="masthead">
+    <a href="index.html">शिववेध</a>
+    <nav aria-label="ग्रंथाचे विभाग">
+      <a href="library.html">अनुक्रमणिका</a>
+      <a href="search.html">शोध</a>
+    </nav>
+  </header>
+  <main>
+    <h1>संदर्भदालन</h1>
+    <nav class="archive-links" aria-label="संदर्भ संग्रह">
+      <a href="letters.html">शिवकालीन पत्रसंग्रह</a>
+      <a href="documents.html">दस्तऐवज निर्देशांक</a>
+      <a href="bakhar.html">बखर संग्रह</a>
+      <a href="bakhar-passages.html">बखरीतील निवडक प्रसंग</a>
+      <a href="evidence.html">ऐतिहासिक पुरावे</a>
+      <a href="index.html#references">संदर्भग्रंथसूची</a>
+    </nav>
+    <section aria-labelledby="timeline">
+      <h2 id="timeline" tabindex="-1">ऐतिहासिक कालपट</h2>
+      <p>निवडक घटना आणि संबंधित पुराव्यांच्या नोंदी.</p>
+      <ol id="events" class="timeline"></ol>
+      <p id="timeline-status" role="status">कालपट उघडत आहे…</p>
+    </section>
+  </main>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+    }
+  </script>
+</body>
+</html>

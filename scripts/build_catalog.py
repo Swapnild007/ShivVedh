@@ -33,6 +33,15 @@ def build():
             url=dest+'#'+r['id']
             if filename=='bakhars.json': url='bakhar.html#'+{'SV-B-01':'sabhasad','SV-B-02':'chitnis','SV-B-03':'ninetyone'}[r['id']]
             records.append({'id':r['id'],'kind':kind,'title':r.get('title',r.get('name',r.get('claim'))),'text':' '.join(str(v) for v in r.values()),'url':url,'status':r.get('status',r.get('sourceStatus',r.get('review','review-pending')))})
+    for event in json.loads((ROOT/'data/events.json').read_text())['events']:
+        records.append({
+            'id': event['id'],
+            'kind': 'research',
+            'title': event['title'],
+            'text': event['period'] + ' · ' + event['summary'],
+            'url': 'knowledge.html#' + event['id'],
+            'status': 'ऐतिहासिक कालपट',
+        })
     catalog={'version':1,'volumes':volumes,'chapters':chapters}
     return {'data/catalog.json':catalog,'data/search-index.json':{'version':1,'records':records}}
 if __name__=='__main__':
