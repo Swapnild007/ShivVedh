@@ -27,11 +27,15 @@ Job logs for all nine runs show the catalog generator rejecting stale `data/cata
 - PR #5 was reconciled into the branch with the 19 existing reader sections and legacy anchors intact. The cache version advanced to v5 and now includes the reader stylesheet. The royal browser suite captures mobile, tablet and desktop screenshots under the Actions artifact directory.
 - Hosted run #63 was started with a truncated reader HTML transfer. A corrective commit restored the full locally tested blob, and the resulting GitHub tree hash matched the local commit. Its hosted run is #64.
 - Architecture validation now uses the same reader section inventory as the generator and guards against duplicate IDs.
-- The editorial chapter map inventories nine volumes and 54 planned chapters. Twenty-eight chapters have related draft material, often shared across several chapters. Twenty-six have no mapped draft file. The 17 source files contain 18,169 whitespace-delimited tokens including headings and editorial matter. No chapter has been certified against the final plan.
+- The editorial chapter map inventories nine volumes and 54 planned chapters. Twenty-nine chapters have related draft material, often shared across several chapters. Twenty-five have no mapped draft file. The 18 source files include 17 narrative drafts and a standalone scene. No chapter has been certified against the final plan.
 - Local regression run after reconciliation passed static and architecture validation, the index freshness check, ten Python tests and the service-worker lifecycle suite. Device browser validation remains open.
+
+- Run #64 exposed missing dock controls during initialization. Restored the controls and checked the exact uploaded tree. Run #66 passed the release suite and captured 12 screenshots at 393×852, 820×1180 and 1440×1000. The splash, cover, light chapter and night reader images were inspected at each size. See [run #66 and reader-validation artifact](https://github.com/Swapnild007/ShivVedh/actions/runs/45465972402).
+- Chapter 30 has an original first draft and five claim records. The register distinguishes the consulted 1920 secondary-source text from encyclopedia excerpts and outstanding primary-source checks.
+- The cover links to a nine-volume, 54-entry contents page. Existing reader links are identified as related sections from the current reading edition. The contents page is in the v6 precache and has automated coverage for rendering offline, expanding each volume and opening a legacy reader anchor.
 
 ## Next action
 
-Read the latest Actions result and locate the captured screenshots in the `reader-validation` artifact. Resolve any regression before continuing with the publication information architecture. Use `manuscript/chapter-map.json` to reconcile literature with stable legacy anchors and define the nine-volume library.
+Verify the Actions run for the v6 contents page and cover changes. Inspect the new screenshots and resolve failures before continuing with the cinematic opening, reader controls and reference pages. Continue chapter writing and evidence verification from the chapter map, beginning with gaps left by the original drafts and the research leads for chapters 30–36.
 
 Still open: new publication design, complete manuscript and claim-level source review, full reader and knowledge centre features, physical Android and Edge validation, deployment verification and owner release approval. Current verdict: public release blocked.
