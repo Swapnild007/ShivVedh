@@ -93,6 +93,7 @@
   function persist() {
     saved = { chapter: chapters[chapter].id, offset: firstOffset() };
     storage.set('shivvedh-position-v2', saved);
+    $('resume-reading').hidden = false;
   }
   function paint(save = true) {
     leaf.style.transform = `translateX(${-page * stride}px)`;
@@ -256,10 +257,23 @@
       add('p', 'जतन केलेली पडताळणी नोंद: ' + p.status);
     }
   }
-  $('open').onclick = () => { open(); history.pushState(null, '', '#' + chapters[chapter].id); };
+  function openFromCover() {
+    cover.hidden = true;
+    reader.hidden = false;
+    show(0);
+    history.pushState(null, '', '#' + chapters[chapter].id);
+  }
+  const resumeReading = $('resume-reading');
+  resumeReading.hidden = !chapters.some(c => c.id === saved.chapter);
+  resumeReading.onclick = () => {
+    open();
+    history.pushState(null, '', '#' + chapters[chapter].id);
+  };
+  $('open').onclick = openFromCover;
   $('home').onclick = () => {
     reader.hidden = true;
     cover.hidden = false;
+    resumeReading.hidden = !saved.chapter;
     history.pushState(null, '', location.pathname + location.search);
     $('open').focus();
   };

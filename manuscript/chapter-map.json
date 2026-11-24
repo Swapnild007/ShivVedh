@@ -14,7 +14,8 @@
           "drafts": [
             "volume-01/chapter-01-deccan.md",
             "volume-01/chapter-01-scene-ghatwat.md"
-          ]
+          ],
+          "readerAnchor": "opening"
         },
         {
           "id": "SV-GC-02",
@@ -75,7 +76,8 @@
           "status": "source-draft-available",
           "drafts": [
             "volume-01/chapter-02-shivneri.md"
-          ]
+          ],
+          "readerAnchor": "birth"
         },
         {
           "id": "SV-GC-08",
@@ -93,7 +95,8 @@
           "status": "source-draft-available",
           "drafts": [
             "volume-01/chapter-02a-two-courts.md"
-          ]
+          ],
+          "readerAnchor": "two-courts"
         },
         {
           "id": "SV-GC-10",
@@ -102,7 +105,8 @@
           "status": "source-draft-available",
           "drafts": [
             "volume-01/chapter-03-pune-maval.md"
-          ]
+          ],
+          "readerAnchor": "pune"
         },
         {
           "id": "SV-GC-11",
@@ -135,7 +139,8 @@
           "status": "source-draft-available",
           "drafts": [
             "volume-01/chapter-03a-swarajya-raireshwar-rohida.md"
-          ]
+          ],
+          "readerAnchor": "raireshwar"
         },
         {
           "id": "SV-GC-14",
@@ -144,7 +149,8 @@
           "status": "source-draft-available",
           "drafts": [
             "volume-02/chapter-04-torna.md"
-          ]
+          ],
+          "readerAnchor": "torna"
         },
         {
           "id": "SV-GC-15",
@@ -162,7 +168,8 @@
           "status": "source-draft-available",
           "drafts": [
             "volume-02/chapter-05-purandar.md"
-          ]
+          ],
+          "readerAnchor": "torna"
         },
         {
           "id": "SV-GC-17",
@@ -179,7 +186,8 @@
           "drafts": [
             "volume-02/chapter-06-javali.md",
             "volume-02/chapter-07-pratapgad.md"
-          ]
+          ],
+          "readerAnchor": "javli"
         }
       ]
     },
@@ -194,7 +202,8 @@
           "status": "source-draft-available",
           "drafts": [
             "volume-03/chapter-08-afzal-khan.md"
-          ]
+          ],
+          "readerAnchor": "afzal"
         },
         {
           "id": "SV-GC-20",
@@ -212,7 +221,8 @@
           "status": "source-draft-available",
           "drafts": [
             "volume-03/chapter-09-panhala-vishalgad.md"
-          ]
+          ],
+          "readerAnchor": "panhala"
         },
         {
           "id": "SV-GC-22",
@@ -221,7 +231,8 @@
           "status": "source-draft-available",
           "drafts": [
             "volume-03/chapter-09-panhala-vishalgad.md"
-          ]
+          ],
+          "readerAnchor": "panhala"
         },
         {
           "id": "SV-GC-23",
@@ -230,7 +241,8 @@
           "status": "source-draft-available",
           "drafts": [
             "volume-03/chapter-10-shaista-khan-pune.md"
-          ]
+          ],
+          "readerAnchor": "shaista"
         },
         {
           "id": "SV-GC-24",
@@ -263,7 +275,8 @@
           "status": "source-draft-available",
           "drafts": [
             "volume-04/chapter-12-purandar-1665.md"
-          ]
+          ],
+          "readerAnchor": "agra"
         },
         {
           "id": "SV-GC-27",
@@ -272,7 +285,8 @@
           "status": "source-draft-available",
           "drafts": [
             "volume-04/chapter-13-agra-1666.md"
-          ]
+          ],
+          "readerAnchor": "agra"
         },
         {
           "id": "SV-GC-28",
@@ -299,7 +313,8 @@
           "status": "source-draft-available",
           "drafts": [
             "volume-05/chapter-30-renewal-1670.md"
-          ]
+          ],
+          "readerAnchor": "renewal"
         }
       ]
     },
@@ -367,7 +382,8 @@
           "number": 38,
           "title": "रायगडाची राजधानी",
           "status": "draft-required",
-          "drafts": []
+          "drafts": [],
+          "readerAnchor": "coronation"
         },
         {
           "id": "SV-GC-39",
@@ -381,7 +397,8 @@
           "number": 40,
           "title": "१६७४ : राज्याभिषेकाचा दिवस",
           "status": "draft-required",
-          "drafts": []
+          "drafts": [],
+          "readerAnchor": "coronation"
         },
         {
           "id": "SV-GC-41",
@@ -408,7 +425,8 @@
           "number": 43,
           "title": "दक्षिणेचे राजकीय क्षितिज : १६७६–१६७८",
           "status": "draft-required",
-          "drafts": []
+          "drafts": [],
+          "readerAnchor": "south"
         },
         {
           "id": "SV-GC-44",
@@ -477,7 +495,8 @@
           "number": 52,
           "title": "१६८० : महाराजांचे निधन",
           "status": "draft-required",
-          "drafts": []
+          "drafts": [],
+          "readerAnchor": "south"
         },
         {
           "id": "SV-GC-53",
@@ -491,7 +510,8 @@
           "number": 54,
           "title": "शिवचरित्र : समकालीन स्रोत, लोकस्मृती आणि इतिहासलेखन",
           "status": "draft-required",
-          "drafts": []
+          "drafts": [],
+          "readerAnchor": "references"
         }
       ]
     }

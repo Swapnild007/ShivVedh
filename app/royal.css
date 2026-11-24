@@ -17,3 +17,17 @@ body[data-theme=night] .reader{background:#161d1b;color:#ddd4be}body[data-theme=
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 @media(max-width:380px){.toolbar strong{display:none}.toolbar .tools{flex:1;justify-content:flex-end}.book-context progress{width:42px}.reader-dock button{padding:5px 8px}}
 .toolbar button{min-width:44px;min-height:44px}body[data-theme=night] #page-number{color:#cbbb9b}body[data-theme=night] .drawer .volume-heading{color:#d1b987}body[data-theme=night] dialog a{color:#e0bf7d}
+
+.binding .cover-action {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: .25rem .5rem;
+  background: transparent;
+  border: 0;
+  color: #f0d5a0;
+  font: inherit;
+  text-underline-offset: .22em;
+  text-decoration: underline;
+}

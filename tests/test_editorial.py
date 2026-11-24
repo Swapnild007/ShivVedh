@@ -55,7 +55,11 @@ class EditorialDraftTests(unittest.TestCase):
                          re.findall(r"^(\d+)\. (.+)$", plan, re.M))
         self.assertEqual(len({chapter["id"] for chapter in chapters}), 54)
         drafts = set()
+        reader_catalog = json.loads((ROOT / "data/catalog.json").read_text(encoding="utf-8"))
+        reader_anchors = {chapter["id"] for chapter in reader_catalog["chapters"]}
         for chapter in chapters:
+            if "readerAnchor" in chapter:
+                self.assertIn(chapter["readerAnchor"], reader_anchors)
             self.assertEqual(chapter["status"],
                              "source-draft-available" if chapter["drafts"] else "draft-required")
             drafts.update(chapter["drafts"])
