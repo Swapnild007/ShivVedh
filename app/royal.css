@@ -86,3 +86,35 @@ body[data-theme="light"] .section h2 { color: #3e3226; }
 body[data-theme="sepia"] .reader { background: #e2d0b5; }
 body[data-theme="sepia"] .page-frame { background: #f5e4c6; border-color: #be9c6f; }
 body[data-theme="sepia"] .section h2 { color: #684425; }
+
+::highlight(reader-highlights) { background: #f2ce74; color: #30251a; }
+.reader-dock { flex-wrap: wrap; }
+#annotation-form label { display: block; }
+#annotation-text {
+  box-sizing: border-box;
+  width: 100%;
+  padding: .6rem;
+  border: 1px solid #a58a67;
+  border-radius: 4px;
+  background: #fffaf0;
+  color: #3f3023;
+  font: inherit;
+  line-height: 1.55;
+  resize: vertical;
+}
+.annotation-selection {
+  border-left: 3px solid #ad723f;
+  padding-left: .7rem;
+  overflow-wrap: anywhere;
+}
+#annotation-list { list-style: none; padding: 0; }
+#annotation-list li {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: .6rem;
+  padding: .5rem 0;
+  border-top: 1px solid #ceba9d;
+}
+.annotation-entry { min-width: 0; text-align: start; overflow-wrap: anywhere; }
+.annotation-entry span { display: block; font-size: .88em; white-space: pre-wrap; }

@@ -36,8 +36,11 @@ Job logs for all nine runs show the catalog generator rejecting stale `data/cata
 
 - The opening now uses a locally cached 97 KiB WebP derivative of Sopan Patil’s 2017 photo from the Torna–Rajgad route. Attribution is in the contents and asset register. The sequence skips on deep links, after dismissal in the same tab, and when reduced motion is requested. Cache v7 includes the photograph.
 
+- Runs #68 and #69 passed the contents page and cover changes, including offline expansion of all nine volumes.
+- Reader preferences now include four themes plus persisted line spacing and width controls. Passage selection supports local highlights and personal notes. New browser assertions cover creating, restoring, reopening and removing an annotation.
+
 ## Next action
 
-Verify the Actions run for the v6 contents page and cover changes. Inspect the new screenshots and resolve failures before continuing with the cinematic opening, reader controls and reference pages. Continue chapter writing and evidence verification from the chapter map, beginning with gaps left by the original drafts and the research leads for chapters 30–36.
+Verify the latest Actions run for the v9 opening, reader controls and annotations. Inspect the new screenshots and resolve failures before continuing with chapter-level navigation, publication polish and the knowledge centre. Continue chapter writing and evidence verification from the chapter map, beginning with gaps left by the original drafts and the research leads for chapters 30–36.
 
 Still open: new publication design, complete manuscript and claim-level source review, full reader and knowledge centre features, physical Android and Edge validation, deployment verification and owner release approval. Current verdict: public release blocked.

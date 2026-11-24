@@ -45,6 +45,13 @@
   let marks = storage.get('shivvedh-bookmarks-v1', []);
   if (!Array.isArray(marks)) marks = [];
   marks = marks.filter(m => m && chapters.some(c => c.id === m.chapter) && Number.isFinite(m.offset));
+  let annotations = storage.get('shivvedh-annotations-v1', []);
+  if (!Array.isArray(annotations)) annotations = [];
+  annotations = annotations.filter(note => note && typeof note.id === 'string'
+    && chapters.some(section => section.id === note.chapter)
+    && Number.isInteger(note.start) && note.start >= 0
+    && Number.isInteger(note.end) && note.end >= note.start
+    && typeof note.quote === 'string' && typeof note.text === 'string');
   let catalog, claims, documents, bakhars, passages, policy;
   function rangeAt(offset) {
     for (const n of textNodes()) {
@@ -147,6 +154,7 @@
   function show(i, offset = 0) {
     chapter = i;
     leaf.replaceChildren(chapters[i].cloneNode(true));
+    paintHighlights();
     evidence();
     layout(offset);
   }
@@ -326,6 +334,108 @@
       list.append(b);
     }
     $('bookmarks-dialog').showModal();
+  };
+  function paintHighlights() {
+    if (!window.CSS?.highlights || typeof Highlight !== 'function') return;
+    const ranges = [];
+    for (const note of annotations) {
+      if (note.chapter !== chapters[chapter].id || note.start === note.end) continue;
+      const first = rangeAt(note.start);
+      const last = rangeAt(note.end - 1);
+      if (first && last) {
+        first.setEnd(last.endContainer, last.endOffset);
+        ranges.push(first);
+      }
+    }
+    CSS.highlights.set('reader-highlights', new Highlight(...ranges));
+  }
+  function selectedPassage() {
+    const selection = window.getSelection();
+    if (!selection || selection.isCollapsed || !selection.rangeCount) return null;
+    const range = selection.getRangeAt(0);
+    if (!leaf.contains(range.commonAncestorContainer)) return null;
+    const quote = range.toString();
+    if (!quote.trim() || quote.length > 2500) return null;
+    const before = document.createRange();
+    before.selectNodeContents(leaf);
+    before.setEnd(range.startContainer, range.startOffset);
+    const start = before.toString().length;
+    return {start, end: start + quote.length, quote};
+  }
+  const annotationDialog = $('annotation-dialog');
+  let pendingAnnotation;
+  function renderAnnotations() {
+    const list = $('annotation-list');
+    list.replaceChildren();
+    if (!annotations.length) {
+      const empty = document.createElement('li');
+      empty.textContent = 'जतन केलेली टिपणे अद्याप नाहीत.';
+      list.append(empty);
+    }
+    for (const note of annotations) {
+      const item = document.createElement('li');
+      const button = document.createElement('button');
+      button.className = 'annotation-entry';
+      const title = document.createElement('strong');
+      const index = chapters.findIndex(section => section.id === note.chapter);
+      title.textContent = chapters[index].querySelector('h2').textContent;
+      const content = document.createElement('span');
+      content.textContent = note.text || note.quote;
+      button.append(title, content);
+      button.onclick = () => {
+        annotationDialog.close();
+        show(index, note.start);
+        history.pushState(null, '', '#' + note.chapter);
+      };
+      const remove = document.createElement('button');
+      remove.textContent = 'काढा';
+      remove.setAttribute('aria-label', 'टिपण काढा');
+      remove.onclick = () => {
+        annotations = annotations.filter(entry => entry.id !== note.id);
+        storage.set('shivvedh-annotations-v1', annotations);
+        paintHighlights();
+        renderAnnotations();
+        $('annotation-text').focus();
+      };
+      item.append(button, remove);
+      list.append(item);
+    }
+  }
+  $('annotations').addEventListener('mousedown', event => {
+    if (selectedPassage()) event.preventDefault();
+  });
+  $('annotations').onclick = () => {
+    pendingAnnotation = selectedPassage();
+    if (!pendingAnnotation) {
+      const start = firstOffset();
+      pendingAnnotation = {start, end: start, quote: ''};
+    }
+    const selection = $('annotation-selection');
+    selection.hidden = !pendingAnnotation.quote;
+    selection.textContent = pendingAnnotation.quote;
+    $('annotation-text').value = '';
+    $('annotation-status').textContent = '';
+    renderAnnotations();
+    annotationDialog.showModal();
+    $('annotation-text').focus();
+  };
+  $('annotation-form').onsubmit = event => {
+    event.preventDefault();
+    const text = $('annotation-text').value.trim();
+    if (!pendingAnnotation.quote && !text) {
+      $('annotation-status').textContent = 'जतन करण्यासाठी मजकूर निवडा किंवा टिपण लिहा.';
+      return;
+    }
+    annotations.push({
+      id: crypto.randomUUID(),
+      chapter: chapters[chapter].id,
+      ...pendingAnnotation,
+      text,
+    });
+    storage.set('shivvedh-annotations-v1', annotations);
+    annotationDialog.close();
+    window.getSelection()?.removeAllRanges();
+    paintHighlights();
   };
   let searchRecords;
   const normalize = text => text.normalize('NFC').toLocaleLowerCase().replace(/[\u200c\u200d]/g, '');
