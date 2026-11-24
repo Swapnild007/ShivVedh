@@ -1,0 +1,88 @@
+{
+  "chapter": "SV-GC-31",
+  "manuscript": "manuscript/volume-06/chapter-31-konkan-maritime-economy.md",
+  "status": "editorial-draft",
+  "sources": {
+    "SARKAR-1920": {
+      "author": "Jadunath Sarkar",
+      "title": "Shivaji and His Times",
+      "edition": "Second edition, revised and enlarged. Longmans, Green and Co., 1920",
+      "type": "secondary-scholarship",
+      "access": "Consulted Wikisource transcriptions of printed pp. 299–300. The underlying factory-record volumes were not consulted."
+    },
+    "DIGHE-GAZETTEER": {
+      "author": "V. G. Dighe",
+      "title": "Maharashtra State Gazetteer, History — Maratha Period",
+      "edition": "Gazetteers Department hosted PDF, History Part III, Chapter 6",
+      "type": "government-published-secondary-synthesis",
+      "access": "Consulted the digital PDF text of printed pp. 124–125. Volume title-page publication date pending.",
+      "url": "https://gazetteers.maharashtra.gov.in/cultural.maharashtra.gov.in/english/gazetteer/History%20Part/History_III/chapter_6.pdf"
+    },
+    "KONKAN-SECTION-XI": {
+      "author": "Gazetteer chapter attribution pending title-page review",
+      "title": "History of the Konkan",
+      "edition": "Gazetteer of Bombay Presidency, Gazetteers Department digital PDF",
+      "type": "colonial-gazetteer-secondary-synthesis",
+      "access": "Consulted retrieved text of the opening of Section XI. Referenced works by Bruce, Orme and Hamilton were not independently consulted.",
+      "url": "https://www.gazetteers.maharashtra.gov.in/cultural.maharashtra.gov.in/english/gazetteer/Gazetteer%20of%20Bombay%20Presidency/history_of_the_konkan/section_11.pdf"
+    },
+    "RATNAGIRI-ENGLISH": {
+      "author": "Maharashtra Gazetteers Department",
+      "title": "Ratnagiri district gazetteer, The English",
+      "edition": "Gazetteers Department web edition",
+      "type": "district-gazetteer-secondary-synthesis",
+      "access": "Consulted web excerpt with Jaitapur reference. Publication particulars and older cited travel accounts await independent review.",
+      "url": "https://gazetteers.maharashtra.gov.in/cultural.maharashtra.gov.in/english/gazetteer/RATNAGIRI/his_english.html"
+    }
+  },
+  "claims": [
+    {
+      "id": "SV-E-601",
+      "claim": "राजापूरच्या सागरी व्यवहारात जैतापूरचे मुखमार्ग आणि मालचढाईचे स्थान म्हणून महत्त्व दिसते.",
+      "locators": [
+        {"source": "RATNAGIRI-ENGLISH", "section": "The English, Jaitapur note"},
+        {"source": "SARKAR-1920", "section": "Chapter XI, pp. 299–300", "url": "https://en.wikisource.org/wiki/Page:Shivaji_and_His_Times.djvu/320"}
+      ],
+      "status": "secondary-text-and-excerpt-consulted",
+      "conflict": "ऐतिहासिक खाडीची खोली, धक्क्यांची स्थाने आणि जहाजप्रकारानुसार थांबे स्वतंत्र नकाशांशी पडताळावेत."
+    },
+    {
+      "id": "SV-E-602",
+      "claim": "इंग्रजी कंपनीने दाभोळला व्यापाराचा विचार केला. मुक्त व्यापाऱ्यांची राजापूर वखार आणि कंपनीसाठी मसाल्यांचा व्यापार गॅझेटिअरमध्ये नोंदला आहे.",
+      "locators": [{"source": "KONKAN-SECTION-XI", "section": "Section XI, opening two paragraphs and notes 1–7"}],
+      "status": "published-secondary-text-consulted",
+      "conflict": "दाभोळमध्ये प्रयत्न झाला आणि कायमची वखार स्थापन झाली या दोन दाव्यांमध्ये फरक. गॅझेटिअरने दिलेला हॅमिल्टनचा दावा स्वतंत्र तपासावा."
+    },
+    {
+      "id": "SV-E-603",
+      "claim": "अफजलखानाशी संबंधित जहाजांवरील ताब्याबाबत दिघे आणि सरकार यांचे निवेदन वेगळे आहे.",
+      "locators": [
+        {"source": "DIGHE-GAZETTEER", "section": "Shivaji and the English, printed p. 124"},
+        {"source": "SARKAR-1920", "section": "Chapter XI, printed p. 299", "url": "https://en.wikisource.org/wiki/Page:Shivaji_and_His_Times.djvu/319"}
+      ],
+      "status": "disputed-unresolved",
+      "conflict": "संबंधित जहाजे, माल, हस्तक्षेपाचा काळ आणि अखेरीचा ताबा इंग्रजी कंपनीच्या दिनांकवार मूळ नोंदींशी जोडणे बाकी."
+    },
+    {
+      "id": "SV-E-604",
+      "claim": "१६६३ च्या मोखा व्यापाराच्या आणि १६६५ च्या फारस, बसरा व मोखा मार्गांच्या बातम्या सरकार यांनी सुरतेच्या नोंदींच्या आधारे दिल्या आहेत.",
+      "locators": [{"source": "SARKAR-1920", "section": "Chapter XI, printed pp. 299–300; cites F. R. Surat", "url": "https://en.wikisource.org/wiki/Page:Shivaji_and_His_Times.djvu/320"}],
+      "status": "secondary-text-consulted",
+      "conflict": "अहवालातील बंदर व जहाजांची संख्या संपूर्ण आणि स्वतंत्र सत्यापित वार्षिक हिशेब नाही."
+    },
+    {
+      "id": "SV-E-605",
+      "claim": "१६६९ च्या कारवार किनाऱ्यावरील वादळात मालवाहू जहाजे व तांदळाच्या नौका गमावल्याचे वृत्त सरकार यांनी नोंदले आहे.",
+      "locators": [{"source": "SARKAR-1920", "section": "Chapter XI, printed p. 300, paragraph preceding §4", "url": "https://en.wikisource.org/wiki/Page:Shivaji_and_His_Times.djvu/320"}],
+      "status": "secondary-text-consulted",
+      "conflict": "जहाजांची संख्या, माल आणि मालकी स्वतंत्र पत्रांशी पुष्टी करावी."
+    },
+    {
+      "id": "SV-E-606",
+      "claim": "राजापूरचे संघर्ष आणि १६७४ मधील इंग्रजी व्यापारी दूतावास हे संबंधांचे भिन्न प्रसंग म्हणून दिघे मांडतात.",
+      "locators": [{"source": "DIGHE-GAZETTEER", "section": "Shivaji and the English, printed pp. 124–125"}],
+      "status": "published-secondary-text-consulted",
+      "conflict": "राजापूर प्रकरणाचा नेमका कालक्रम, कारवाईची कारणमीमांसा आणि व्यापारी अटी स्वतंत्र प्राथमिक मजकुरावरून तपासाव्यात."
+    }
+  ]
+}

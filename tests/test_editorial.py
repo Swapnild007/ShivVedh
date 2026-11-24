@@ -66,19 +66,25 @@ class EditorialDraftTests(unittest.TestCase):
         self.assertEqual(drafts, {path.relative_to(manuscript).as_posix()
                                   for path in manuscript.glob("volume-*/*.md")})
 
-    def test_kondana_claims_resolve_to_consulted_editions(self):
-        data = json.loads((ROOT / "research/volume-05/renewal-1670-claims.json").read_text(encoding="utf-8"))
-        draft = (ROOT / data["manuscript"]).read_text(encoding="utf-8")
-        ids = [claim["id"] for claim in data["claims"]]
-        self.assertEqual(set(ids), set(re.findall(r"SV-E-5[0-9]{2}", draft)))
-        self.assertEqual(len(ids), len(set(ids)))
-        self.assertEqual(data["status"], "editorial-draft")
-        for claim in data["claims"]:
-            self.assertTrue(claim["conflict"])
-            self.assertTrue(claim["locators"])
-            for locator in claim["locators"]:
-                self.assertIn(locator["source"], data["sources"])
-                self.assertTrue(locator["section"])
+    def test_chapter_claims_resolve_to_consulted_editions(self):
+        registers = (
+            "research/volume-05/renewal-1670-claims.json",
+            "research/volume-06/konkan-maritime-claims.json",
+        )
+        for register in registers:
+            with self.subTest(register=register):
+                data = json.loads((ROOT / register).read_text(encoding="utf-8"))
+                draft = (ROOT / data["manuscript"]).read_text(encoding="utf-8")
+                ids = [claim["id"] for claim in data["claims"]]
+                self.assertEqual(set(ids), set(re.findall(r"SV-E-[56][0-9]{2}", draft)))
+                self.assertEqual(len(ids), len(set(ids)))
+                self.assertEqual(data["status"], "editorial-draft")
+                for claim in data["claims"]:
+                    self.assertTrue(claim["conflict"])
+                    self.assertTrue(claim["locators"])
+                    for locator in claim["locators"]:
+                        self.assertIn(locator["source"], data["sources"])
+                        self.assertTrue(locator["section"])
 
     def test_volume_one_remains_present(self):
         for name in ("chapter-01-deccan.md", "chapter-02-shivneri.md",

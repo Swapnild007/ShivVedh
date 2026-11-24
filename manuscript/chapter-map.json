@@ -326,8 +326,10 @@
           "id": "SV-GC-31",
           "number": 31,
           "title": "कोकण : बंदरे, जहाजे आणि सागरी अर्थव्यवस्था",
-          "status": "draft-required",
-          "drafts": []
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-06/chapter-31-konkan-maritime-economy.md"
+          ]
         },
         {
           "id": "SV-GC-32",
