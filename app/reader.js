@@ -45,8 +45,6 @@
   let marks = storage.get('shivvedh-bookmarks-v1', []);
   if (!Array.isArray(marks)) marks = [];
   marks = marks.filter(m => m && chapters.some(c => c.id === m.chapter) && Number.isFinite(m.offset));
-  let theme = storage.get('shivvedh-theme', 'parchment');
-  document.body.dataset.theme = theme === 'night' ? 'night' : 'parchment';
   let catalog, claims, documents, bakhars, passages, policy;
   function rangeAt(offset) {
     for (const n of textNodes()) {
@@ -278,11 +276,36 @@
     $('open').focus();
   };
   $('preferences').onclick = () => $('settings-dialog').showModal();
-  document.querySelectorAll('[data-theme]').forEach(b => b.onclick = () => {
-    document.body.dataset.theme = b.dataset.theme;
-    storage.set('shivvedh-theme', b.dataset.theme);
-    document.querySelectorAll('[data-theme]').forEach(t => t.setAttribute('aria-pressed', String(t === b)));
-  });
+  const themeButtons = [...document.querySelectorAll('#settings-dialog [data-theme]')];
+  function setTheme(theme) {
+    document.body.dataset.theme = theme;
+    for (const button of themeButtons) {
+      button.setAttribute('aria-pressed', String(button.dataset.theme === theme));
+    }
+  }
+  const savedTheme = storage.get('shivvedh-theme', 'parchment');
+  setTheme(themeButtons.some(button => button.dataset.theme === savedTheme) ? savedTheme : 'parchment');
+  for (const button of themeButtons) {
+    button.onclick = () => {
+      setTheme(button.dataset.theme);
+      storage.set('shivvedh-theme', button.dataset.theme);
+    };
+  }
+  for (const [id, property] of [['line-spacing', 'lineSpacing'], ['reading-width', 'readingWidth']]) {
+    const control = $(id);
+    const key = 'shivvedh-' + id;
+    const savedValue = storage.get(key, 'standard');
+    control.value = [...control.options].some(option => option.value === savedValue)
+      ? savedValue
+      : 'standard';
+    reader.dataset[property] = control.value;
+    control.onchange = () => {
+      const offset = firstOffset();
+      reader.dataset[property] = control.value;
+      storage.set(key, control.value);
+      layout(offset);
+    };
+  }
   $('focus-mode').onclick = () => {
     const active = document.body.classList.toggle('quiet');
     $('focus-mode').setAttribute('aria-pressed', String(active));

@@ -18,7 +18,16 @@ const fs=require('node:fs');
  await p.screenshot({animations:'disabled',path:`test-results/royal/${name}-chapter.png`});
  await p.click('#bookmark');assert.equal(await p.getAttribute('#bookmark','aria-pressed'),'true');await p.reload();await p.waitForTimeout(250);assert.equal(await p.getAttribute('#bookmark','aria-pressed'),'true');
  await p.click('#next');await p.click('#bookmark');assert.equal(await p.getAttribute('#bookmark','aria-pressed'),'true');await p.click('#bookmark');assert.equal(await p.getAttribute('#bookmark','aria-pressed'),'false');await p.click('#bookmarks');await p.click('#bookmark-list button');assert.equal(await p.getAttribute('#bookmark','aria-pressed'),'true');
- await p.click('#preferences');await p.click('[data-theme="night"]');await p.locator('#settings-dialog .sheet-close').click();await p.reload();assert.equal(await p.getAttribute('body','data-theme'),'night');
+ await p.click('#preferences');
+ for (const theme of ['light','sepia','parchment','night']) {
+   await p.click(`[data-theme="${theme}"]`);
+   assert.equal(await p.getAttribute('body','data-theme'),theme);
+ }
+ await p.selectOption('#line-spacing','relaxed');await p.selectOption('#reading-width','narrow');
+ await p.locator('#settings-dialog .sheet-close').click();await p.reload();
+ assert.equal(await p.getAttribute('body','data-theme'),'night');
+ assert.equal(await p.getAttribute('#reader','data-line-spacing'),'relaxed');
+ assert.equal(await p.getAttribute('#reader','data-reading-width'),'narrow');
  await p.click('#reader-search');await p.fill('#granth-query','प्रतापगड');await p.waitForSelector('#granth-results a');assert(await p.locator('#granth-results a').count()>0);await p.fill('#granth-query','zznotfound');assert.equal(await p.locator('#granth-results a').count(),0);await p.fill('#granth-query','शिवनेरी');await p.locator('#granth-results a').first().click();
  await p.click('#show-citations');await p.locator('#citations h2').waitFor();await p.click('#close-citations');
  await p.click('#next');await p.screenshot({animations:'disabled',path:`test-results/royal/${name}-reader.png`});
