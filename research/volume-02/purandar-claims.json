@@ -1,0 +1,28 @@
+{
+  "chapter": "manuscript/volume-02/chapter-05-purandar.md",
+  "sourceLeads": [
+    "Jadunath Sarkar, Shivaji and His Times, 2nd ed. 1920, Chapter II pp19-54; exact passage not located",
+    "Surendranath Sen, Siva Chhatrapati, 1920, contents p165 (later bakhar extract)"
+  ],
+  "claims": [
+    {
+      "id": "SV-E-204",
+      "topic": "Purandar early control chronology",
+      "status": "lead",
+      "next": "Locate dated records and precise page"
+    },
+    {
+      "id": "SV-E-205",
+      "topic": "Local fort-holder family narratives",
+      "status": "unverified",
+      "next": "Compare versions; do not invent dialogue"
+    },
+    {
+      "id": "SV-E-206",
+      "topic": "Conflicting event sequence",
+      "status": "lead",
+      "next": "Record variant dates and calendar basis"
+    }
+  ],
+  "note": "Chapter-level locator is a research lead, not evidence of an event."
+}
