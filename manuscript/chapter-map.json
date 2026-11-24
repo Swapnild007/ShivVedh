@@ -296,8 +296,10 @@
           "id": "SV-GC-30",
           "number": 30,
           "title": "१६७० : कोंढाणा, गडांची पुनर्प्राप्ती आणि संघर्षाचा नवा टप्पा",
-          "status": "draft-required",
-          "drafts": []
+          "status": "source-draft-available",
+          "drafts": [
+            "volume-05/chapter-30-renewal-1670.md"
+          ]
         }
       ]
     },

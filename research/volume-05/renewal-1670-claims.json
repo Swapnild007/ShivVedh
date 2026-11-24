@@ -1,0 +1,64 @@
+{
+  "chapter": "SV-GC-30",
+  "manuscript": "manuscript/volume-05/chapter-30-renewal-1670.md",
+  "status": "editorial-draft",
+  "sources": {
+    "SARKAR-1920": {
+      "author": "Jadunath Sarkar",
+      "title": "Shivaji and His Times",
+      "edition": "Second edition, revised and enlarged. Longmans, Green and Co., 1920",
+      "type": "secondary-scholarship",
+      "access": "Consulted Wikisource page transcriptions for printed pp. 187–189. Transcriptions are marked proofread and await Wikisource validation.",
+      "pages": {
+        "187": "https://en.wikisource.org/wiki/Page:Shivaji_and_His_Times.djvu/207",
+        "188": "https://en.wikisource.org/wiki/Page:Shivaji_and_His_Times.djvu/208",
+        "189": "https://en.wikisource.org/wiki/Page:Shivaji_and_His_Times.djvu/209"
+      }
+    },
+    "VISHWAKOSH-SINHAGAD": {
+      "author": "Author attribution pending direct page access",
+      "title": "सिंहगड",
+      "edition": "मराठी विश्वकोश प्रथमावृत्ती",
+      "type": "encyclopedia",
+      "access": "Search excerpt consulted. Full article and attribution pending.",
+      "url": "https://vishwakosh.marathi.gov.in/25783/"
+    }
+  },
+  "claims": [
+    {
+      "id": "SV-E-501",
+      "claim": "कोंढाणा पुरंदरच्या तहानंतर मुघलांच्या ताब्यात गेला.",
+      "locators": [{"source": "SARKAR-1920", "section": "Chapter VII §3, p. 188"}, {"source": "VISHWAKOSH-SINHAGAD", "section": "प्रारंभीचा ऐतिहासिक परिच्छेद, शोधउतारा"}],
+      "status": "secondary-text-consulted",
+      "conflict": "तहाच्या किल्लेयादीची मूळ आवृत्ती आणि प्रत्यक्ष ताबाबदलाची स्वतंत्र दिनांकनोंद तपासावी."
+    },
+    {
+      "id": "SV-E-502",
+      "claim": "दख्खनमधील सरदारांनी सेवा सोडल्याची बातमी डिसेंबर १६६९ मध्ये दरबारात आली. जानेवारी १६७० मध्ये दख्खनकडे अधिकाऱ्यांना हलवण्याचे आदेश नोंदले आहेत.",
+      "locators": [{"source": "SARKAR-1920", "section": "Chapter VII §3, p. 187; cites Akhbarat, year 12"}],
+      "status": "secondary-text-consulted",
+      "conflict": "शत्रुत्व पुन्हा सुरू झाल्याचा नेमका क्षण लेखकानेही कालमर्यादेत मांडला आहे. मूळ आखबार प्रत पाहिलेली नाही."
+    },
+    {
+      "id": "SV-E-503",
+      "claim": "तानाजी मालुसरे गड घेताना मारले गेले. सरकार यांच्या वर्णनात उदयभान आणि सूर्याजी यांच्या भूमिका येतात.",
+      "locators": [{"source": "SARKAR-1920", "section": "Chapter VII §3, pp. 188–189; account of Kondana"}],
+      "status": "secondary-text-consulted",
+      "conflict": "नेमका दिनांक, प्रवेशमार्ग, लढाईची क्रमवारी आणि जीवितहानी यांचा स्वतंत्र स्रोतताळा बाकी. सभासद बखर आणि जेधे शकावली प्रत्यक्ष तपासाव्यात."
+    },
+    {
+      "id": "SV-E-504",
+      "claim": "सरकार लढाईनंतरचे नामकरण सांगतात. विश्वकोश उताऱ्यात गडाच्या कागदोपत्री नावांचे अनेक रूपे येतात.",
+      "locators": [{"source": "SARKAR-1920", "section": "Chapter VII §3, p. 189"}, {"source": "VISHWAKOSH-SINHAGAD", "section": "नामोल्लेख, शोधउतारा"}],
+      "status": "disputed-unresolved",
+      "conflict": "१६७० पूर्वी सिंहगड नाव वापरल्याचे समकालीन दिनांकित दस्तऐवज शोधावेत. अनेक नावांचा उल्लेख एकट्याने नामकरणाचा काल ठरवत नाही."
+    },
+    {
+      "id": "SV-E-505",
+      "claim": "मार्चच्या सुरुवातीला पुरंदर मिळाल्याचे आणि माहुलीवरील पहिला प्रयत्न अयशस्वी झाल्याचे सरकार लिहितात.",
+      "locators": [{"source": "SARKAR-1920", "section": "Chapter VII §3, p. 189; cites M. A. 99, Dil. 65 and Surat correspondence"}],
+      "status": "secondary-text-consulted",
+      "conflict": "फारसी ग्रंथांच्या आवृत्त्या आणि सुरतेच्या पत्रव्यवहारातील लेखकाचा संदर्भ स्वतंत्र पाहणे बाकी. पहिला माहुली प्रयत्न आणि अंतिम ताबा यांचा कालक्रम वेगळा ठेवावा."
+    }
+  ]
+}
