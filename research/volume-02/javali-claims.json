@@ -1,0 +1,34 @@
+{
+  "chapter": "manuscript/volume-02/chapter-06-javali.md",
+  "sourceLeads": [
+    "Jadunath Sarkar, Shivaji and His Times, 2nd ed. 1920, contents pp43-50",
+    "Surendranath Sen, Siva Chhatrapati, 1920, contents p168 (later bakhar extract)"
+  ],
+  "claims": [
+    {
+      "id": "SV-E-207",
+      "topic": "More family context",
+      "status": "lead",
+      "next": "Locate family records and precise citations"
+    },
+    {
+      "id": "SV-E-208",
+      "topic": "Disputed Jawali events and motives",
+      "status": "disputed-unresolved",
+      "next": "Compare independent accounts"
+    },
+    {
+      "id": "SV-E-209",
+      "topic": "Regional consequences",
+      "status": "lead",
+      "next": "Distinguish interpretation from evidence"
+    },
+    {
+      "id": "SV-E-210",
+      "topic": "Jawali and Pratapgad chronology",
+      "status": "lead",
+      "next": "Seek dated fort records"
+    }
+  ],
+  "note": "Do not treat the 1920 historian's account as primary authentication."
+}

@@ -8,7 +8,7 @@ permissions:
   contents: read
 jobs:
   integrity-and-browser:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
         with:
@@ -23,6 +23,8 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: npm test
+      - name: Verify Pages artifact packaging
+        run: python3 scripts/package_pages.py "$RUNNER_TEMP/shivvedh-pages"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

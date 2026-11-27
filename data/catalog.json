@@ -13,28 +13,38 @@
     },
     {
       "id": "SV-V-02",
-      "title": "द्वितीय खंड · स्वराज्याची पायाभरणी",
+      "title": "प्रथम खंड · नवा अध्याय",
       "order": 2
     },
     {
       "id": "SV-V-03",
-      "title": "तृतीय खंड · संघर्ष आणि सामर्थ्य",
+      "title": "द्वितीय खंड · स्वराज्याची पायाभरणी",
       "order": 3
     },
     {
       "id": "SV-V-04",
-      "title": "चतुर्थ खंड · संकटातून पुनरुत्थान",
+      "title": "तृतीय खंड · नवा अध्याय",
       "order": 4
     },
     {
       "id": "SV-V-05",
-      "title": "पंचम खंड · सार्वभौम स्वराज्य",
+      "title": "तृतीय खंड · संघर्ष आणि सामर्थ्य",
       "order": 5
     },
     {
       "id": "SV-V-06",
-      "title": "षष्ठ खंड · दिग्विजय आणि वारसा",
+      "title": "चतुर्थ खंड · संकटातून पुनरुत्थान",
       "order": 6
+    },
+    {
+      "id": "SV-V-07",
+      "title": "पंचम खंड · सार्वभौम स्वराज्य",
+      "order": 7
+    },
+    {
+      "id": "SV-V-08",
+      "title": "षष्ठ खंड · दिग्विजय आणि वारसा",
+      "order": 8
     }
   ],
   "chapters": [
@@ -81,7 +91,7 @@
     {
       "id": "two-courts",
       "title": "दोन दरबारांच्या सावलीत",
-      "volumeId": "SV-V-01",
+      "volumeId": "SV-V-02",
       "order": 5,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
@@ -97,7 +107,7 @@
     {
       "id": "raireshwar",
       "title": "स्वराज्याचा संकल्प : रायरेश्वर आणि रोहिडखोरे",
-      "volumeId": "SV-V-01",
+      "volumeId": "SV-V-02",
       "order": 7,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
@@ -105,7 +115,7 @@
     {
       "id": "torna",
       "title": "गडांच्या साक्षीने",
-      "volumeId": "SV-V-02",
+      "volumeId": "SV-V-03",
       "order": 8,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
@@ -113,7 +123,7 @@
     {
       "id": "javli",
       "title": "जावळीचा कठीण प्रदेश",
-      "volumeId": "SV-V-02",
+      "volumeId": "SV-V-03",
       "order": 9,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
@@ -121,7 +131,7 @@
     {
       "id": "pratapgad",
       "title": "प्रतापगडाच्या सावलीत",
-      "volumeId": "SV-V-03",
+      "volumeId": "SV-V-04",
       "order": 10,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
@@ -129,7 +139,7 @@
     {
       "id": "afzal",
       "title": "प्रतापगडाखालील निर्णायक भेट",
-      "volumeId": "SV-V-03",
+      "volumeId": "SV-V-05",
       "order": 11,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
@@ -137,7 +147,7 @@
     {
       "id": "panhala",
       "title": "पन्हाळ्यापासून विशाळगडापर्यंत",
-      "volumeId": "SV-V-03",
+      "volumeId": "SV-V-05",
       "order": 12,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
@@ -145,7 +155,7 @@
     {
       "id": "shaista",
       "title": "लालमहालाचा धक्का आणि समुद्राकडे नजर",
-      "volumeId": "SV-V-03",
+      "volumeId": "SV-V-05",
       "order": 13,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
@@ -153,7 +163,7 @@
     {
       "id": "agra",
       "title": "पुरंदर ते आग्रा",
-      "volumeId": "SV-V-04",
+      "volumeId": "SV-V-06",
       "order": 14,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
@@ -161,7 +171,7 @@
     {
       "id": "renewal",
       "title": "पुन्हा उभारी",
-      "volumeId": "SV-V-04",
+      "volumeId": "SV-V-06",
       "order": 15,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
@@ -169,7 +179,7 @@
     {
       "id": "coronation",
       "title": "रायगडावरचे सार्वभौमत्व",
-      "volumeId": "SV-V-05",
+      "volumeId": "SV-V-07",
       "order": 16,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"
@@ -177,7 +187,7 @@
     {
       "id": "south",
       "title": "दक्षिणेकडील मोहीम आणि अखेरची वर्षे",
-      "volumeId": "SV-V-06",
+      "volumeId": "SV-V-08",
       "order": 17,
       "editorialStatus": "editorial-narrative",
       "citationStatus": "review-pending"

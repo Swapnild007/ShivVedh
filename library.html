@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="mr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6efdf">
+  <title>अनुक्रमणिका · शिववेध</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="app/fonts.css">
+  <link rel="stylesheet" href="app/library.css">
+  <script defer src="app/library.js"></script>
+</head>
+<body>
+  <a class="skip" href="#volumes">खंडांकडे जा</a>
+  <header class="masthead">
+    <a href="index.html">शिववेध</a>
+    <nav aria-label="ग्रंथाचे विभाग">
+      <a href="search.html">शोध</a>
+      <a href="knowledge.html">संदर्भदालन</a>
+    </nav>
+  </header>
+  <main>
+    <h1>अनुक्रमणिका</h1>
+    <p class="subtitle">छत्रपती शिवाजी महाराज : जीवन, स्वराज्य आणि युग</p>
+    <div id="volumes" tabindex="-1" aria-label="नऊ खंड"></div>
+    <p id="library-status" role="status">अनुक्रमणिका उघडत आहे…</p>
+    <noscript><p><a href="index.html#preface">वाचन आवृत्ती उघडा</a></p></noscript>
+    <footer class="image-credit">प्रारंभदृश्य: <a href="https://commons.wikimedia.org/wiki/File:Way_to_Rajgad_from_Torna.jpg">तोरणा ते राजगड</a>, सोपान पाटील (२०१७) · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></footer>
+  </main>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+    }
+  </script>
+</body>
+</html>

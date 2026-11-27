@@ -42,6 +42,16 @@
     pages = 1,
     stride = 0,
     layingOut = false;
+  let marks = storage.get('shivvedh-bookmarks-v1', []);
+  if (!Array.isArray(marks)) marks = [];
+  marks = marks.filter(m => m && chapters.some(c => c.id === m.chapter) && Number.isFinite(m.offset));
+  let annotations = storage.get('shivvedh-annotations-v1', []);
+  if (!Array.isArray(annotations)) annotations = [];
+  annotations = annotations.filter(note => note && typeof note.id === 'string'
+    && chapters.some(section => section.id === note.chapter)
+    && Number.isInteger(note.start) && note.start >= 0
+    && Number.isInteger(note.end) && note.end >= note.start
+    && typeof note.quote === 'string' && typeof note.text === 'string');
   let catalog, claims, documents, bakhars, passages, policy;
   function rangeAt(offset) {
     for (const n of textNodes()) {
@@ -63,7 +73,6 @@
           Math.floor(
             (r.getBoundingClientRect().left -
               leaf.getBoundingClientRect().left +
-              page * stride +
               1) /
               stride,
           ),
@@ -89,11 +98,12 @@
   function persist() {
     saved = { chapter: chapters[chapter].id, offset: firstOffset() };
     storage.set('shivvedh-position-v2', saved);
+    $('resume-reading').hidden = false;
   }
   function paint(save = true) {
     leaf.style.transform = `translateX(${-page * stride}px)`;
     $('page-number').textContent =
-      `अध्याय ${chapter + 1} / ${chapters.length} · पृष्ठ ${page + 1} / ${pages}`;
+      `विभाग ${chapter + 1} / ${chapters.length} · पृष्ठ ${page + 1} / ${pages}`;
     $('previous').disabled = chapter === 0 && page === 0;
     $('next').disabled = chapter === chapters.length - 1 && page === pages - 1;
     const total = chapters.reduce((n, c) => n + c.textContent.length, 0),
@@ -111,6 +121,9 @@
     $('chapter-title').textContent =
       chapters[chapter].querySelector('h2')?.textContent || '';
     if (save) persist();
+    const marked = marks.some(m => m.chapter === chapters[chapter].id && pageOf(m.offset) === page);
+    $('bookmark').setAttribute('aria-pressed', String(marked));
+    $('bookmark').textContent = marked ? 'खूण काढा' : 'खूण ठेवा';
     drawer.querySelectorAll('[data-target]').forEach((b) => {
       if (b.dataset.target === chapters[chapter].id)
         b.setAttribute('aria-current', 'page');
@@ -141,6 +154,7 @@
   function show(i, offset = 0) {
     chapter = i;
     leaf.replaceChildren(chapters[i].cloneNode(true));
+    paintHighlights();
     evidence();
     layout(offset);
   }
@@ -155,6 +169,7 @@
       paint();
     } else if (chapter + delta >= 0 && chapter + delta < chapters.length) {
       show(chapter + delta);
+      history.pushState(null, '', '#' + chapters[chapter].id);
       if (delta < 0) {
         page = pages - 1;
         paint();
@@ -175,6 +190,7 @@
       return;
     }
     const i = chapters.findIndex((c) => c.id === slug);
+    if (!slug && !initial) { reader.hidden = true; cover.hidden = false; return; }
     if (i >= 0) {
       chapter = i;
       cover.hidden = true;
@@ -247,13 +263,234 @@
       add('p', 'जतन केलेली पडताळणी नोंद: ' + p.status);
     }
   }
-  $('open').onclick = open;
+  function openFromCover() {
+    cover.hidden = true;
+    reader.hidden = false;
+    show(0);
+    history.pushState(null, '', '#' + chapters[chapter].id);
+  }
+  const resumeReading = $('resume-reading');
+  resumeReading.hidden = !chapters.some(c => c.id === saved.chapter);
+  resumeReading.onclick = () => {
+    open();
+    history.pushState(null, '', '#' + chapters[chapter].id);
+  };
+  $('open').onclick = openFromCover;
   $('home').onclick = () => {
     reader.hidden = true;
     cover.hidden = false;
-    history.replaceState(null, '', location.pathname + location.search);
+    resumeReading.hidden = !saved.chapter;
+    history.pushState(null, '', location.pathname + location.search);
     $('open').focus();
   };
+  $('preferences').onclick = () => $('settings-dialog').showModal();
+  const themeButtons = [...document.querySelectorAll('#settings-dialog [data-theme]')];
+  function setTheme(theme) {
+    document.body.dataset.theme = theme;
+    for (const button of themeButtons) {
+      button.setAttribute('aria-pressed', String(button.dataset.theme === theme));
+    }
+  }
+  const savedTheme = storage.get('shivvedh-theme', 'parchment');
+  setTheme(themeButtons.some(button => button.dataset.theme === savedTheme) ? savedTheme : 'parchment');
+  for (const button of themeButtons) {
+    button.onclick = () => {
+      setTheme(button.dataset.theme);
+      storage.set('shivvedh-theme', button.dataset.theme);
+    };
+  }
+  for (const [id, property] of [['line-spacing', 'lineSpacing'], ['reading-width', 'readingWidth']]) {
+    const control = $(id);
+    const key = 'shivvedh-' + id;
+    const savedValue = storage.get(key, 'standard');
+    control.value = [...control.options].some(option => option.value === savedValue)
+      ? savedValue
+      : 'standard';
+    reader.dataset[property] = control.value;
+    control.onchange = () => {
+      const offset = firstOffset();
+      reader.dataset[property] = control.value;
+      storage.set(key, control.value);
+      layout(offset);
+    };
+  }
+  $('focus-mode').onclick = () => {
+    const active = document.body.classList.toggle('quiet');
+    $('focus-mode').setAttribute('aria-pressed', String(active));
+    $('focus-mode').textContent = active ? 'नियंत्रणे दाखवा' : 'निवांत वाचन';
+  };
+  $('bookmark').onclick = () => {
+    const matching = m => m.chapter === chapters[chapter].id && pageOf(m.offset) === page;
+    if (marks.some(matching)) marks = marks.filter(m => !matching(m));
+    else marks.push({chapter: chapters[chapter].id, offset: firstOffset(), title: $('chapter-title').textContent});
+    storage.set('shivvedh-bookmarks-v1', marks); paint(false);
+  };
+  $('bookmarks').onclick = () => {
+    const list = $('bookmark-list'); list.replaceChildren();
+    if (!marks.length) list.textContent = 'अद्याप वाचनखुणा नाहीत. वाचताना “खूण ठेवा” निवडा.';
+    for (const m of marks) {
+      const b = document.createElement('button'); b.className = 'result'; b.textContent = m.title || m.chapter;
+      b.onclick = () => { $('bookmarks-dialog').close(); show(chapters.findIndex(c => c.id === m.chapter), m.offset); history.pushState(null, '', '#' + m.chapter); };
+      list.append(b);
+    }
+    $('bookmarks-dialog').showModal();
+  };
+  function paintHighlights() {
+    if (!window.CSS?.highlights || typeof Highlight !== 'function') return;
+    const ranges = [];
+    for (const note of annotations) {
+      if (note.chapter !== chapters[chapter].id || note.start === note.end) continue;
+      const first = rangeAt(note.start);
+      const last = rangeAt(note.end - 1);
+      if (first && last) {
+        first.setEnd(last.endContainer, last.endOffset);
+        ranges.push(first);
+      }
+    }
+    CSS.highlights.set('reader-highlights', new Highlight(...ranges));
+  }
+  function selectedPassage() {
+    const selection = window.getSelection();
+    if (!selection || selection.isCollapsed || !selection.rangeCount) return null;
+    const range = selection.getRangeAt(0);
+    if (!leaf.contains(range.commonAncestorContainer)) return null;
+    const quote = range.toString();
+    if (!quote.trim() || quote.length > 2500) return null;
+    const before = document.createRange();
+    before.selectNodeContents(leaf);
+    before.setEnd(range.startContainer, range.startOffset);
+    const start = before.toString().length;
+    return {start, end: start + quote.length, quote};
+  }
+  const annotationDialog = $('annotation-dialog');
+  let pendingAnnotation;
+  function renderAnnotations() {
+    const list = $('annotation-list');
+    list.replaceChildren();
+    if (!annotations.length) {
+      const empty = document.createElement('li');
+      empty.textContent = 'जतन केलेली टिपणे अद्याप नाहीत.';
+      list.append(empty);
+    }
+    for (const note of annotations) {
+      const item = document.createElement('li');
+      const button = document.createElement('button');
+      button.className = 'annotation-entry';
+      const title = document.createElement('strong');
+      const index = chapters.findIndex(section => section.id === note.chapter);
+      title.textContent = chapters[index].querySelector('h2').textContent;
+      const content = document.createElement('span');
+      content.textContent = note.text || note.quote;
+      button.append(title, content);
+      button.onclick = () => {
+        annotationDialog.close();
+        show(index, note.start);
+        history.pushState(null, '', '#' + note.chapter);
+      };
+      const remove = document.createElement('button');
+      remove.textContent = 'काढा';
+      remove.setAttribute('aria-label', 'टिपण काढा');
+      remove.onclick = () => {
+        annotations = annotations.filter(entry => entry.id !== note.id);
+        storage.set('shivvedh-annotations-v1', annotations);
+        paintHighlights();
+        renderAnnotations();
+        $('annotation-text').focus();
+      };
+      item.append(button, remove);
+      list.append(item);
+    }
+  }
+  $('annotations').addEventListener('mousedown', event => {
+    if (selectedPassage()) event.preventDefault();
+  });
+  $('annotations').onclick = () => {
+    pendingAnnotation = selectedPassage();
+    if (!pendingAnnotation) {
+      const start = firstOffset();
+      pendingAnnotation = {start, end: start, quote: ''};
+    }
+    const selection = $('annotation-selection');
+    selection.hidden = !pendingAnnotation.quote;
+    selection.textContent = pendingAnnotation.quote;
+    $('annotation-text').value = '';
+    $('annotation-status').textContent = '';
+    renderAnnotations();
+    annotationDialog.showModal();
+    $('annotation-text').focus();
+  };
+  $('annotation-form').onsubmit = event => {
+    event.preventDefault();
+    const text = $('annotation-text').value.trim();
+    if (!pendingAnnotation.quote && !text) {
+      $('annotation-status').textContent = 'जतन करण्यासाठी मजकूर निवडा किंवा टिपण लिहा.';
+      return;
+    }
+    annotations.push({
+      id: crypto.randomUUID(),
+      chapter: chapters[chapter].id,
+      ...pendingAnnotation,
+      text,
+    });
+    storage.set('shivvedh-annotations-v1', annotations);
+    annotationDialog.close();
+    window.getSelection()?.removeAllRanges();
+    paintHighlights();
+  };
+  let searchRecords;
+  const normalize = text => text.normalize('NFC').toLocaleLowerCase().replace(/[\u200c\u200d]/g, '');
+  function search() {
+    const q = normalize($('granth-query').value.trim());
+    const results = $('granth-results'); results.replaceChildren();
+    if (!searchRecords) return;
+    const chapterOnly = $('granth-scope').value === 'chapter';
+    const matches = q ? searchRecords.filter(record => (
+      (!chapterOnly || record.id === chapters[chapter].id) &&
+      normalize(record.title + ' ' + record.text).includes(q)
+    )) : [];
+    $('search-status').textContent = q ? `${matches.length} नोंदी` : 'शोधण्यासाठी मराठी शब्द लिहा.';
+    for (const r of matches) {
+      const a = document.createElement('a'); a.className = 'result'; a.href = r.url;
+      const title = document.createElement('strong'); title.textContent = r.title;
+      const kind = document.createElement('small'); kind.textContent = (r.kind === 'chapter' ? 'ग्रंथातील कथन' : 'संदर्भ सामग्री') + ' · ' + (r.status || 'पडताळणी स्थिती स्रोत नोंदीत पहा');
+      const excerpt = document.createElement('p'); const at = normalize(r.text).indexOf(q); excerpt.textContent = r.text.slice(Math.max(0, at - 45), Math.max(0, at - 45) + 180) + '…';
+      a.append(kind, title, excerpt);
+      const chapterIndex = chapters.findIndex(c => c.id === r.id);
+      if (r.kind === 'chapter' && chapterIndex >= 0) {
+        a.onclick = event => {
+          if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+          event.preventDefault();
+          $('search-dialog').close();
+          show(chapterIndex);
+          history.pushState(null, '', '#' + r.id);
+        };
+      }
+      results.append(a);
+    }
+  }
+  $('granth-query').oninput = search;
+  $('granth-scope').onchange = search;
+  $('reader-search').onclick = async () => {
+    $('search-dialog').showModal(); $('granth-query').focus();
+    if (!searchRecords) {
+      $('search-status').textContent = 'शोध नोंदी लोड होत आहेत…';
+      try { const r = await fetch('data/search-index.json'); if (!r.ok) throw Error(); searchRecords = (await r.json()).records; }
+      catch { $('search-status').textContent = 'शोध उपलब्ध नाही. इंटरनेट किंवा ऑफलाइन जतन तपासा.'; return; }
+    }
+    search();
+  };
+  const splash = $('splash');
+  let seen = false;
+  try { seen = sessionStorage.getItem('shivvedh-welcome'); } catch {}
+  if (!location.hash && !seen && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    splash.showModal();
+    const timer = setTimeout(() => splash.close(), 2600);
+    splash.addEventListener('close', () => {
+      clearTimeout(timer);
+      try { sessionStorage.setItem('shivvedh-welcome', '1'); } catch {}
+    }, { once: true });
+    $('skip-splash').onclick = () => splash.close();
+  }
   $('previous').onclick = () => change(-1);
   $('next').onclick = () => change(1);
   function font(delta) {
@@ -281,7 +518,7 @@
           if (i < 0) return;
           closeDrawer();
           show(i);
-          history.replaceState(null, '', '#' + chapters[i].id);
+          history.pushState(null, '', '#' + chapters[i].id);
         }),
     );
   }
@@ -309,7 +546,7 @@
     }
     if (
       reader.hidden ||
-      $('evidence-dialog').open ||
+      document.querySelector('dialog[open]') ||
       e.altKey ||
       e.ctrlKey ||
       e.metaKey ||

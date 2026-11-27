@@ -4,10 +4,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 def text(s):
     return re.sub(r'\s+', ' ', html.unescape(re.sub('<[^>]+>', ' ', s))).strip()
+def reader_sections(source):
+    """Return the same section IDs and bodies used by the navigation catalog."""
+    return re.findall(r'<section class="section[^"]*" id="([^"]+)">(.*?)</section>', source, re.S)
+
+
 def build():
     source = (ROOT/'index.html').read_text()
     chapters=[]; volumes=[]; records=[]
-    for slug, body in re.findall(r'<section class="section[^\"]*" id="([^\"]+)">(.*?)</section>', source, re.S):
+    for slug, body in reader_sections(source):
         title = text(re.search(r'<h2[^>]*>(.*?)</h2>',body,re.S)[1])
         label = re.search(r'<div class="section-label">(.*?)</div>',body,re.S)
         volume = text(label[1]) if label and 'खंड' in label[1] else 'प्रारंभ आणि संदर्भ'
@@ -28,6 +33,15 @@ def build():
             url=dest+'#'+r['id']
             if filename=='bakhars.json': url='bakhar.html#'+{'SV-B-01':'sabhasad','SV-B-02':'chitnis','SV-B-03':'ninetyone'}[r['id']]
             records.append({'id':r['id'],'kind':kind,'title':r.get('title',r.get('name',r.get('claim'))),'text':' '.join(str(v) for v in r.values()),'url':url,'status':r.get('status',r.get('sourceStatus',r.get('review','review-pending')))})
+    for event in json.loads((ROOT/'data/events.json').read_text())['events']:
+        records.append({
+            'id': event['id'],
+            'kind': 'research',
+            'title': event['title'],
+            'text': event['period'] + ' · ' + event['summary'],
+            'url': 'knowledge.html#' + event['id'],
+            'status': 'ऐतिहासिक कालपट',
+        })
     catalog={'version':1,'volumes':volumes,'chapters':chapters}
     return {'data/catalog.json':catalog,'data/search-index.json':{'version':1,'records':records}}
 if __name__=='__main__':

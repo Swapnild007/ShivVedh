@@ -1,8 +1,9 @@
 """Validate ShivVedh architecture relationships and document invariants."""
 import json
-import re
 import sys
 from pathlib import Path
+
+from build_catalog import reader_sections
 
 ROOT = Path(__file__).resolve().parents[1]
 errors = []
@@ -23,7 +24,10 @@ bakhars = load("data/bakhars.json", "records")
 claims = load("data/claims.json", "claims")
 passages = load("data/bakhar-passages.json", "comparisons")
 index = (ROOT / "index.html").read_text(encoding="utf-8")
-chapters = set(re.findall(r'<section\s+class="section narrative"\s+id="([^"]+)"', index))
+section_ids = [section_id for section_id, _ in reader_sections(index)]
+chapters = set(section_ids)
+if len(section_ids) != len(chapters):
+    errors.append("Duplicate chapter ID in reader")
 registry = {}
 for collection, records in [("documents", docs), ("bakhars", bakhars), ("claims", claims), ("passages", passages)]:
     for record in records:
@@ -53,6 +57,33 @@ for claim in claims:
         collection = evidence.get("collection")
         if registry.get(source_id) != collection or collection not in ("documents", "bakhars"):
             errors.append(f"{claim.get('id')}: unresolved/mistyped source {source_id} in {collection}")
+events = load("data/events.json", "events")
+event_sources = json.loads((ROOT / "data/events.json").read_text(encoding="utf-8"))["sources"]
+event_ids = set()
+previous_year = 0
+for event in events:
+    ident = event.get("id")
+    year = event.get("year")
+    if not ident or ident in event_ids:
+        errors.append(f"Duplicate or absent timeline ID: {ident}")
+    event_ids.add(ident)
+    if not isinstance(year, int) or year < previous_year:
+        errors.append(f"{ident}: invalid timeline ordering")
+    elif year:
+        previous_year = year
+    if event.get("chapter") not in chapters or not event.get("evidence"):
+        errors.append(f"{ident}: timeline record must reference a reader section and evidence")
+    for record in event.get("evidence", []):
+        if record.get("source") not in event_sources or not record.get("locator") or not record.get("status"):
+            errors.append(f"{ident}: incomplete event citation")
+        url = record.get("url", "")
+        if url.startswith("documents.html#"):
+            document_id = url.split("#", 1)[1]
+            if registry.get(document_id) != "documents":
+                errors.append(f"{ident}: missing document {document_id}")
+        elif not url.startswith("https://"):
+            errors.append(f"{ident}: unsupported evidence URL")
+
 for required in ["ARCHITECTURE.md", "MASTER_BLUEPRINT.md", "RELEASE_GATE.md"]:
     if not (ROOT / required).is_file():
         errors.append(f"Missing architecture document {required}")

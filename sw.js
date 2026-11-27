@@ -1,9 +1,16 @@
 /* Atomic release shell: failed precache cannot replace a working version. */
-const VERSION = 'shivvedh-shell-2026-10-25-v3';
+const VERSION = 'shivvedh-shell-2026-11-25-v12';
 const ROOT = new URL('./', self.registration.scope);
 const PATHS = [
   './',
   'index.html',
+  'library.html',
+  'knowledge.html',
+  'app/knowledge.js',
+  'data/events.json',
+  'app/library.css',
+  'app/library.js',
+  'manuscript/chapter-map.json',
   'letters.html',
   'bakhar.html',
   'documents.html',
@@ -14,12 +21,14 @@ const PATHS = [
   'volume-one.html',
   'manifest.webmanifest',
   'assets/icon-192.png',
+  'assets/sahyadri-torna-rajgad.webp',
   'assets/icon-512.png',
   'app/fonts.css',
   'assets/fonts/noto-serif-devanagari-devanagari-400-normal.woff2',
   'assets/fonts/noto-serif-devanagari-devanagari-700-normal.woff2',
   'assets/fonts/noto-serif-devanagari-latin-400-normal.woff2',
   'app/reader.css',
+  'app/royal.css',
   'app/reader.js',
   'app/search.js',
   'app/offline.js',

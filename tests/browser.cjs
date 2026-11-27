@@ -21,6 +21,7 @@ const fs = require('node:fs');
     }
     browser = await chromium.launch({
       headless: true,
+      args: JSON.parse(process.env.CHROMIUM_ARGS || '[]'),
       ...(process.env.CHROMIUM_PATH
         ? { executablePath: process.env.CHROMIUM_PATH }
         : {}),
@@ -134,6 +135,8 @@ const fs = require('node:fs');
     await context.setOffline(true);
     for (const path of [
       'index.html#birth',
+      'library.html',
+      'knowledge.html',
       'search.html',
       'letters.html',
       'documents.html',
@@ -144,6 +147,24 @@ const fs = require('node:fs');
       const response = await p.goto(base + path);
       if (response) assert.equal(response.status(), 200, path);
     }
+    await p.goto(base + 'library.html');
+    await p.waitForSelector('.volume summary');
+    assert.equal(await p.locator('.volume').count(), 9);
+    assert.equal(await p.locator('.chapters li').count(), 54);
+    for (const summary of await p.locator('.volume summary').all()) {
+      await summary.click();
+      assert.equal(await summary.locator('..').locator('li:visible').count(), 6);
+    }
+    await p.locator('a[href="index.html#birth"]').click();
+    await p.waitForSelector('#content #birth');
+    await p.goto(base + 'knowledge.html#SV-EVT-1646-RANJE');
+    const event = p.locator('#SV-EVT-1646-RANJE');
+    await event.waitFor();
+    assert.equal(await p.locator('#events > li').count(), 6);
+    await event.getByText('पुरावे आणि संदर्भ').click();
+    await event.locator('a[href="documents.html#SV-L-1646-01"]').click();
+    await p.waitForSelector('#SV-L-1646-01');
+
     await p.goto(base + 'search.html');
     await p.waitForSelector('#results .card');
     await p.fill('#query', 'प्रतापगड');

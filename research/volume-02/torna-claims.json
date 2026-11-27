@@ -1,0 +1,28 @@
+{
+  "chapter": "manuscript/volume-02/chapter-04-torna.md",
+  "sourceLeads": [
+    "Jadunath Sarkar, Shivaji and His Times, 2nd ed. 1920, contents pp32-35",
+    "Surendranath Sen, Siva Chhatrapati, 1920, contents p162 (later bakhar extract)"
+  ],
+  "claims": [
+    {
+      "id": "SV-E-201",
+      "topic": "Torna acquisition date and circumstances",
+      "status": "lead",
+      "next": "Compare dated primary evidence and original edition pages"
+    },
+    {
+      "id": "SV-E-202",
+      "topic": "Sequence of early forts",
+      "status": "lead",
+      "next": "Build source-specific fort chronology"
+    },
+    {
+      "id": "SV-E-203",
+      "topic": "Rajgad treasure and building traditions",
+      "status": "unverified",
+      "next": "Trace earliest source"
+    }
+  ],
+  "note": "Contents-page locators are not historical verification."
+}

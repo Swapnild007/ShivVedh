@@ -1,0 +1,95 @@
+"""Editorial integrity: verify new draft chapters and prohibit fabricated certification."""
+import json
+import re
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+VOLUME = ROOT / "manuscript" / "volume-02"
+CLAIMS = ROOT / "research" / "volume-02"
+CHAPTERS = {
+    "chapter-04-torna.md": ("torna-claims.json", 3),
+    "chapter-05-purandar.md": ("purandar-claims.json", 3),
+    "chapter-06-javali.md": ("javali-claims.json", 4),
+}
+
+class EditorialDraftTests(unittest.TestCase):
+    def test_substantive_narrative_and_caution(self):
+        for name in CHAPTERS:
+            with self.subTest(name=name):
+                text = (VOLUME / name).read_text(encoding="utf-8")
+                self.assertGreaterEqual(len(text.split()), 300)
+                self.assertGreaterEqual(len(re.findall(r"^### ", text, re.M)), 3)
+                self.assertTrue(any(s in text for s in ("पडताळणी", "परीक्षण", "प्रलंबित")))
+
+    def test_claims_are_linked_and_uncertified(self):
+        all_ids = set()
+        for chapter, (register, expected) in CHAPTERS.items():
+            with self.subTest(chapter=chapter):
+                text = (VOLUME / chapter).read_text(encoding="utf-8")
+                data = json.loads((CLAIMS / register).read_text(encoding="utf-8"))
+                self.assertEqual(Path(data["chapter"]).name, chapter)
+                self.assertEqual(len(data["claims"]), expected)
+                self.assertTrue(data["sourceLeads"])
+                self.assertIn("not", data["note"].lower())
+                for claim in data["claims"]:
+                    ident = claim["id"]
+                    self.assertRegex(ident, r"^SV-E-2[0-9]{2}$")
+                    self.assertNotIn(ident, all_ids)
+                    all_ids.add(ident)
+                    self.assertIn(ident, text)
+                    self.assertIn(claim["status"], ("lead", "unverified", "disputed-unresolved"))
+                    self.assertGreater(len(claim["next"]), 12)
+
+    def test_grantha_map_matches_master_plan_and_preserves_all_drafts(self):
+        manuscript = ROOT / "manuscript"
+        chapter_map = json.loads((manuscript / "chapter-map.json").read_text(encoding="utf-8"))
+        plan = (manuscript / chapter_map["plan"]).read_text(encoding="utf-8")
+        plan = plan.split("### विद्यमान हस्तलिखिताचे समाकलन", 1)[0]
+        volumes = chapter_map["volumes"]
+        self.assertEqual([volume["title"] for volume in volumes],
+                         re.findall(r"^### खंड [१-९] : (.+)$", plan, re.M))
+        self.assertEqual([len(volume["chapters"]) for volume in volumes], [6] * 9)
+        chapters = [chapter for volume in volumes for chapter in volume["chapters"]]
+        self.assertEqual([(str(chapter["number"]), chapter["title"]) for chapter in chapters],
+                         re.findall(r"^(\d+)\. (.+)$", plan, re.M))
+        self.assertEqual(len({chapter["id"] for chapter in chapters}), 54)
+        drafts = set()
+        reader_catalog = json.loads((ROOT / "data/catalog.json").read_text(encoding="utf-8"))
+        reader_anchors = {chapter["id"] for chapter in reader_catalog["chapters"]}
+        for chapter in chapters:
+            if "readerAnchor" in chapter:
+                self.assertIn(chapter["readerAnchor"], reader_anchors)
+            self.assertEqual(chapter["status"],
+                             "source-draft-available" if chapter["drafts"] else "draft-required")
+            drafts.update(chapter["drafts"])
+        self.assertEqual(drafts, {path.relative_to(manuscript).as_posix()
+                                  for path in manuscript.glob("volume-*/*.md")})
+
+    def test_chapter_claims_resolve_to_consulted_editions(self):
+        registers = (
+            "research/volume-05/renewal-1670-claims.json",
+            "research/volume-06/konkan-maritime-claims.json",
+        )
+        for register in registers:
+            with self.subTest(register=register):
+                data = json.loads((ROOT / register).read_text(encoding="utf-8"))
+                draft = (ROOT / data["manuscript"]).read_text(encoding="utf-8")
+                ids = [claim["id"] for claim in data["claims"]]
+                self.assertEqual(set(ids), set(re.findall(r"SV-E-[56][0-9]{2}", draft)))
+                self.assertEqual(len(ids), len(set(ids)))
+                self.assertEqual(data["status"], "editorial-draft")
+                for claim in data["claims"]:
+                    self.assertTrue(claim["conflict"])
+                    self.assertTrue(claim["locators"])
+                    for locator in claim["locators"]:
+                        self.assertIn(locator["source"], data["sources"])
+                        self.assertTrue(locator["section"])
+
+    def test_volume_one_remains_present(self):
+        for name in ("chapter-01-deccan.md", "chapter-02-shivneri.md",
+                     "chapter-03-pune-maval.md"):
+            self.assertTrue((ROOT / "manuscript" / "volume-01" / name).is_file())
+
+if __name__ == "__main__":
+    unittest.main()
